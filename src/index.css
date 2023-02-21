@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+
+/* BEGIN BASIC STYLING */
 *{
     margin: 0;
     padding: 0;
@@ -5,10 +9,56 @@
     scroll-behavior: smooth;
 }
 :root{
+    --font-color: #040921;
     --primary-color:#EA3F30;
-    --neutral-color:;
+    --white-color:#FFFFFF;
+    --black-color:#0b0a0b;
+    --success-color: #26E134;
+    --caution-color: #E2A83B;
+    --danger-color: #BA2417;
+    --info-color :#246FBA;
 }
-body {
-
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--white-color);
+    color: var(--font-color);
+}
+ol, ul {
+	list-style: none;
+}
+a{ 
+    text-decoration: none;
+    color: inherit;
+}
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    
+}
+h2 {
+    font-size: 2.625rem;
+    font-weight: 800;
+    
+}
+h3 {
+    font-size: 1.875rem;
+    font-weight: 800;
+    
 }
 
+.bold {
+    font-weight: 700;
+}
+
+.body-large {
+    font-size:  1.25rem;
+}
+
+.body-small {
+    font-size:  0.875rem;
+}
+.caption {
+    font-size: 0.75rem;
+}
+
+/* END */
