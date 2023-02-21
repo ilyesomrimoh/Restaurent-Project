@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Navbar = () => {
+
+
+
+  const [show, setshow] =useState(false);
+    
   return (
     <header>
         <img src="" alt="logo" className="logo" />
-        <div className="humberger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-      <nav>
+      
+      <nav className={show ? 'show':''}>
         <ul className="navigation">
-            <li><a href="#" className='caption'>Home</a></li>
-            <li><a href="#" className='caption' >Service</a></li>
-            <li><a href="#" className='caption'>Contact</a></li>
+            <li><a href="#" className='.body-small'>Home</a></li>
+            <li><a href="#" className='.body-small' >Service</a></li>
+            <li><a href="#" className='.body-small'>Contact</a></li>
         </ul>
      </ nav>
-      <button className="btn"><i className="fa fa-home"></i> Be Restaurent</button>
+      
+      <button className="btn btn-ghost scale"><i className="fa fa-home"></i> Be Restaurent</button>
+
+      <div className='humberger Mobile' onClick ={()=>setshow(!show)}>
+            <div className={show ? 'rotate1':''}></div>
+            <div className={show ? 'hidden':''}></div>
+            <div className={show ? 'rotate2':''}></div>
+        </div>
     </header>
   )
 }

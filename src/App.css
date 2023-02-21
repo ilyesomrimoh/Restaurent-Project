@@ -3,6 +3,8 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
+    overflow: hidden;
+    position: relative;
 }
 /* Begin Header */
 header{
@@ -10,23 +12,46 @@ header{
     align-items: center;
     justify-content: space-around;
     height:65px;
+    width: 100%;
 }
 nav{
-    width:200px;
+    width:220px;
+    z-index: 12;
 }
 nav .navigation {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
-
+li a{
+    color: var(--black-color);
+}
+nav ul li{
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    transition: all ease 200ms;
+    transition-property: background , color, transform ;
+  
+}
+nav li:hover {
+   color: var(--primary-color);
+   background-color: var(--white-color);
+   transform: scale(1.1);
+}
+nav li:hover  >  a{
+    color: var(--primary-color);
+    
+ }
 .humberger >*{
     height: 2px;
     margin-bottom: 5px;
     width: 25px;
     background-color: var(--black-color);
+}
+.Mobile{
+    display: none;
 }
 /* End Header */
 
@@ -46,6 +71,9 @@ nav .navigation {
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
+.scale{
+    transform: scale(.8);
+}
 .btn-ghost {
     background-color: var(--white-color);
     color: var(--primary-color);
@@ -61,13 +89,51 @@ nav .navigation {
     background-color: var(--primary-color);
     color: var(--white-color);
 }
-
-
-/* hello */
-
-
 /* Media */
+
+
 /* small screen */
+@media (max-width:600px) {
+    nav{
+     width: 100%; 
+     position: absolute;    
+     top: 65px;
+     right: -100%; 
+     background-color: var(--primary-color);
+     color: var(--white-color);  
+     padding: 20px 0;   
+     transition: right ease 800ms;
+    }
+    nav ul{
+        flex-direction: column;
+        gap: 20px;
+    }
+    li a{
+        color: var(--white-color);
+    }
+   
+    .humberger >*{
+        transition: all ease 600ms;
+        transition-property: transform , opacity;
+        transform-origin: 89%;
+    }
+    .hidden{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    .rotate1{
+        transform: rotate(-45deg);
+    }
+    .rotate2{
+        transform: rotate(45deg);
+    }
+    .Mobile{
+        display: block;
+    }
+     .show{
+       right: 0;
+    }
+}
 @media (min-width:768px) {
     .container{width:750px}
 }
