@@ -31,6 +31,41 @@ nav .navigation {
 /* End Header */
 
 
+.red-text {
+    color: var(--primary-color);
+}
+.btn {
+    outline: none;
+    border: 2.2px solid var(--primary-color);
+    padding: 0.8rem 1.9rem;
+    color: var(--white-color);
+    border-radius: 1.85rem;
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.btn-ghost {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    border: 2.2px solid var(--primary-color);
+}
+
+.btn:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+}
+.btn-ghost:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+
+/* hello */
+
+
 /* Media */
 /* small screen */
 @media (min-width:768px) {
@@ -58,9 +93,23 @@ nav .navigation {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
-    background-color: #000000;
-    color: #ffffff;
-    text-align: center;
+    gap: 20px;
 }
+.hero-text h1 {
+    padding-right: 40px;
+}
+.hero-text p {
+    line-height: 25.5px;
+}
+.hero-img {
+    display: flex;
+    align-items: center;
+}
+.btns {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
 /* END Heroo Styling */
