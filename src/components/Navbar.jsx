@@ -15,7 +15,7 @@ const Navbar = () => {
             <li><a href="#" className='caption' >Service</a></li>
             <li><a href="#" className='caption'>Contact</a></li>
         </ul>
-      </nav>
+     </ nav>
       <button className="btn"><i className="fa fa-home"></i> Be Restaurent</button>
     </header>
   )
