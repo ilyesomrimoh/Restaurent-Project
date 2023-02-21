@@ -4,12 +4,31 @@
     margin: 0 auto;
     padding: 0 1rem;
 }
+/* Begin Header */
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height:80px;
+}
+nav{
+    width:200px;
+}
+nav .navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+}
 
-
-
-
-/* hello */
+.humberger >*{
+    height: 2px;
+    margin-bottom: 5px;
+    width: 25px;
+    background-color: var(--black-color);
+}
+/* End Header */
 
 
 /* Media */

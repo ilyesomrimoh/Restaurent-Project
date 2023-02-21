@@ -4,14 +4,19 @@ const Navbar = () => {
   return (
     <header>
         <img src="" alt="logo" className="logo" />
+        <div className="humberger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
       <nav>
         <ul className="navigation">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Service</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#" className='caption'>Home</a></li>
+            <li><a href="#" className='caption' >Service</a></li>
+            <li><a href="#" className='caption'>Contact</a></li>
         </ul>
       </nav>
-      <button class="btn"><i class="fa fa-home"></i> Be Restaurent</button>
+      <button className="btn"><i className="fa fa-home"></i> Be Restaurent</button>
     </header>
   )
 }
