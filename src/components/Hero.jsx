@@ -2,7 +2,7 @@ import React from "react";
 
 function Hero() {
   return (
-    <div className="hero-container">
+    <section className="hero-container">
       <div className="hero-text">
         <h1>
           Be The Fastest In Delevering Your{" "}
@@ -21,7 +21,7 @@ function Hero() {
       <div className="hero-img">
         <img src="./images/hero-bg.png" alt="hero background" />
       </div>
-    </div>
+    </section>
   );
 }
 

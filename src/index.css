@@ -17,6 +17,7 @@
     --caution-color: #E2A83B;
     --danger-color: #BA2417;
     --info-color :#246FBA;
+    --serve-section-color:#FEF5F5;
 }
 
 
@@ -44,10 +45,11 @@ h2 {
 }
 h3 {
     font-size: 1.875rem;
-    font-weight: 800;
     
 }
-
+.extra-bold{
+    font-weight: 800;
+}
 .bold {
     font-weight: 700;
 }
