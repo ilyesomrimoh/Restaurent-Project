@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 
 const Faq = () => {
+    // const select = useRef([])
     const [clicked , setclicked] = useState(null);
     const faqContent =[
         {
       
-        question:"lorem text",
-        answer:"lorem text"
+        question:" Lorem ipsum, dolor sit amet consectetur adipisicing.",
+        answer:"web devn hahahahahahahahahahah"
     }
     ,{
       
@@ -20,7 +21,21 @@ const Faq = () => {
     }];
 
     const questionClick = (id) => {
-        setclicked(id === clicked ? null : id);
+    //     if(id === clicked){
+            setclicked(id === clicked ? null: id);
+    //             grandParent.style.height = `${parent.clientHeight +28}px`; 
+    //     }else{
+    //         setclicked(id);
+    //         select.current.forEach((element) => {
+    //             if(element === grandParent){
+    //                 element.style.height ='120px';
+
+    //             }else{
+    //                 element.style.height = `${parent.clientHeight + 28}px`;
+    //             }
+               
+    //           });
+    //     }
       };
 
   return (
@@ -28,19 +43,24 @@ const Faq = () => {
         <h3>FAQ</h3>
         <div className="card-parent2">
 
-
  { faqContent.map((card , id) =>{
-     return  <div  key={id} className="card2">
-     <div className={`qest-part ${id === clicked ? "qest-part-active" : ""}`}>
+    // ref={(el) =>select.current[id] = el}
+     return  <div  key={id} className={`card2 ${id === clicked ? "card2-active" : ""}`} >
+     <div className='qest-part'>
          <p>{card.question}</p>
-        <div className="sub-plus" onClick={()=>questionClick(id) }>
+        <div className="sub-plus" onClick={(e)=>questionClick(id) }>
+         <div className="center-div">
          <div  className={id === clicked ? "" : "plus"} ></div>
          <div className="sub"></div>
+         </div>
         </div>
      </div>
+     <div  className={`second ${id === clicked ? "visible" : ""}`}>
      <hr/>
-     <p className="parg"> {id === clicked ? card.answer : ""}</p>
+     <p className="parg"> {card.answer}</p>
+     </div>
  </div> ;
+
 
  })}
 
