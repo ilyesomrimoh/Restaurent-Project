@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Serve from './components/Serve';
 import Faq from './components/Faq';
+import Testmonials from './components/Testimonials';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
      </div>
      <Serve />
      <Faq />
+     <Testmonials />
      </>
 
   );
