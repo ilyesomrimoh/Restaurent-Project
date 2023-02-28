@@ -318,7 +318,6 @@ hr{
     background-color: var(--serve-section-color);
     padding: 80px 10px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 
@@ -611,7 +610,6 @@ hr{
     li a{
         color: var(--white-color);
     }
-   
     .humberger >*{
         transition: all ease 600ms;
         transition-property: transform , opacity;
@@ -640,6 +638,13 @@ hr{
         width: 310px;
         word-wrap: break-word;
     }
+    .download .content{
+        transform: scale(0.75);
+    }
+
+    .download .content  div h2{
+        font-size: 2.4rem;
+    }
 }
 @media (min-width:768px) {
     .container{width:750px}
@@ -649,6 +654,9 @@ hr{
     .qest-part p{
         width: 410px;
         word-wrap: break-word;
+    }
+    .download .content{
+        transform: scale(0.9);
     }
 }
 /* medium screen */
@@ -660,6 +668,9 @@ hr{
     .qest-part p{
         width: 470px;
         word-wrap: break-word;
+    }
+    .download .content{
+        transform: scale(1) ;
     }
 }
 /* large screen */
