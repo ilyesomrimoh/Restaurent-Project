@@ -133,13 +133,9 @@ nav li:hover  >  a{
      .show{
        right: 0;
     }
-    
-
 }
-
 @media (min-width:768px) {
     .container{width:750px}
-    
 }
 /* medium screen */
 @media (min-width:992px) {
@@ -227,7 +223,7 @@ nav li:hover  >  a{
     transition: all ease-in 300ms;
     transition-property: transform , box-shadow;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.039);
-    height: 200px;
+    /* height: 200px; */
 
 }
 .card h3{
@@ -263,19 +259,22 @@ nav li:hover  >  a{
     margin-bottom: 10px;
     border-radius: 5px;
     text-align: left;
-    min-width:340px;
-    max-width: 500px;
+    width: 600px;
     box-shadow: 0px 3px 7px #00000030;
-    height: 52px;
     overflow: hidden;
-    transition:  height ease 500ms;
 }
-.qest-part{
+.card2-active{
+    height: auto;
+}
+.qest-part{ 
     text-transform: capitalize;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    float: left;
+    width: 100%;
 }
+
 hr{
     margin: 10px 0px;
 } 
@@ -283,7 +282,13 @@ hr{
     padding: 4px;
     font-weight: 600;
 }
-.sub-plus > *{
+.sub-plus{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.center-div> *{
     width: 14px;
     height: 2px;
     background-color: var(--black-color);
@@ -298,14 +303,64 @@ hr{
 }
 .sub{
     opacity: 1;
+}
+.second{
+     float: left;
+     width: 100%;
+     margin-top: -100%;
+}
+.visible {
+    margin-top: 0; /* Make the second child element visible */
+  }
+
+/* Start Download Section */
+.download{
+    background-color: var(--serve-section-color);
+    padding: 80px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 
 }
-.card-clicked{
-    height: fit-content !important;
-
+.phone{
+    width:15em;
 }
-/* END  faq section */
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+}
+.content .head-line{
+    color: var(--primary-color);
+}
+.content h2{
+    line-height: 1;
+}
+.content .text{
+    max-width: 600px;
+}
+.link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-left: 10px;
+}
+.link > *{
+    transform: scale(1.2);
+}
+.link img{
+    width: 100px;
+}
+.link .google{
+   height: 33px;
+   border-radius: 7px;
+}
 
+
+/* End Download Section */
 /* START Testimonials SECTION */
 #testimonials{
     width: 100%;
@@ -421,3 +476,201 @@ hr{
     font-size: 1.4rem;
 }
 /* END Testimonials SECTION */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Media */
+
+
+/* small screen */
+@media (max-width:768px) {
+    nav{
+     width: 100%; 
+     position: absolute;    
+     top: 65px;
+     right: -100%; 
+     background-color: var(--primary-color);
+     color: var(--white-color);  
+     padding: 20px 0;   
+     transition: right ease 800ms;
+    }
+    nav ul{
+        flex-direction: column;
+        gap: 20px;
+    }
+    li a{
+        color: var(--white-color);
+    }
+   
+    .humberger >*{
+        transition: all ease 600ms;
+        transition-property: transform , opacity;
+        transform-origin: 89%;
+    }
+    .hidden{
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    .rotate1{
+        transform: rotate(-45deg);
+    }
+    .rotate2{
+        transform: rotate(45deg);
+    }
+    .Mobile{
+        display: block;
+    }
+     .show{
+       right: 0;
+    }
+    .card2{
+        width:340px;
+    }
+    .qest-part p{
+        width: 310px;
+        word-wrap: break-word;
+    }
+}
+@media (min-width:768px) {
+    .container{width:750px}
+    .card2{
+        width:440px;
+    }
+    .qest-part p{
+        width: 410px;
+        word-wrap: break-word;
+    }
+}
+/* medium screen */
+@media (min-width:992px) {
+    .container{width:970px}
+    .card2{
+        width:500px;
+    }
+    .qest-part p{
+        width: 470px;
+        word-wrap: break-word;
+    }
+}
+/* large screen */
+@media (min-width:1200px) {
+    .container{width:1170px}
+    .card2{
+        width:600px;
+    }
+    .qest-part p{
+        width: 570px;
+        word-wrap: break-word;
+    }
+}
+/* END  faq section */

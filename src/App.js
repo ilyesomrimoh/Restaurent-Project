@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Serve from './components/Serve';
 import Faq from './components/Faq';
 import Testmonials from './components/Testimonials';
+import Download from './components/Download';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
      <Serve />
      <Faq />
      <Testmonials />
+     <Download/>
      </>
 
   );
