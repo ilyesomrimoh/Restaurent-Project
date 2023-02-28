@@ -133,9 +133,13 @@ nav li:hover  >  a{
      .show{
        right: 0;
     }
+    
+
 }
+
 @media (min-width:768px) {
     .container{width:750px}
+    
 }
 /* medium screen */
 @media (min-width:992px) {
@@ -177,6 +181,24 @@ nav li:hover  >  a{
     gap: 20px;
     justify-content: flex-start;
 }
+@media screen and (max-width: 700px) {
+    .hero-img {
+        display: none;
+    }
+    .hero-text {
+        text-align: center;
+    }
+    .hero-text h1 {
+        padding: 0;
+    }
+    .btns {
+        justify-content: center;
+    }
+}
+.hero-img img {
+    width: 100%;
+}
+
 
 /* END Hero Styling */
 /* BEGIN Serve section */
@@ -312,8 +334,7 @@ hr{
     height: 350px;
 
 }
-.testimonials-slider::after {
-    content: "";
+.testimonials-slider .next{
     position: absolute;
     background-image: url('../public/images/icons/next.png');
     background-position: center center;
@@ -328,8 +349,7 @@ hr{
     z-index: 2; 
     cursor: pointer;
 }
-.testimonials-slider::before {
-    content: '';
+.testimonials-slider .previous   {
     position: absolute;
     background-image: url('../public/images/icons/next-left.png');
     background-position: center;
@@ -347,8 +367,9 @@ hr{
 /* .testimonials-slider:hover .testimonials-slider::after , .testimonials-slider:hover .testimonials-slider::before  {
     transform: scale(1.05);
 } */
-.testimonials-slider > * {
+.testimonials-slider > *:not(.next, .previous) {
     width: 70%;
+    min-width: 300px;
     height: 300px;
     display: flex;
     margin: 0 auto;
