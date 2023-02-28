@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 const Faq = () => {
     // const select = useRef([])
@@ -21,21 +21,7 @@ const Faq = () => {
     }];
 
     const questionClick = (id) => {
-    //     if(id === clicked){
             setclicked(id === clicked ? null: id);
-    //             grandParent.style.height = `${parent.clientHeight +28}px`; 
-    //     }else{
-    //         setclicked(id);
-    //         select.current.forEach((element) => {
-    //             if(element === grandParent){
-    //                 element.style.height ='120px';
-
-    //             }else{
-    //                 element.style.height = `${parent.clientHeight + 28}px`;
-    //             }
-               
-    //           });
-    //     }
       };
 
   return (
@@ -44,7 +30,6 @@ const Faq = () => {
         <div className="card-parent2">
 
  { faqContent.map((card , id) =>{
-    // ref={(el) =>select.current[id] = el}
      return  <div  key={id} className={`card2 ${id === clicked ? "card2-active" : ""}`} >
      <div className='qest-part'>
          <p>{card.question}</p>
