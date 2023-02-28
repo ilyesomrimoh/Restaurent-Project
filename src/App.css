@@ -158,7 +158,7 @@ nav li:hover  >  a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    flex-basis: 50%;
     gap: 20px;
 }
 .hero-text h1 {
@@ -170,6 +170,9 @@ nav li:hover  >  a{
 .hero-img {
     display: flex;
     align-items: center;
+}
+.hero-img img {
+    width: 100%;
 }
 .btns {
     display: flex;
@@ -183,17 +186,26 @@ nav li:hover  >  a{
     }
     .hero-text {
         text-align: center;
+        flex-basis: 100%;
+
     }
+    
     .hero-text h1 {
         padding: 0;
     }
     .btns {
         justify-content: center;
     }
+    .hero-text .btn {
+        font-size: 1.8rem;
+    }
 }
-.hero-img img {
-    width: 100%;
+@media (max-width:992px) {
+    .hero-text .btn {
+        font-size: 0.8rem;
+    }
 }
+
 
 
 /* END Hero Styling */
