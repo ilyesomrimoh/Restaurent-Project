@@ -1,8 +1,7 @@
-import React from 'react'
 
-function Testimonial({ desc , author , location , imgSrc, imgAlt}) {
+function Testimonial({ desc , author , location , imgSrc, imgAlt , active, reff}) {
   return (
-    <div className='testimonial-card'>
+    <div ref = {reff} className={active ? 'testimonial-card active' : 'testimonial-card'}>
         <div className="testimonial-img">
             <img src={imgSrc || ''} alt={imgAlt} />
         </div>
