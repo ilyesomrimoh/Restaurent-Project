@@ -338,7 +338,7 @@ hr{
 .testimonial-img {
     display: flex;
     justify-content: end;
-    align-items: start;
+    align-items: flex-start;
     padding-top: 20px;
     flex-basis: 50%;
     height: 100%;
@@ -356,7 +356,7 @@ hr{
     display: flex;
     height: 100%;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     gap: 40px;
 
