@@ -9,6 +9,11 @@ const SignUp = () => {
       setPassValid(false);
     }
   };
+  const [open, setOpen] = useState(false);
+
+  const toggle = () => {
+    setOpen(!open);
+  };
   return (
     <div className="flex  h-screen flex-col lg:flex-row relative">
       <div className="flex lg:hidden absolute top-3 left-3 cursor-pointer space-x-3 bg-black  px-4 py-2 pl-5 rounded-md">
@@ -79,7 +84,7 @@ const SignUp = () => {
               required
             />
           </div>
-          <div>
+          <div className="relative">
             <label
               for="password"
               className="block mb-2 text-xl font-medium  text-zinc-500   dark:text-white"
@@ -98,6 +103,26 @@ const SignUp = () => {
                   : "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white focus:border-red-500"
               }
               required
+            />
+            <img
+              src="./images/Assets/show.png"
+              alt=""
+              onClick={toggle}
+              className={
+                open
+                  ? "absolute right-5 w-5 h-5 top-12 cursor-pointer"
+                  : "hidden"
+              }
+            />
+            <img
+              src="./images/Assets/hide.png"
+              alt=""
+              onClick={toggle}
+              className={
+                open
+                  ? "hidden"
+                  : "absolute right-5 w-5 h-5 top-12 cursor-pointer"
+              }
             />
           </div>
 
