@@ -23,7 +23,9 @@ const SignUp = () => {
           alt=""
           className="w-4 h-4 self-center"
         />
-      <Link to='/'> <p className="text-white">Back</p></Link>
+        <Link to="/">
+          <p className="text-white">Back</p>
+        </Link>
       </div>
 
       <div className="w-1/2 relative hidden lg:block">
@@ -38,7 +40,9 @@ const SignUp = () => {
             alt=""
             className="w-4 h-4 self-center"
           />
+          <Link to="/">
           <p className="text-white">Back</p>
+          </Link>
         </div>
       </div>
       <div className="flex flex-col space-y-7 lg:w-1/2 xl:p-56 lg:p-12 lg:pt-24 p-24 ">
@@ -147,22 +151,20 @@ const SignUp = () => {
             </label>
           </div>
 
-          
-            <button
-              type="submit"
-              className="w-full text-white  bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
-            >
-              Sign up
-            </button>
+          <button
+            type="submit"
+            className="w-full text-white  bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+          >
+            Sign up
+          </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?
-            <a
-              className="text-red-500 hover:underline dark:text-red-500 cursor-pointer"
-              href="/#"
-            >
-              {"  "}
-              Login
-            </a>
+            <Link to="/login">
+              <p className="text-red-500 hover:underline dark:text-red-500 cursor-pointer inline">
+                {"  "}
+                Login
+              </p>
+            </Link>
           </div>
         </form>
       </div>

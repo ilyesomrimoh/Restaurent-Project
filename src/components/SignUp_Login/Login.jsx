@@ -15,7 +15,9 @@ const Login = () => {
           alt=""
           className="w-4 h-4 self-center"
         />
-        <p className="text-white">Back</p>
+        <Link to="/signup">
+          <p className="text-white">Back</p>
+        </Link>
       </div>
 
       <div className="w-1/2 relative hidden lg:block">
@@ -30,7 +32,9 @@ const Login = () => {
             alt=""
             className="w-4 h-4 self-center"
           />
-          <p className="text-white">Back</p>
+          <Link to="/signup">
+            <p className="text-white">Back</p>
+          </Link>
         </div>
       </div>
       <div className="flex flex-col space-y-7 lg:w-1/2 xl:p-56 lg:p-12 lg:pt-24 p-24 ">
@@ -132,12 +136,13 @@ const Login = () => {
             Login
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Not registered?
-              {" "}
-              <a className="text-red-500 hover:underline dark:text-red-500 cursor-pointer" href="null">
+            Not registered?{" "}
+            <Link to="/signup">
+              <p className="text-red-500 hover:underline dark:text-red-500 cursor-pointer inline">
                 {"  "}
                 Signup
-              </a>
+              </p>
+            </Link>
           </div>
         </form>
       </div>
