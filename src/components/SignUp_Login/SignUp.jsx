@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const [passValid, setPassValid] = useState(false);
@@ -17,7 +18,7 @@ const SignUp = () => {
           alt=""
           className="w-4 h-4 self-center"
         />
-        <p className="text-white">Back</p>
+      <Link to='/'> <p className="text-white">Back</p></Link>
       </div>
 
       <div className="w-1/2 relative hidden lg:block">
@@ -65,7 +66,7 @@ const SignUp = () => {
         <form className="space-y-6">
           <div>
             <label
-              for="email"
+              htmlFor="email"
               className="block mb-2 text-xl font-medium  text-zinc-500   dark:text-white"
             >
               Email Address
@@ -81,7 +82,7 @@ const SignUp = () => {
           </div>
           <div>
             <label
-              for="password"
+              htmlFor="password"
               className="block mb-2 text-xl font-medium  text-zinc-500   dark:text-white"
             >
               Password
@@ -112,7 +113,7 @@ const SignUp = () => {
               />
             </div>
             <label
-              for="remember"
+              htmlFor="remember"
               className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
               I agree to the{" "}

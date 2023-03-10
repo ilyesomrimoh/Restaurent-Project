@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const [show, setshow] = useState(false);
 
@@ -27,9 +27,11 @@ const Navbar = () => {
         </ul>
       </nav>
 
+    <Link to='/signup'>
       <button className="btn btn-ghost scale">
         <i className="fa fa-home"></i> Be Restaurent
-      </button>
+      </button></Link>
+ 
 
       <div className="humberger Mobile" onClick={() => setshow(!show)}>
         <div className={show ? "rotate1" : ""}></div>
