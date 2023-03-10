@@ -1,7 +1,6 @@
-import SignUp from "./components/SignUp_Login/SignUp";
-import LandingPage from "./Views/LandingPage";
-import { createBrowserRouter , RouterProvider } from "react-router-dom";
-import ErrorPage from "./Views/ErrorPage";
+// import LandingPage from "./Views/LandingPage";
+import Login from "./components/SignUp_Login/Login";
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -19,7 +18,9 @@ function App() {
     },
   ])
   return (
-   <RouterProvider router={router} />
+    <>
+      <Login />
+    </>
   );
 }
 

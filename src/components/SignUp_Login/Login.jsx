@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 const Login = () => {
   const [open, setOpen] = useState(false);
@@ -87,7 +86,7 @@ const Login = () => {
               required
             />
             <img
-              src="./images/Assets/view.png"
+              src="./images/Assets/show.png"
               alt=""
               onClick={toggle}
               className={
@@ -133,13 +132,11 @@ const Login = () => {
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?
-            <Link to="/signup">
               {" "}
               <a className="text-red-500 hover:underline dark:text-red-500 cursor-pointer" href="null">
                 {"  "}
                 Signup
               </a>
-            </Link>
           </div>
         </form>
       </div>
