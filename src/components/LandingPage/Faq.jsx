@@ -6,7 +6,7 @@ const Faq = () => {
   const faqContent = [
     {
       question: " Lorem ipsum, dolor sit amet consectetur adipisicing.",
-      answer: "web devn hahahahahahahahahahah",
+      answer: "web devn haha haha hahah haha hah",
     },
     {
       question: "lorem text",

@@ -12,7 +12,9 @@ function LandingPage() {
       <LP.Faq />
       <LP.Testmonials />
       <LP.Download />
+
     </>
+    
   );
 }
 
