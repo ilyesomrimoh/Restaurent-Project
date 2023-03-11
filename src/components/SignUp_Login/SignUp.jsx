@@ -1,8 +1,30 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
+import React, { useState, useEffect } from "react";
+import { Link,  useNavigate } from "react-router-dom";
+import { auth, googleProvider } from "../../config/firebaseConfig";
+import { createUserWithEmailAndPassword ,onAuthStateChanged, signInWithPopup } from "firebase/auth";
 const SignUp = () => {
+  const navigate = useNavigate();
   const [passValid, setPassValid] = useState(false);
+  const [password , setPass] = useState('');
+  const [email , setEmail] = useState('')
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth,(user) => {
+      if (user) {
+        navigate('/success'); // Redirect user to dashboard page
+      }
+    });
+    return unsubscribe;
+  }, [navigate]);
+  const signUp = async (e) => {
+    e.preventDefault();
+    await createUserWithEmailAndPassword(auth, email, password);
+    //redirect to signUpSuccess page
+
+  }
+  const signUpWithGoogle = async(e) => {
+    e.preventDefault();
+    await signInWithPopup(auth, googleProvider)
+  }
   const checkPass = (e) => {
     if (e.target.value.length > 8) {
       setPassValid(true);
@@ -63,7 +85,7 @@ const SignUp = () => {
           </span>
           <div className="flex-grow border-t border-black"></div>
         </div>
-        <form className="space-y-6">
+        <form onSubmit={signUp} className="space-y-6">
           <div>
             <label
               htmlFor="email"
@@ -75,6 +97,7 @@ const SignUp = () => {
               type="email"
               name="email"
               id="email"
+              onChange={e => setEmail(e.target.value)}
               className="bg-red-50 border border-gray-300 text-gray-900 text-sm focus:outline-none rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-3  dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
               placeholder="name@company.com"
               required
@@ -91,8 +114,8 @@ const SignUp = () => {
               type="password"
               name="password"
               id="password"
-              onChange={checkPass}
-              placeholder="***************"
+              onChange={e=> {checkPass(e); setPass(e.target.value)} }
+              placeholder= "Password ..."
               className={
                 passValid
                   ? "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white focus:border-green-600"
@@ -125,6 +148,7 @@ const SignUp = () => {
           <button
             type="submit"
             className="w-full text-white  bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+         
           >
             Sign up
           </button>
