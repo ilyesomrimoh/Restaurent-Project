@@ -19,7 +19,7 @@ const PassInput = () => {
     <div className="relative">
       <label
         htmlFor="password"
-        className="block mb-2 text-xl font-medium  text-zinc-500   dark:text-white"
+        className="block mb-2 text-xl font-medium  text-zinc-500   "
       >
         Password
       </label>
@@ -31,8 +31,8 @@ const PassInput = () => {
         placeholder="***************"
         className={
           passValid
-            ? "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white focus:border-green-600"
-            : "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white focus:border-red-500"
+            ? "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 focus:border-green-600"
+            : "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 focus:border-red-500"
         }
         required
       />

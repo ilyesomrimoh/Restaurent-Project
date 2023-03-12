@@ -32,10 +32,10 @@ const SignUp = () => {
           </Link>
         </div>
       </div>
-      <div className="flex flex-col space-y-7 lg:w-1/2 xl:p-28 2xl:p-48 lg:p-12 lg:pt-24 p-24">
+      <div className="flex flex-col space-y-7 lg:w-1/2 xl:p-28 2xl:p-18 lg:p-12 lg:pt-24 p-24">
         <p className="text-5xl font-medium ">Signup</p>
         <div className="flex space-x-7 justify-center">
-          <div className="flex pr-4 relative  py-2 space-x-5 hover:border-orange-300  border rounded-md cursor-pointer hover:bg-gray-100">
+          <div className="flex pr-4 relative  py-2 space-x-5 hover:border-orange-300  border rounded-md cursor-pointer hover:bg-red-50">
             <span class="absolute -top-3 -right-2 h-3 w-3">
               <span class="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-red-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
@@ -71,7 +71,7 @@ const SignUp = () => {
           <div>
             <label
               htmlFor="email"
-              className="block mb-2 text-xl font-medium  text-zinc-500   dark:text-white"
+              className="block mb-2 text-xl font-medium  text-zinc-700    "
             >
               Email Address
             </label>
@@ -79,7 +79,7 @@ const SignUp = () => {
               type="email"
               name="email"
               id="email"
-              className="bg-red-50 border border-gray-300 text-gray-900 text-sm focus:outline-none rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-3  dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+              className="bg-red-50 border border-gray-300 text-gray-900 text-sm focus:outline-none rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-3  "
               placeholder="name@company.com"
               required
             />
@@ -91,13 +91,13 @@ const SignUp = () => {
                 id="remember"
                 type="checkbox"
                 value=""
-                className="w-4 h-4 border accent-red-600  border-gray-300 rounded bg-gray-50 focus:ring-3    dark:border-gray-500 dark:focus:ring-red-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                className="w-4 h-4 border accent-red-600  border-gray-300 rounded bg-gray-50 focus:ring-3    "
                 required
               />
             </div>
             <label
               htmlFor="remember"
-              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              className="ml-2 text-sm font-medium text-gray-900 "
             >
               I agree to the{" "}
               <span className="decoration-1 underline ">Terms of Service</span>{" "}
@@ -107,14 +107,14 @@ const SignUp = () => {
 
           <button
             type="submit"
-            className="w-full text-white  bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-3 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+            className="w-full text-white  bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-3 text-center "
           >
             Sign up
           </button>
-          <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+          <div className="text-sm font-medium text-gray-500 ">
             Not registered?
             <Link to="/login">
-              <p className="text-red-500 hover:underline dark:text-red-500 cursor-pointer inline">
+              <p className="text-red-500 hover:underline inline">
                 {"  "}
                 Login
               </p>
