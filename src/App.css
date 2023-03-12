@@ -332,10 +332,10 @@ hr {
   padding-top: 20px;
   flex-basis: 50%;
   height: 100%;
+  width: 100%;
 }
 .testimonial-img img {
-  width: 150px;
-  height: 150px;
+ 
   border-radius: 50%;
   object-fit: cover;
 }
