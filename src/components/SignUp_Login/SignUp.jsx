@@ -4,16 +4,16 @@ import PassInput from "./components/PassInput";
 const SignUp = () => {
   return (
     <div className="flex  h-screen flex-col lg:flex-row relative">
+        <Link to="/">
       <div className="flex lg:hidden absolute top-3 left-3 cursor-pointer space-x-3 bg-black  px-4 py-2 pl-5 rounded-md">
         <img
           src="./images/Assets/Arrow 1.png"
           alt=""
           className="w-4 h-4 self-center"
         />
-        <Link to="/">
           <p className="text-white">Back</p>
-        </Link>
       </div>
+        </Link>
 
       <div className="w-1/2 relative hidden lg:block">
         <img
@@ -21,16 +21,16 @@ const SignUp = () => {
           alt=""
           className="w-full block h-screen object-cover "
         />
+        <Link to="/">
         <div className="flex absolute top-4 left-2 cursor-pointer space-x-3 bg-white  bg-opacity-30  px-4 py-2 pl-5 rounded-md">
           <img
             src="./images/Assets/Arrow 1.png"
             alt=""
             className="w-4 h-4 self-center"
           />
-          <Link to="/">
             <p className="text-white">Back</p>
-          </Link>
         </div>
+          </Link>
       </div>
       <div className="flex flex-col space-y-7 lg:w-1/2 xl:p-28 2xl:p-18 lg:p-12 lg:pt-24 p-24">
         <p className="text-5xl font-medium ">Signup</p>

@@ -5,7 +5,9 @@ const Navbar = () => {
 
   return (
     <header>
-      <img src="" alt="logo" className="logo" />
+   
+      <img src="./images/icons/logo.png" alt="logo" className="logo" />
+    
 
       <nav className={show ? "show" : ""}>
         <ul className="navigation">

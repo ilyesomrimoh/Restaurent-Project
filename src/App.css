@@ -17,6 +17,14 @@ nav {
   width: 220px;
   z-index: 12;
 }
+
+
+.logo {
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
 nav .navigation {
   width: 100%;
   display: flex;
