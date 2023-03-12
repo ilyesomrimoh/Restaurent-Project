@@ -1,20 +1,7 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PassInput from "./components/PassInput";
 
 const SignUp = () => {
-  const [passValid, setPassValid] = useState(false);
-  const checkPass = (e) => {
-    if (e.target.value.length > 8) {
-      setPassValid(true);
-    } else {
-      setPassValid(false);
-    }
-  };
-  const [open, setOpen] = useState(false);
-
-  const toggle = () => {
-    setOpen(!open);
-  };
   return (
     <div className="flex  h-screen flex-col lg:flex-row relative">
       <div className="flex lg:hidden absolute top-3 left-3 cursor-pointer space-x-3 bg-black  px-4 py-2 pl-5 rounded-md">
@@ -41,14 +28,18 @@ const SignUp = () => {
             className="w-4 h-4 self-center"
           />
           <Link to="/">
-          <p className="text-white">Back</p>
+            <p className="text-white">Back</p>
           </Link>
         </div>
       </div>
-      <div className="flex flex-col space-y-7 lg:w-1/2 xl:p-56 lg:p-12 lg:pt-24 p-24 ">
+      <div className="flex flex-col space-y-7 lg:w-1/2 xl:p-28 2xl:p-48 lg:p-12 lg:pt-24 p-24">
         <p className="text-5xl font-medium ">Signup</p>
         <div className="flex space-x-7 justify-center">
-          <div className="flex px-4 py-2 space-x-5 border-orange-300  border rounded-md cursor-pointer">
+          <div className="flex pr-4 relative  py-2 space-x-5 hover:border-orange-300  border rounded-md cursor-pointer hover:bg-gray-100">
+            <span class="absolute -top-3 -right-2 h-3 w-3">
+              <span class="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-red-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+            </span>
             <img
               src="./images/Assets/google.png"
               alt=""
@@ -56,7 +47,11 @@ const SignUp = () => {
             />
             <p className="hidden sm:block sm:my-auto">Sign up with Google</p>
           </div>
-          <div className="flex px-4 py-2 space-x-5 border-orange-300  border rounded-md cursor-pointer">
+          <div className="flex pr-4 relative py-2 space-x-5 border-gray-300  hover:border-blue-400  border rounded-md cursor-pointer hover:bg-gray-100">
+            <span class="absolute -top-3 -right-2 h-3 w-3">
+              <span class="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-blue-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-800"></span>
+            </span>
             <img
               src="./images/Assets/facebook.png"
               alt=""
@@ -89,48 +84,7 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="relative">
-            <label
-              htmlFor="password"
-              className="block mb-2 text-xl font-medium  text-zinc-500   dark:text-white"
-            >
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              onChange={checkPass}
-              placeholder="***************"
-              className={
-                passValid
-                  ? "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white focus:border-green-600"
-                  : "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white focus:border-red-500"
-              }
-              required
-            />
-            <img
-              src="./images/Assets/show.png"
-              alt=""
-              onClick={toggle}
-              className={
-                open
-                  ? "absolute right-5 w-5 h-5 top-12 cursor-pointer"
-                  : "hidden"
-              }
-            />
-            <img
-              src="./images/Assets/hide.png"
-              alt=""
-              onClick={toggle}
-              className={
-                open
-                  ? "hidden"
-                  : "absolute right-5 w-5 h-5 top-12 cursor-pointer"
-              }
-            />
-          </div>
-
+          <PassInput></PassInput>
           <div className="flex items-start">
             <div className="flex items-center h-5">
               <input
