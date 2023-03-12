@@ -1,12 +1,8 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import React from "react";
+import PassInput from "./components/PassInput";
 
 const Login = () => {
-  const [open, setOpen] = useState(false);
-
-  const toggle = () => {
-    setOpen(!open);
-  };
   return (
     <div className="flex  h-screen flex-col lg:flex-row relative">
       <div className="flex lg:hidden absolute top-3 left-3 cursor-pointer space-x-3 bg-black  px-4 py-2 pl-5 rounded-md">
@@ -49,6 +45,7 @@ const Login = () => {
             <p className="hidden sm:block sm:my-auto">Sign in with Google</p>
           </div>
           <div className="flex px-4 py-2 space-x-5 border-orange-300  border rounded-md cursor-pointer">
+            <buttonAnim></buttonAnim>
             <img
               src="./images/Assets/facebook.png"
               alt=""
@@ -78,40 +75,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className="relative">
-            <label className="block mb-2 text-xl font-medium  text-zinc-500   dark:text-white ">
-              Password
-            </label>
-            <input
-              type={open === false ? "password" : "text"}
-              name="password"
-              id="password"
-              placeholder="***************"
-              className="bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white focus:border-red-500"
-              required
-            />
-            <img
-              src="./images/Assets/show.png"
-              alt=""
-              onClick={toggle}
-              className={
-                open
-                  ? "absolute right-5 w-5 h-5 top-12 cursor-pointer"
-                  : "hidden"
-              }
-            />
-            <img
-              src="./images/Assets/hide.png"
-              alt=""
-              onClick={toggle}
-              className={
-                open
-                  ? "hidden"
-                  : "absolute right-5 w-5 h-5 top-12 cursor-pointer"
-              }
-            />
-          </div>
-
+          <PassInput></PassInput>
           <div className="flex items-start">
             <div className="flex items-center h-5">
               <input
