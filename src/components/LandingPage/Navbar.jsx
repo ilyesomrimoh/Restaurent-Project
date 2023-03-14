@@ -5,7 +5,7 @@ const Navbar = () => {
 
   return (
     <header>
-   
+  
       <img src="./images/icons/logo.png" alt="logo" className="logo" />
     
 

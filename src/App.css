@@ -9,7 +9,7 @@
 header {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 65px;
   width: 100%;
 }
@@ -17,13 +17,38 @@ nav {
   width: 220px;
   z-index: 12;
 }
+nav > ul > li >a{
+  position: relative;
+  transition: font-weight 200ms ease-in-out;
+  padding-bottom: 8px;
+}
+nav > ul > li >a::after {
+  content: '';
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1.5px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms ease-in-out;
 
+}
+nav > ul > li:hover >a {
+  font-weight: 600;
+}
+nav > ul > li:hover >a::after {
+  transform: scaleX(1);
+
+}
 
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 45px;
+  height: 45px;
   aspect-ratio: 1/1;
   object-fit: contain;
+  align-self: center;
 }
 nav .navigation {
   width: 100%;
@@ -82,7 +107,7 @@ nav li:hover > a {
   background-color: var(--white-color);
   color: var(--primary-color);
   font-weight: 700;
-  border: 2.2px solid var(--primary-color);
+  
 }
 
 .btn:hover {
@@ -100,7 +125,7 @@ nav li:hover > a {
   background-color: var(--serve-section-color);
   padding: 80px 10px;
   text-align: center;
-  height: fit-content;
+
 }
 .serve-parg {
   color: var(--primary-color);
@@ -112,6 +137,8 @@ nav li:hover > a {
   flex-wrap: wrap;
   margin-top: 25px;
   gap: 20px;
+  padding: 15px;
+
 }
 .card {
   background-color: var(--white-color);
