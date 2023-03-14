@@ -36,9 +36,9 @@ const SignUp = () => {
         <p className="text-5xl font-medium ">Signup</p>
         <div className="flex space-x-7 justify-center">
           <div className="flex pr-4 relative  py-2 space-x-5 hover:border-orange-300  border rounded-md cursor-pointer hover:bg-red-50">
-            <span class="absolute -top-3 -right-2 h-3 w-3">
-              <span class="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-red-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+            <span className="absolute -top-3 -right-2 h-3 w-3">
+              <span className="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
             </span>
             <img
               src="./images/Assets/google.png"
@@ -48,9 +48,9 @@ const SignUp = () => {
             <p className="hidden sm:block sm:my-auto">Sign up with Google</p>
           </div>
           <div className="flex pr-4 relative py-2 space-x-5 border-gray-300  hover:border-blue-400  border rounded-md cursor-pointer hover:bg-gray-100">
-            <span class="absolute -top-3 -right-2 h-3 w-3">
-              <span class="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-blue-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-800"></span>
+            <span className="absolute -top-3 -right-2 h-3 w-3">
+              <span className="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-800"></span>
             </span>
             <img
               src="./images/Assets/facebook.png"
