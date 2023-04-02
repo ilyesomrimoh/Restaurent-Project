@@ -17,12 +17,15 @@ nav {
   width: 220px;
   z-index: 12;
 }
-nav > ul > li >a{
+nav li {
+  cursor: pointer;
+}
+nav > ul > li p{
   position: relative;
   transition: font-weight 200ms ease-in-out;
   padding-bottom: 8px;
 }
-nav > ul > li >a::after {
+nav > ul > li p::after {
   content: '';
   width: 100%;
   position: absolute;
@@ -35,10 +38,10 @@ nav > ul > li >a::after {
   transition: transform 200ms ease-in-out;
 
 }
-nav > ul > li:hover >a {
+nav > ul > li:hover p {
   font-weight: 600;
 }
-nav > ul > li:hover >a::after {
+nav > ul > li:hover p::after {
   transform: scaleX(1);
 
 }
@@ -71,7 +74,7 @@ nav li:hover {
   background-color: var(--white-color);
   transform: scale(1.1);
 }
-nav li:hover > a {
+nav li:hover  p {
   color: var(--primary-color);
 }
 .humberger > * {
@@ -453,7 +456,7 @@ hr {
     flex-direction: column;
     gap: 20px;
   }
-  li a {
+  li p {
     color: var(--white-color);
   }
   .humberger > * {

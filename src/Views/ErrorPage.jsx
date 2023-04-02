@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ErrorPage = () => {
+const ErrorPage = ({err}) => {
   return (
     <div>
-      <h1>404 Page</h1>
+      <h1>404 Page {err}</h1>
     </div>
   )
 }

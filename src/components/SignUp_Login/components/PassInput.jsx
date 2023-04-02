@@ -1,9 +1,16 @@
-import React from "react";
 import { useState } from "react";
 
-const PassInput = () => {
+const PassInput = ({pass}) => {
   const [open, setOpen] = useState(false);
+  const [passValid, setPassValid] = useState(false);
 
+  const checkPass = (e) => {
+    if (e.target.value.length > 8) {
+      setPassValid(true);
+    } else {
+      setPassValid(false);
+    }
+  };
   const toggle = () => {
     setOpen(!open);
   };
@@ -16,11 +23,18 @@ const PassInput = () => {
         Password
       </label>
       <input
-        type={open === false ? "password" : "text"}
+        type={!open ? "password" : "text"}
         name="password"
         id="password"
+        onChange={e=> {checkPass(e); pass.setPass(e.target.value)} }
         placeholder="***************"
-        className="bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 focus:border-red-500"
+        // className="bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 focus:border-red-500"
+        className={
+          passValid
+          ? "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 focus:border-green-600"
+          : "bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-red-500  block w-full p-3 focus:border-red-500"
+      
+        }
         required
       />
       <img

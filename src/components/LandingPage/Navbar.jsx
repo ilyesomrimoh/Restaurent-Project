@@ -1,31 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const [show, setshow] = useState(false);
-
+  const { isAuth, logOut } = useContext(UserContext);
   return (
     <header>
-  
+      
       <img src="./images/icons/logo.png" alt="logo" className="logo" />
-    
+      {/* {isAuth && <li> <Link to="/dashboard"><p >{user.email}</p></Link></li>} */}
+      
 
       <nav className={show ? "show" : ""}>
         <ul className="navigation">
           <li>
-            <a href="/#" className=".body-small">
+            <p href="/#">
               Home
-            </a>
+            </p>
           </li>
+
+          {isAuth && <li> <Link to="/dashboard"><p >Dashboard</p></Link></li>}
           <li>
-            <a href="/#" className=".body-small">
-              Service
-            </a>
-          </li>
-          <li>
-            <a href="/#" className=".body-small">
+            <p href="/#">
               Contact
-            </a>
+            </p>
           </li>
+          {isAuth && <li> <p onClick={()=> {logOut()}}>Logout</p></li>}
         </ul>
       </nav>
 
