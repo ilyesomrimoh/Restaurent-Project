@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
+import Side_Bar_Btn from './Side_Bar_Btn'
+
 
 function Sidebar() {
     const {user} = useContext(UserContext);
@@ -18,7 +20,8 @@ function Sidebar() {
             </div>
         </div>
         <ul className='text-white !important'>
-            <li><Link to="#" className="block py-2 ">Item 1</Link></li>
+        <li><Link to="#"><Side_Bar_Btn title="Dashboard" img="./images/icons/icons8-laptop-metrics-100.png" img_alt="test" /></Link></li>
+
             <li><Link to="#" className="block py-2">Item 2</Link></li>
             <li><Link to="#" className="block py-2">Item 3</Link></li>
         </ul>
