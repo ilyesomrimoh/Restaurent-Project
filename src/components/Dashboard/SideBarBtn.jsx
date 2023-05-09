@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Side_Bar_Btn = ({title,img , img_alt}) => {
+const SideBarBtn = ({title,img , img_alt}) => {
   return (
 
     <div className="flex gap-1 justify-start items-center bg-white border rounded-xl p-3 w-44 h-10">
@@ -11,4 +11,4 @@ const Side_Bar_Btn = ({title,img , img_alt}) => {
   )
 }
 
-export default Side_Bar_Btn
+export default SideBarBtn
