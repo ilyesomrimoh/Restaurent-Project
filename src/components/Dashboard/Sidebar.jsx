@@ -9,7 +9,7 @@ function Sidebar() {
     const {user} = useContext(UserContext);
   return (
     //tailwind class to make a sidebar container
-    <div id='sidebar' className="w-64 bg-[var(--primary-color)] text-white p-4">
+    <div id='sidebar' className="w-64 bg-[var(--primary-color)] text-white p-4 flex flex-col justify-between">
         <div className='profile'>
             <div className="prof-img m-auto w-[100px]">
                 <img src="./images/icons/avatar.png" className="w-full" alt="" />
@@ -26,6 +26,10 @@ function Sidebar() {
             <li><Link to="#" className="block py-2"><Side_Bar_Btn title="Profile" img="./images/icons/icons8-account-100.png" img_alt="test" /></Link></li>
 
         </ul>
+        <div className='mt-8 mb-6'>
+        <Side_Bar_Btn  title="Logout" img="./images/icons/icons8-logout-100.png" img_alt="test"  />
+
+        </div>
   </div>
     
 
