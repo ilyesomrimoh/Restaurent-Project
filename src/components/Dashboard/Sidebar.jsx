@@ -27,7 +27,7 @@ function Sidebar() {
 
         </ul>
         <div className='mt-8 mb-6'>
-        <Side_Bar_Btn  title="Logout" img="./images/icons/icons8-logout-100.png" img_alt="test"  />
+        <SideBarBtn  title="Logout" img="./images/icons/icons8-logout-100.png" img_alt="test"  />
 
         </div>
   </div>
