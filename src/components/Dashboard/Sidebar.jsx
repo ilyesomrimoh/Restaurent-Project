@@ -7,12 +7,13 @@ import SideBarBtn from './SideBarBtn'
 
 function Sidebar() {
     const {user} = useContext(UserContext);
+    
   return (
     //tailwind class to make a sidebar container
     <div id='sidebar' className="w-64 bg-[var(--primary-color)] text-white p-4  flex flex-col justify-between">
-        <div className='profile'>
+        <div className='profile mt-11'>
             <div className="prof-img m-auto w-[100px]">
-                <img src="./images/icons/avatar.png" className="w-full" alt="" />
+                <img  src="./images/icons/avatar.png" className="w-full" alt="" />
             </div>
             <div className="prof-info text-center">
                 <h6 className='text-2xl'>Your name</h6>
@@ -20,10 +21,10 @@ function Sidebar() {
             </div>
         </div>
         <ul className='text-white !important w-full flex justify-center items-start flex-col mt-20 '>
-            <li><Link to="/dashboard"><SideBarBtn title="Dashboard" img="./images/icons/icons8-laptop-metrics-100 (1).png" img_alt="test" /></Link></li>
-            <li><Link to="/dashboard/profile" className="block py-2"><SideBarBtn title="Orders" img="./images/icons/icons8-shopping-bag-100 (1).png" img_alt="test" /></Link></li>
-            <li><Link to="/dashboard/menu" className="block py-2"><SideBarBtn title="Menu" img="./images/icons/icons8-restaurant-menu-100 (1).png" img_alt="test" /></Link></li>
-            <li><Link to="/dashboard/orders" className="block py-2"><SideBarBtn title="Profile" img="./images/icons/icons8-account-100.png" img_alt="test" /></Link></li>
+            <li><Link to="#"><SideBarBtn title="Dashboard" img="./images/icons/icons8-laptop-metrics-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="#" className="block py-2"><SideBarBtn title="Orders" img="./images/icons/icons8-shopping-bag-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="#" className="block py-2"><SideBarBtn title="Menu" img="./images/icons/icons8-restaurant-menu-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="#" className="block py-2"><SideBarBtn title="Profile" img="./images/icons/icons8-account-100.png" img_alt="test" /></Link></li>
 
         </ul>
         <div className='mt-8 mb-6'>
