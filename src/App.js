@@ -10,6 +10,10 @@ import { UserContext } from "./contexts/UserContext";
 import { useState, useEffect} from "react";
 import { auth } from "./config/firebase_config";
 import {signOut, onAuthStateChanged} from "firebase/auth";
+import Profile from './components/Dashboard/Profile';
+import Orders from './components/Dashboard/Orders';
+import Menu from './components/Dashboard/Menu';
+import Analytics from './components/Dashboard/Analytics';
 function App() {
   const [user, setUser] = useState(null);
   const [isAuth,setIsAuth] = useState(false);
@@ -37,6 +41,29 @@ function App() {
     {
       path: "/dashboard",
       element: <Dashboard />,
+      children :[
+        {
+          path: "/dashboard",
+          
+           element: <Analytics />,
+        },
+        {
+          path: "/dashboard/profile",
+           element: <Profile />,
+        },
+        {
+          path: "/dashboard/menu",
+           element: <Menu />,
+          errorElement: <ErrorPage />,
+    
+        },
+        {
+          path: "/dashboard/orders",
+           element: <Orders />,
+          errorElement: <ErrorPage />,
+    
+        },
+      ]
     },
     {
       path: "signup",
@@ -50,6 +77,7 @@ function App() {
       errorElement: <ErrorPage />,
 
     },
+        
   ]);
  
   return (

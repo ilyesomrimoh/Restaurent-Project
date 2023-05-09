@@ -20,10 +20,10 @@ function Sidebar() {
             </div>
         </div>
         <ul className='text-white !important w-full flex justify-center items-start flex-col mt-20 '>
-            <li><Link to="#"><SideBarBtn title="Dashboard" img="./images/icons/icons8-laptop-metrics-100 (1).png" img_alt="test" /></Link></li>
-            <li><Link to="#" className="block py-2"><SideBarBtn title="Orders" img="./images/icons/icons8-shopping-bag-100 (1).png" img_alt="test" /></Link></li>
-            <li><Link to="#" className="block py-2"><SideBarBtn title="Menu" img="./images/icons/icons8-restaurant-menu-100 (1).png" img_alt="test" /></Link></li>
-            <li><Link to="#" className="block py-2"><SideBarBtn title="Profile" img="./images/icons/icons8-account-100.png" img_alt="test" /></Link></li>
+            <li><Link to="/dashboard"><SideBarBtn title="Dashboard" img="./images/icons/icons8-laptop-metrics-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="/dashboard/profile" className="block py-2"><SideBarBtn title="Orders" img="./images/icons/icons8-shopping-bag-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="/dashboard/menu" className="block py-2"><SideBarBtn title="Menu" img="./images/icons/icons8-restaurant-menu-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="/dashboard/orders" className="block py-2"><SideBarBtn title="Profile" img="./images/icons/icons8-account-100.png" img_alt="test" /></Link></li>
 
         </ul>
         <div className='mt-8 mb-6'>
