@@ -62,7 +62,7 @@ nav .navigation {
 li a {
   color: var(--black-color);
 }
-#sidebar li a:not(:hover) {
+#sidebar li a {
   color: var(--white-color);
 }
 .side-bar-btn{
