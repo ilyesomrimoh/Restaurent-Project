@@ -71,8 +71,9 @@ li a {
 .side-bar-btn:hover{
   background-color: var(--white-color);
   color: var(--primary-color);
-
-  
+}
+.side-bar-btn:hover img {
+    fill: var(--primary-color);
 }
 nav ul li {
   width: 80%;

@@ -20,15 +20,16 @@ function Sidebar() {
                 <p className='text-xs'>{ user && user.email}</p>
             </div>
         </div>
-        <ul className='text-white !important w-full flex justify-center items-start flex-col mt-20 '>
-            <li><Link to="#"><SideBarBtn title="Dashboard" img="./images/icons/icons8-laptop-metrics-100 (1).png" img2= "./images/icons/icons8-laptop-metrics-100.png" img_alt="test" /></Link></li>
-            <li><Link to="#" className="block py-2"><SideBarBtn title="Orders" img="./images/icons/icons8-shopping-bag-100 (1).png" img_alt="test" /></Link></li>
-            <li><Link to="#" className="block py-2"><SideBarBtn title="Menu" img="./images/icons/icons8-restaurant-menu-100 (1).png" img_alt="test" /></Link></li>
-            <li><Link to="#" className="block py-2"><SideBarBtn title="Profile" img="./images/icons/icons8-account-100.png" img_alt="test" /></Link></li>
+        <ul className='text-white !important w-full flex justify-center items-center flex-col mt-20 '>
+            <li><Link to="#"><SideBarBtn title="Dashboard" img="./images/icons/dashboard.svg" img_alt="test" /></Link></li>
+            <li><Link to="#"><SideBarBtn title="Orders" img="./images/icons/icons8-shopping-bag-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="#"><SideBarBtn title="Menu" img="./images/icons/icons8-restaurant-menu-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="#"><SideBarBtn title="Profile" img="./images/icons/icons8-account-100.png" img_alt="test" /></Link></li>
 
         </ul>
-        <div className='mt-8 mb-6'>
-        <SideBarBtn  title="Logout" img="./images/icons/icons8-logout-100.png" img_alt="test"  />
+        <div className='mt-8 mb-6 flex justify-center'>
+        
+            <Link to="/logout"><SideBarBtn  title="Logout" img="./images/icons/icons8-logout-100.png" img_alt="test"  /></Link> 
 
         </div>
   </div>
