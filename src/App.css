@@ -62,6 +62,9 @@ nav .navigation {
 li a {
   color: var(--black-color);
 }
+#sidebar li a {
+  color: var(--white-color);
+}
 nav ul li {
   width: 80%;
   text-align: center;
