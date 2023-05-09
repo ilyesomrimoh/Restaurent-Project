@@ -65,10 +65,13 @@ li a {
 #sidebar li a:not(:hover) {
   color: var(--white-color);
 }
+.side-bar-btn{
+  transition: all ease 300ms;
+}
 .side-bar-btn:hover{
   background-color: var(--white-color);
   color: var(--primary-color);
-  
+
   
 }
 nav ul li {
