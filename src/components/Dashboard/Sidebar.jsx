@@ -7,12 +7,20 @@ import SideBarBtn from './SideBarBtn'
 
 function Sidebar() {
     const {user} = useContext(UserContext);
+    const changeSrc = (id) => {
+        const img = document.querySelector('.prof-img img');
+        if(id === 1){
+            img.src = "./images/icons/avatar2.png";
+        }else{
+            img.src = "./images/icons/avatar.png";  
+        }
+    }
   return (
     //tailwind class to make a sidebar container
-    <div id='sidebar' className="font-[poppins] w-64 bg-[var(--primary-color)] text-white p-4">
+    <div id='sidebar' className='w-64 bg-[var(--primary-color)] text-white p-4'>
         <div className='profile mt-14'>
             <div className="prof-img m-auto w-[100px]">
-                <img src="./images/icons/avatar.png" className="w-full" alt="" />
+                <img onMouseOver={()=> changeSrc(1)} onMouseLeave={()=> changeSrc(2)} src="./images/icons/avatar.png" className="w-full" alt="" />
             </div>
             <div className="prof-info text-center">
                 <h6 className='text-2xl'>Your name</h6>
