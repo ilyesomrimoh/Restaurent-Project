@@ -19,11 +19,12 @@ function Sidebar() {
                 <p className='text-xs'>{ user && user.email}</p>
             </div>
         </div>
-        <ul className='text-white !important'>
-        <li><Link to="#"><Side_Bar_Btn title="Dashboard" img="./images/icons/icons8-laptop-metrics-100.png" img_alt="test" /></Link></li>
+        <ul className='text-white !important w-full flex justify-center items-start flex-col mt-20 '>
+            <li><Link to="#"><Side_Bar_Btn title="Dashboard" img="./images/icons/icons8-laptop-metrics-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="#" className="block py-2"><Side_Bar_Btn title="Orders" img="./images/icons/icons8-shopping-bag-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="#" className="block py-2"><Side_Bar_Btn title="Menu" img="./images/icons/icons8-restaurant-menu-100 (1).png" img_alt="test" /></Link></li>
+            <li><Link to="#" className="block py-2"><Side_Bar_Btn title="Profile" img="./images/icons/icons8-account-100.png" img_alt="test" /></Link></li>
 
-            <li><Link to="#" className="block py-2">Item 2</Link></li>
-            <li><Link to="#" className="block py-2">Item 3</Link></li>
         </ul>
   </div>
     
