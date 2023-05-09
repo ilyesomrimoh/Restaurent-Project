@@ -17,7 +17,7 @@ const Dashboard = () => {
         return unsubscribe;
       });
   return (
-     <div className='flex h-screen bg-gray-200'>
+     <div className='flex h-screen bg-[var(--serve-section-color)]'>
       <Sidebar/>
       < Outlet />
       
