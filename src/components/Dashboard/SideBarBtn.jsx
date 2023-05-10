@@ -1,5 +1,4 @@
 import React from 'react'
-import FontAwesomeIcon from "@fortawesome/react-fontawesome"
 const SideBarBtn = ({title,img , img_alt}) => {
 //   const changeSrc = (e,id) => {
 //     const imgg = e.target.querySelector("img");
@@ -16,7 +15,6 @@ const SideBarBtn = ({title,img , img_alt}) => {
       <img className='w-6' src={img} alt={img_alt}/>
 
 
-<FontAwesomeIcon icon="fa-regular fa-chart-line-down" />
 
 
       <h2  className='text-lg font-semibold tracking-wide ' >{title}</h2>

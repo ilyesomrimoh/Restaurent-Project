@@ -1,16 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useContext } from 'react';
+import { useContext,useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import SideBarBtn from './SideBarBtn'
 
 
 function Sidebar() {
     const {user} = useContext(UserContext);
-    
+    const [open, setOpen] = useState(true);
   return (
     //tailwind class to make a sidebar container
-    <div id='sidebar' className="w-72 bg-[var(--primary-color)] text-white p-4  flex flex-col justify-between">
+    <div id='sidebar' className={`${open ? 'w-64' : 'w-20'} relative bg-[var(--primary-color)] text-white p-4  flex flex-col justify-between`}>
+        <div onClick={()=> setOpen(!open)} className='absolute right-3 top-10'>
+            <img src="./images/icons/icons8-less-than-100 (2).png" alt="close open icon" />
+        </div>
         <div className='profile mt-11'>
             <div className="prof-img m-auto w-[100px]">
                 <img  src="./images/icons/avatar.png" className="w-full" alt="" />
