@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import { useContext,useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import SideBarBtn from './SideBarBtn'
-
-
 function Sidebar() {
     const {user} = useContext(UserContext);
     const [open, setOpen] = useState(true);
+    const {logOut } = useContext(UserContext);
+
   return (
     //tailwind class to make a sidebar container
     <div id='sidebar' className={`${open ? 'w-64' : 'w-20'} relative bg-[var(--primary-color)] text-white p-4  flex flex-col justify-between`}>
@@ -30,7 +30,7 @@ function Sidebar() {
             <li><Link to="/dashboard/profile" ><SideBarBtn title="Profile" img="./images/icons/icons8-account-100.png" img_alt="test" /></Link></li>
 
         </ul>
-        <div className='mt-8 mb-6 flex justify-center pl-5'>
+        <div className='mt-8 mb-6 flex justify-center pl-5'  onClick={()=> {logOut()}}>
         <SideBarBtn  title="Logout" img="./images/icons/icons8-logout-100.png" img_alt="test"  />
 
         </div>
