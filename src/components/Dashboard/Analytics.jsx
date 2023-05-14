@@ -2,7 +2,6 @@ import React from 'react'
 import OverviewCard from './OverviewCard'
 import NavBar from './NavBar'
 import RecentComment from './RecentComment'
-import BarChart from './BarChart'
 const Analytics = () => {
   return (
     <div className=' w-full'>
@@ -16,7 +15,6 @@ const Analytics = () => {
       <OverviewCard title="canceled Orders" content="0"  />
      </div>
      <div className="chart">
-      <BarChart  />
      </div>
       <h3 className='text-xl font-bold ml-8  mb-5'>Recent Rating</h3>
       <div className="comments ml-9">
