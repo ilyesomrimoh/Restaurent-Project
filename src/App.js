@@ -42,8 +42,7 @@ function App() {
       element: <Dashboard />,
       children :[
         {
-          path: "/dashboard",
-          
+          path: "/dashboard",    
            element: <Analytics />,
         },
         {
