@@ -9,16 +9,7 @@ function Sidebar() {
     const {user} = useContext(UserContext);
     const [open, setOpen] = useState(true);
     const handleOpen = () => {
-        // const heads = document.querySelectorAll('.icon-header');
-        // const prof = document.querySelector('.prof-info');
-        // prof.classList.toggle('animate-fade-down');
-        // heads.forEach(header => {
-        //     header.classList.toggle('animate-fade-down');
-        // });
-        // setTimeout(() => {
-            
-        //     setOpen(!open);
-        // }, 510);
+        
         setOpen(!open)
     }
   return (

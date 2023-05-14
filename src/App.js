@@ -1,4 +1,3 @@
-// import LandingPage from "./Views/LandingPage";
 import Login from "./components/SignUp_Login/Login";
 import ErrorPage from "./Views/ErrorPage";
 import SignUp from "./components/SignUp_Login/SignUp";

@@ -621,23 +621,3 @@ hr {
 .btn2:hover span {
   transform: translateX(0);
 }
-
-
-
-@keyframes fadeDown {
-  0% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-  100% {
-    display: none;
-    opacity: 0;
-    transform: translateY(50px);
-  }
-}
-
-
-.animate-fade-down {
-  animation: fadeDown 0.5s ease-in-out;
-  animation-fill-mode: forwards;
-}
