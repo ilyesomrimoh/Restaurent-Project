@@ -9,7 +9,7 @@ const Analytics = () => {
       < NavBar />
       <h2 className='font-bold m-4 mb-7'>Dashboard</h2>
       <h3 className='text-xl font-bold ml-8  mb-5'>Overview</h3>
-     <div className="flex gap-3 w-fit mr-auto ml-auto flex-wrap pl-6">
+     <div className="flex gap-6 w-fit mr-auto ml-auto flex-wrap pl-6 mb-16">
      <OverviewCard title="Completed Orders" content="320"  />
       <OverviewCard title="Total Income" content="43000"  />
       <OverviewCard title="Active Orders" content="12 "  />
