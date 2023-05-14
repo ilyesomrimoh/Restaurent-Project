@@ -23,7 +23,7 @@ function Sidebar() {
                 <img  src="./images/icons/avatar.png" className="w-full" alt="" />
             </div>
             <div className={`prof-info text-center ${open ? '' : 'hidden'}`}>
-                <h6 className='text-2xl'>Your name</h6>
+                <h6 className='text-2xl'>{ user && user.displayName}</h6>
                 <p className='text-xs'>{ user && user.email}</p>
             </div>
         </div>
