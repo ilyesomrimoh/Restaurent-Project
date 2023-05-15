@@ -9,7 +9,7 @@ const Menu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
   return (
-    <div className='w-full'>
+    <div className='w-full mb-20 h-fit'>
       <NavBar />
       <h2 className='font-bold m-4 mb-7'>Menu</h2>
     <div className='flex justify-around items-center m-10 gap-3'>
@@ -27,7 +27,11 @@ const Menu = () => {
 <Link to="/dashboard/addproduct"><button type="button" className="text-[var(--primary-color)] text-white border  bg-[var(--green-color)]  font-medium rounded-lg text-sm px-4 py-2 text-center ">Add New item</button>
 </Link>    
 </div>
-    <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-fit gap-4 ml-auto mr-auto'>
+    <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-fit gap-5 gap-y-10 ml-auto mr-auto'>
+      < FoodCard />
+      < FoodCard />
+      < FoodCard />
+      < FoodCard />
       < FoodCard />
       < FoodCard />
       < FoodCard />
