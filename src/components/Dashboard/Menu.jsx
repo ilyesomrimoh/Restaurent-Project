@@ -1,9 +1,10 @@
 import React from 'react'
+import FoodCard from './FoodCard'
 
 const Menu = () => {
   return (
     <div>
-      test3
+      < FoodCard />
     </div>
   )
 }
