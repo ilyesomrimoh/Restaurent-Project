@@ -14,6 +14,7 @@ import Orders from './components/Dashboard/Orders';
 import Menu from './components/Dashboard/Menu';
 import Analytics from './components/Dashboard/Analytics';
 import AddProduct from "./components/Dashboard/AddProduct";
+import PasswordForgot from "./components/SignUp_Login/PasswordForgot";
 import EditProduct from "./components/Dashboard/EditProduct";
 function App() {
   const [user, setUser] = useState(null);
@@ -79,6 +80,12 @@ function App() {
     {
       path: "signup",
       element: <SignUp />,
+      errorElement: <ErrorPage />,
+
+    },
+    {
+      path: "reset-password",
+      element: <PasswordForgot />,
       errorElement: <ErrorPage />,
 
     },
