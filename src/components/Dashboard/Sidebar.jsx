@@ -12,7 +12,6 @@ function Sidebar() {
         setOpen(!open)
     }
   return (
-    //tailwind class to make a sidebar container
     <div id='sidebar' className={`${open ? 'w-64' : 'w-20'} sticky top-0 transitio-all duration-150  bg-[var(--primary-color)] text-white p-2  flex flex-col justify-between`}>
         <div onClick={()=> handleOpen()} className='p-2 cursor-pointer w-12  rounded-[50%]'>
             <img src={`${open ? '/images/icons/less-than.png' : '/images/icons/more-than.png'}`} alt="close open icon" />

@@ -33,7 +33,7 @@ const FoodCard = () => {
         </a>
         <div className='flex gap-4 items-center mb-1'>
         <p className='text-[var(--caution-color)] font-semibold text-lg mb-1'>500.00 dzd</p>
-        <button type="button" class="text-[var(--primary-color)] hover:text-white border border-[var(--primary-color)] hover:bg-[var(--primary-color)]  font-medium rounded-lg text-sm px-4 py-[3px] text-center    hover:text-white ">Edit</button>
+        <button type="button" class="text-[var(--primary-color)] border border-[var(--primary-color)] hover:bg-[var(--primary-color)]  font-medium rounded-lg text-sm px-4 py-[3px] text-center    hover:text-white ">Edit</button>
         </div>
         <p class="mb-3 font-normal text-sm text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
      
