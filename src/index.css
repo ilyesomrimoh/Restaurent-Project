@@ -19,9 +19,11 @@
     --black-color:#0b0a0b;
     --success-color: #26E134;
     --green-color:#198754;
+    --green-ghost:#3cb77e;
     --caution-color: #E2A83B; 
     --danger-color: #BA2417;
     --info-color :#246FBA;
+    --info-ghost :#3e7bb7;
     --serve-section-color:#FEF5F5;
     --gray-color:#969A97;
 }

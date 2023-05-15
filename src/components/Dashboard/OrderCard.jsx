@@ -1,13 +1,24 @@
 import OrderBtn from './OrderBtn'
-function OrderCard({OrderId , items , OrderPrice , status , OrderDate , OderTime , Address , UserPhone  , Name}) {
-
+function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTime , Address , UserPhone  , Name}) {
+    const getColor = (status, ghost=true) => {
+        switch (status.trim().toLowerCase()) {
+            case "pending":
+                return (ghost ? "--primary-ghost" : "--primary-color")
+            case "active":
+                return (ghost ? "--info-ghost" : "--info-color")
+            case "completed":
+                return (ghost ? "--green-ghost" : "--green-color")
+            default:
+                return "--primary-ghost"
+        }
+    }
   return (
     <div className={`order-card order-card-${status.toLowerCase()} relative flex flex-col w-[90%] px-12 justify-center py-8 rounded-xl bg-white shadow-lg`}>
         <div className="info flex justify-between items-center">
-            <p className='text-[var(--gray-color)] font-semibold'>ORDER ID - <span className='text-[var(--primary-color)]'>#{OrderId}</span></p>
+            <p className='text-[var(--gray-color)] font-bold'>ORDER ID - <span style={{color : `var(${getColor(status,false)})`,}}>#{OrderId}</span></p>
             <div className='details flex justify-between items-start basis-2/4'>
-                <p className='text-[var(--gray-color)]'>ORDER DATE - <span className='text-[var(--font-color)]'>{OrderDate}, {OderTime}</span></p>
-                <OrderBtn text="Pending" colorVar={"--white-color"} bgColorVar={"--primary-ghost"}/>
+                <p className='text-[var(--gray-color)] font-bold'>ORDER DATE - <span className='text-[var(--font-color)]'>{OrderDate}, {OderTime}</span></p>
+                <OrderBtn text={`${status.charAt(0).toUpperCase() + status.slice(1)}`} colorVar={"--white-color"} bgColorVar={getColor(status)}/>
 
             </div>
         </div>
@@ -27,10 +38,12 @@ function OrderCard({OrderId , items , OrderPrice , status , OrderDate , OderTime
         </div>
         <div className="linee m-auto w-[95%] h-[1.5px] mt-7 mb-5  bg-[var(--font-color)]"></div>
         <div className="price-btns flex justify-between   items-center">
-            <p className='text-[var(--font-color)] tracking-tight font-bold text-xl'>Order Price - <span className='text-[var(--primary-color)] font-semibold'>{OrderPrice}</span></p>
+            <p className='text-[var(--font-color)] tracking-tight font-bold text-xl'>Order Price - <span style={{color : `var(${getColor(status, false)})`,}} className='font-semibold'>{OrderPrice}</span></p>
             <div className='flex justify-center items-center gap-4'>
-                <OrderBtn text="Cancel" colorVar={"--font-color"} bgColorVar={"--white-color"}/>
-                <OrderBtn text="Confirm" colorVar={"--white-color"} bgColorVar={"--primary-color"} px={"15px"} py={"9px"}/>
+                {status.toLowerCase() !== "completed" && <OrderBtn text="Cancel" colorVar={"--font-color"} bgColorVar={"--white-color"}/>}
+                
+                {status.toLowerCase() === "pending" ? <OrderBtn text="Accept" colorVar={"--white-color"} bgColorVar={"--primary-color"}/> : (
+                    status.toLowerCase() === "active" ? <OrderBtn text="Complete" colorVar={"--white-color"} bgColorVar={"--info-color"}/> : null )}
             </div>
         </div>
     </div>

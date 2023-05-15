@@ -20,7 +20,7 @@ const Orders = () => {
         <div className="tab">Canceled Orders</div>
      </div>
      <div className="orders flex flex-col items-center justify-start">
-        <OrderCard OrderId={"246963"} OrderDate={"02-05-2023"} OderTime={"18:06"} status={"pending"} items={itms} OrderPrice={"2500DA"} UserPhone={"0555132595"}/>
+        <OrderCard OrderId={"246963"} OrderDate={"02-05-2023"} OderTime={"18:06"} status={"active"} items={itms} OrderPrice={"2500DA"} UserPhone={"0555132595"}/>
      </div>
     </div>
   )

@@ -643,6 +643,12 @@ hr {
 .order-card-pending::after{
   background-color: var(--primary-color);
 }
+.order-card-active::after{
+  background-color: var(--info-color);
+}
+.order-card-completed::after{
+  background-color: var(--green-color);
+}
 .tab {
   cursor: pointer;
   color: var(--gray-color);
