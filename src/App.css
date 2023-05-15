@@ -13,6 +13,12 @@ header {
   height: 65px;
   width: 100%;
 }
+input::file-selector-button{
+  height: 45px;
+  border: none;
+  margin-right: 15px;
+  padding-right: 20px;
+} 
 nav {
   width: 220px;
   z-index: 12;

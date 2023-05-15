@@ -13,6 +13,7 @@ import Profile from './components/Dashboard/Profile';
 import Orders from './components/Dashboard/Orders';
 import Menu from './components/Dashboard/Menu';
 import Analytics from './components/Dashboard/Analytics';
+import AddProduct from "./components/Dashboard/AddProduct";
 function App() {
   const [user, setUser] = useState(null);
   const [isAuth,setIsAuth] = useState(false);
@@ -58,6 +59,11 @@ function App() {
         {
           path: "/dashboard/orders",
            element: <Orders />,
+          errorElement: <ErrorPage />,
+    
+        },{
+          path: "/dashboard/addproduct",
+           element: <AddProduct />,
           errorElement: <ErrorPage />,
     
         },

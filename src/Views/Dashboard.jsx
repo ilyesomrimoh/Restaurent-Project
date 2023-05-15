@@ -16,7 +16,7 @@ const Dashboard = () => {
         return unsubscribe;
       });
   return (
-     <div className='flex h-screen bg-[var(--serve-section-color)]'>
+     <div className='flex h-screen bg-[var(--serve-section-color)] overflow-y-auto'>
       <Sidebar/>
       < Outlet/>
       
