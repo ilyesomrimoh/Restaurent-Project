@@ -13,13 +13,13 @@ const FoodCard = () => {
         {showDrop && ( <div id="dropdown" class="z-10 absolute top-[58px] text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
             <ul class="py-2" aria-labelledby="dropdownButton">
             <li>
-                <a href="#" class="block px-4 py-2 text-sm  hover:bg-gray-100 hover:bg-[var(--primary-color)]  hover:text-white">Edit</a>
+                <a href="#" class="block px-4 py-2 text-sm   hover:bg-[var(--primary-color)]  hover:text-white">Edit</a>
             </li>
             <li>
-                <a href="#" class="block px-4 py-2 text-sm  hover:bg-gray-100 dark:hover:bg-[var(--primary-color)]  hover:text-white">Export Data</a>
+                <a href="#" class="block px-4 py-2 text-sm   hover:bg-[var(--primary-color)]  hover:text-white">Export Data</a>
             </li>
             <li>
-                <a href="#" class="block px-4 py-2 text-sm  hover:bg-gray-100 dark:hover:bg-[var(--primary-color)]  hover:text-white text-red-600 ">Delete</a>
+                <a href="#" class="block px-4 py-2 text-sm  hover:bg-[var(--primary-color)]  hover:text-white text-red-600 ">Delete</a>
             </li>
             </ul>
         </div>)}
@@ -31,17 +31,12 @@ const FoodCard = () => {
         <a href="#">
             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 ">Noteworthy technology acquisitions </h5>
         </a>
+        <div className='flex gap-4 items-center mb-1'>
+        <p className='text-[var(--caution-color)] font-semibold text-lg mb-1'>500.00 dzd</p>
+        <button type="button" class="text-[var(--primary-color)] hover:text-white border border-[var(--primary-color)] hover:bg-[var(--primary-color)]  font-medium rounded-lg text-sm px-4 py-[3px] text-center    hover:text-white ">Edit</button>
+        </div>
         <p class="mb-3 font-normal text-sm text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-       {/* <div className='flex gap-3 items-center justify-center'>
-       <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-             more ... 
-            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </a>
-        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-             Edit ... 
-            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-        </a>
-       </div> */}
+     
     </div>
 </div>
 
