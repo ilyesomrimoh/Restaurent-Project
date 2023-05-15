@@ -15,6 +15,7 @@ import Menu from './components/Dashboard/Menu';
 import Analytics from './components/Dashboard/Analytics';
 import AddProduct from "./components/Dashboard/AddProduct";
 import PasswordForgot from "./components/SignUp_Login/PasswordForgot";
+import EditProduct from "./components/Dashboard/EditProduct";
 function App() {
   const [user, setUser] = useState(null);
   const [isAuth,setIsAuth] = useState(false);
@@ -65,6 +66,12 @@ function App() {
         },{
           path: "/dashboard/addproduct",
            element: <AddProduct />,
+          errorElement: <ErrorPage />,
+    
+        },
+        {
+          path: "/dashboard/editproduct",
+           element: <EditProduct />,
           errorElement: <ErrorPage />,
     
         },

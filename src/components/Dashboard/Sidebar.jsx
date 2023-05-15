@@ -14,7 +14,7 @@ function Sidebar() {
   return (
     <div id='sidebar' className={`${open ? 'w-64' : 'w-20'} sticky top-0 transitio-all duration-150  bg-[var(--primary-color)] text-white p-2  flex flex-col justify-between`}>
         <div onClick={()=> handleOpen()} className='p-2 cursor-pointer w-12  rounded-[50%]'>
-            <img src={`${open ? '/images/icons/less-than.png' : '/images/icons/more-than.png'}`} alt="close open icon" />
+            <img src={`${open ? '/images/icons/arrow-white.png' : '/images/icons/arrow-white-reverce.png'}`} alt="close open icon" />
         </div>
         <div className='profile mt-12'>
             <div className={`prof-img m-auto ${open ? 'w-[100px]' : 'w-[50px]'}`}>
@@ -25,7 +25,7 @@ function Sidebar() {
                 <p className='text-xs'>{ user && user.email}</p>
             </div>
         </div>
-        <ul className='text-white !important w-full flex justify-center items-center flex-col mt-20 '>
+        <ul className='text-white !important w-full flex justify-center items-center flex-col mt-10 '>
             <li><Link to="/dashboard"><SideBarBtn opn={open} title="Dashboard" img="/images/icons/icons8-laptop-metrics-100 (1).png" img_alt="test" /></Link></li>
             <li><Link to="/dashboard/orders" ><SideBarBtn opn={open} title="Orders" img="/images/icons/icons8-shopping-bag-100 (1).png" img_alt="test" /></Link></li>
             <li><Link to="/dashboard/menu" ><SideBarBtn opn={open} title="Menu" img="/images/icons/icons8-restaurant-menu-100 (1).png" img_alt="test" /></Link></li>
