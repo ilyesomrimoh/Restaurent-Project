@@ -157,10 +157,11 @@ const Login = () => {
                 Keep me logged in
               </label>
             </div>
-
+            <Link to="/reset-password">
             <span className="cursor-pointer text-sm  sm:text-base hover:text-red-600 hover:animate-pulse">
               Forgot Password{" "}
             </span>
+            </Link>
           </div>
 
           <button
