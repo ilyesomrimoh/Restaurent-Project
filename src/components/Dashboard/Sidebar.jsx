@@ -5,20 +5,19 @@ import { UserContext } from '../../contexts/UserContext';
 import SideBarBtn from './SideBarBtn'
 function Sidebar() {
     const {user} = useContext(UserContext);
+    
+    const {logOut } = useContext(UserContext);
     const [open, setOpen] = useState(true);
     const handleOpen = () => {
-        
         setOpen(!open)
     }
-    const {logOut } = useContext(UserContext);
-
   return (
     //tailwind class to make a sidebar container
-    <div id='sidebar' className={`${open ? 'w-64' : 'w-20'} transitio-all delay-150 relative bg-[var(--primary-color)] text-white p-2  flex flex-col justify-between`}>
-        <div onClick={()=> handleOpen()} className='absolute p-2 cursor-pointer w-12 right-0 translate-x-2/4 rounded-[50%] bg-[var(--serve-section-color)] top-40'>
+    <div id='sidebar' className={`${open ? 'w-64' : 'w-20'} sticky top-0 transitio-all duration-150  bg-[var(--primary-color)] text-white p-2  flex flex-col justify-between`}>
+        <div onClick={()=> handleOpen()} className='p-2 cursor-pointer w-12  rounded-[50%]'>
             <img src={`${open ? '/images/icons/less-than.png' : '/images/icons/more-than.png'}`} alt="close open icon" />
         </div>
-        <div className='profile mt-11'>
+        <div className='profile mt-12'>
             <div className={`prof-img m-auto ${open ? 'w-[100px]' : 'w-[50px]'}`}>
                 <img  src="/images/icons/avatar.png" className="w-full" alt="" />
             </div>

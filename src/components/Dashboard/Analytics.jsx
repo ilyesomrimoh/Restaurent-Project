@@ -4,7 +4,7 @@ import NavBar from './NavBar'
 import RecentComment from './RecentComment'
 const Analytics = () => {
   return (
-    <div className=' w-full'>
+    <div className='w-full overflow-scroll'>
       < NavBar />
       <h2 className='font-bold m-4 mb-7'>Dashboard</h2>
       <h3 className='text-xl font-bold ml-8  mb-5'>Overview</h3>

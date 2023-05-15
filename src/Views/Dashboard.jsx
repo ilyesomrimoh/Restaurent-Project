@@ -6,6 +6,7 @@ import Sidebar from '../components/Dashboard/Sidebar';
 
 const Dashboard = () => {
     const navigate = useNavigate();
+    
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth,(user) => {
           if (!user) {
@@ -17,7 +18,7 @@ const Dashboard = () => {
   return (
      <div className='flex h-screen bg-[var(--serve-section-color)]'>
       <Sidebar/>
-      < Outlet />
+      < Outlet/>
       
 
     </div>

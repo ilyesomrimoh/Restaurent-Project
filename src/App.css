@@ -621,3 +621,49 @@ hr {
 .btn2:hover span {
   transform: translateX(0);
 }
+
+
+.order-card::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  
+  width: 18px;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+}
+
+.order-card-pending::after{
+  background-color: var(--primary-color);
+}
+.tab {
+  cursor: pointer;
+  color: var(--gray-color);
+  transition: all ease-in-out 350ms;
+  position: relative;
+}
+.tab::after{
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: transparent;
+  transition: all ease-in-out 350ms;
+}
+.tab.active-tab, .tab:hover {
+  color: var(--primary-color);
+  font-weight: 700;
+  position: relative;
+}
+.tab:hover::after {
+  width: 100%;
+  background-color: var(--primary-color);
+}
+
+.tab.active-tab:after {
+  width: 100%;
+  background-color: var(--primary-color);
+}
