@@ -5,10 +5,10 @@ const RecentComment = ({username , starsnumber , desc ,halfstar }) => {
     const starArray = [];
 
     for (let i = 0; i < starsnumber; i++) {
-        starArray.push(<img  className='w-4' key={i} src="./images/icons/icons8-star-100.png" alt="Star" />);
+        starArray.push(<img  className='w-4' key={i} src="/images/icons/icons8-star-100.png" alt="Star" />);
     }
     if (halfstar) {
-        starArray.push(<img className='w-4' key={starsnumber + 1} src="./images/icons/icons8-star-half-empty-100.png" alt="Half Star" />);
+        starArray.push(<img className='w-4' key={starsnumber + 1} src="/images/icons/icons8-star-half-empty-100.png" alt="Half Star" />);
     }
 
 
