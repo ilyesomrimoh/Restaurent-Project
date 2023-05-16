@@ -45,7 +45,7 @@ const SignUp = () => {
     .then((result) => {
       setUser(result.user)
       setIsAuth(true);
-      navigate("/");
+      navigate("/dashboard/profile");
     })
     .catch((error) => {
       console.log(error)
