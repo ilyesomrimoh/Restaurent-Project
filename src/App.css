@@ -19,6 +19,14 @@ input::file-selector-button{
   margin-right: 15px;
   padding-right: 20px;
 } 
+.profile-back{
+  background-image: url("/public/images/Assets/food.jpg");
+  background-size: cover;
+}
+.profile-image {
+  border-radius: 0 0 80px 80px ;
+  opacity: 50%;
+}
 nav {
   width: 220px;
   z-index: 12;
