@@ -38,7 +38,7 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         </div>
         <div className="linee m-auto w-[95%] h-[1.5px] mt-7 mb-5  bg-[var(--font-color)]"></div>
         <div className="price-btns flex justify-between   items-center">
-            <p className='text-[var(--font-color)] tracking-tight font-bold text-xl'>Order Price - <span style={{color : `var(${getColor(status, false)})`,}} className='font-semibold'>{OrderPrice}</span></p>
+            <p className='text-[var(--font-color)] tracking-tight font-bold text-xl'>Order Price - <span style={{color : `var(${getColor(status, false)})`,}} className='font-semibold'>{OrderPrice}DA</span></p>
             <div className='flex justify-center items-center gap-4'>
                 {status.toLowerCase() !== "completed" && <OrderBtn text="Cancel" colorVar={"--font-color"} bgColorVar={"--white-color"}/>}
                 

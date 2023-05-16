@@ -47,7 +47,7 @@ const Orders = () => {
      </div>
      <div className="orders flex flex-col items-center justify-start">
           {orders.map((order) => (
-            <OrderCard key={order.id} OrderId={order.id} OrderDate={getDate(order)} OderTime={getHour(order)} items={itms} OrderPrice={order.total} status={order.status || "pending"} UserPhone={order.userPhone}/>))}        
+            <OrderCard key={order.id} OrderId={order.id} OrderDate={getDate(order)} OderTime={getHour(order)} items={itms} OrderPrice={order.totalPrice} status={order.status || "pending"} UserPhone={order.userPhone}/>))}        
 
      </div></>)}
     </div>
