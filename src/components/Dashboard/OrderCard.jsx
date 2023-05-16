@@ -13,7 +13,7 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         }
     }
   return (
-    <div className={`order-card order-card-${status.toLowerCase()} relative flex flex-col w-[90%] px-12 justify-center py-8 rounded-xl bg-white shadow-lg`}>
+    <div className={`order-card order-card-${status.toLowerCase()} mb-7  relative flex flex-col w-[90%] px-12 justify-center py-8 rounded-xl bg-white shadow-lg`}>
         <div className="info flex justify-between items-center">
             <p className='text-[var(--gray-color)] font-bold'>ORDER ID - <span style={{color : `var(${getColor(status,false)})`,}}>#{OrderId}</span></p>
             <div className='details flex justify-between items-start basis-2/4'>
@@ -38,7 +38,7 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         </div>
         <div className="linee m-auto w-[95%] h-[1.5px] mt-7 mb-5  bg-[var(--font-color)]"></div>
         <div className="price-btns flex justify-between   items-center">
-            <p className='text-[var(--font-color)] tracking-tight font-bold text-xl'>Order Price - <span style={{color : `var(${getColor(status, false)})`,}} className='font-semibold'>{OrderPrice}</span></p>
+            <p className='text-[var(--font-color)] tracking-tight font-bold text-xl'>Order Price - <span style={{color : `var(${getColor(status, false)})`,}} className='font-semibold'>{OrderPrice}DA</span></p>
             <div className='flex justify-center items-center gap-4'>
                 {status.toLowerCase() !== "completed" && <OrderBtn text="Cancel" colorVar={"--font-color"} bgColorVar={"--white-color"}/>}
                 
