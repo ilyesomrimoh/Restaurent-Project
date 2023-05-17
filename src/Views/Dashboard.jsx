@@ -1,26 +1,71 @@
 import { Outlet, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect , useContext } from 'react';
 import { auth } from '../config/firebase_config';
 import { onAuthStateChanged } from 'firebase/auth';
 import Sidebar from '../components/Dashboard/Sidebar';
+import { db } from '../config/firebase_config';
+import { collection, getDocs,getDoc, query , where, doc } from 'firebase/firestore';
+import { UserContext } from '../contexts/UserContext';
+
 
 const Dashboard = () => {
     const navigate = useNavigate();
+    const {setOrders, setRestau , user} = useContext(UserContext);
     
+
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,(user) => {
-          if (!user) {
-            navigate('/login');
-          }
-        });
-        return unsubscribe;
+      const unsubscribe = onAuthStateChanged(auth,(user) => {
+        if (!user) {
+          navigate('/login');
+        }
       });
-  return (
-     <div className='flex h-screen bg-[var(--serve-section-color)] overflow-y-auto'>
-      <Sidebar/>
-      < Outlet/>
+      if (user) {
+          const restRef = doc(db,"Restaurents",user.uid);
+          getDoc(restRef).then((doc) => {
+          if (doc.exists()) {
+            setRestau(doc.data());
+            const ordersRef = collection(db,"Orders");
+            const q = query(ordersRef, where("restaurentId", "==", (user && user.uid)));
+            getDocs(q).then((docs) => {
+              const data = docs.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data()
+              }))
+              setOrders(data);
+            })
+          } else {
+            navigate('/dashboard/profile');
+          }
+          })
+      }
+      // const unsub = onSnapshot(qu, (snapshot) => {
+      //   const data = snapshot.docs.map((doc) => ({
+      //     id: doc.id,
+      //     ...doc.data()
+      //   }))
+      //   console.log(data);
+      // })
+
+
       
 
+      // const usub = onSnapshot(q, (snapshot) => {
+      //   const data = snapshot.docs.map((doc) => ({
+      //     id: doc.id,
+      //     ...doc.data()
+      //   }))
+      //   setOrders(data);
+
+      // })
+
+
+      return unsubscribe;
+      },[user]);
+  return (
+     <div className='flex h-screen bg-[var(--serve-section-color)] overflow-y-auto'>
+
+    <Sidebar/>
+    <Outlet/>
     </div>
   )
 }

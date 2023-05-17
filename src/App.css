@@ -654,13 +654,16 @@ hr {
 .order-card-active::after{
   background-color: var(--info-color);
 }
+.order-card-canceled::after{
+  background-color: var(--primary-ghost);
+}
 .order-card-completed::after{
   background-color: var(--green-color);
 }
 .tab {
   cursor: pointer;
   color: var(--gray-color);
-  transition: all ease-in-out 350ms;
+  transition: color ease-in-out 250ms;
   position: relative;
 }
 .tab::after{
@@ -671,11 +674,12 @@ hr {
   width: 0;
   height: 3px;
   background-color: transparent;
-  transition: all ease-in-out 350ms;
+  transition: all ease-in-out 250ms;
+
 }
 .tab.active-tab, .tab:hover {
   color: var(--primary-color);
-  font-weight: 700;
+  font-weight: 500;
   position: relative;
 }
 .tab:hover::after {

@@ -1,27 +1,14 @@
-import   { useEffect,useState } from 'react'
+import   { useContext } from 'react'
 import OverviewCard from './OverviewCard'
 import NavBar from './NavBar'
 import OrderCard from './OrderCard'
-import { db } from '../../config/firebase_config'
-import { collection, onSnapshot} from 'firebase/firestore'
+import { UserContext } from '../../contexts/UserContext'
+
 const Orders = () => {
-  const [orders, setOrders] = useState([{id:"21645645"}])
-  const [loading, setLoading] = useState(true);
+  const {orders} = useContext(UserContext)
 
   const itms = [{"img":"/images/icons/avatar.png","name":"Pizza"}]
-  useEffect(() => {
-    const ordersRef = collection(db,"Orders");
-    setLoading(true);
-    const unsub = onSnapshot(ordersRef, (snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data()
-      }))
-      setOrders(data);
-      setLoading(false);
-    } )
-    return ()=> { unsub()};
-  }, [])
+  
   const getDate = (order) => {  
     const date = new Date(order.createdDate?.seconds * 1000)
     return `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`
@@ -40,16 +27,24 @@ const Orders = () => {
       <OverviewCard title="Active Orders" content="43000"  />
       <OverviewCard title="Canceled Orders" content="12"  />
      </div>
-     {loading ? <h1 className='text-center text-2xl font-bold'>Loading...</h1> : (<><div className="tabs flex justify-start items-center gap-5 ml-8 mb-8">
+    <div className="tabs flex justify-start items-center gap-5 ml-8 mb-8">
         <div className="tab active-tab">Pending Orders</div>
         <div className="tab">Active Orders</div>
         <div className="tab">Canceled Orders</div>
      </div>
-     <div className="orders flex flex-col items-center justify-start">
+     <div className="ml-3 flex-wrap orders flex gap-4 items-center justify-center">
           {orders.map((order) => (
-            <OrderCard key={order.id} OrderId={order.id} OrderDate={getDate(order)} OderTime={getHour(order)} items={itms} OrderPrice={order.totalPrice} status={order.status || "pending"} UserPhone={order.userPhone}/>))}        
+            <OrderCard 
+            key={order.id} 
+            OrderId={order.id} 
+            OrderDate={getDate(order)} 
+            OderTime={getHour(order)} 
+            items={itms} 
+            OrderPrice={order.totalPrice} 
+            status={order.status || "pending"} 
+            UserPhone={order.userPhone}/>))}        
 
-     </div></>)}
+     </div>
     </div>
   )
 }

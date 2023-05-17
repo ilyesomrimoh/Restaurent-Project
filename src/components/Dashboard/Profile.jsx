@@ -3,18 +3,18 @@ import  { useRef , useState , useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { db } from '../../config/firebase_config';
-import { setDoc , doc } from 'firebase/firestore';
+import { setDoc , doc, updateDoc } from 'firebase/firestore';
+
+
 const Profile = () => {
-    const {user} = useContext(UserContext);
+    const {user, restau, getRestau} = useContext(UserContext);
      const [isButtonClicked, setIsButtonClicked] = useState(false);
-     const [name , setName] = useState('');
-     const [phone , setPhone] = useState();
-     const [description , setDescription] = useState('');
-     const [delevryPrice , setdelevryPrice] = useState();
-     const [mapAddress , setmapAddress] = useState();
-     const [email , setEmail] = useState('');
+     const [name , setName] = useState(restau?.name);
+     const [phone , setPhone] = useState(restau?.phone);
+     const [description , setDescription] = useState(restau?.description);
+     const [delevryPrice , setdelevryPrice] = useState(restau?.deliveryPrice);
+     const [mapAddress , setmapAddress] = useState(restau?.mapAddress);
      const nav = useNavigate();
-     
      const handleButtonClick = () => {
       setIsButtonClicked(true);
       setTimeout(() => {
@@ -25,7 +25,7 @@ const Profile = () => {
       fileInputRef.current.click();
     };
     const handleImageChange = (event) => {
-      const file = event.target.files[0];
+      //const file = event.target.files[0];
 
       // Process the selected file here
     };
@@ -34,22 +34,39 @@ const Profile = () => {
     // add to data base function
     function AddRestrant(e){
       e.preventDefault();
-      setDoc(doc(db, "Restaurents", user.uid), {
-        name: name,
-        mapAddress:mapAddress,
-        activeOrders:0,
-        phone:phone,
-        deliveryPrice:delevryPrice,
-        email:user.email,
-        gallery:[""],
-        isActive:true,
-        pendingOrders:0,
-        photoId:"",
-        reviews:[""],
-      }).then(()=>{
-        console.log('success!!');
-        handleButtonClick();
-      });
+      if (restau) {
+        updateDoc(doc(db, "Restaurents", user.uid), {
+          name: name,
+          mapAddress:mapAddress,
+          description:description,
+          phone:phone,
+          deliveryPrice:delevryPrice,
+        }).then(()=>{
+          getRestau(user.uid, nav);
+          handleButtonClick();
+        });
+
+      }else {
+        setDoc(doc(db, "Restaurents", user.uid), {
+          name: name,
+          mapAddress:mapAddress,
+          activeOrders:0,
+          description:description,
+          phone:phone,
+          deliveryPrice:delevryPrice,
+          email:user.email,
+          gallery:[""],
+          isActive:true,
+          pendingOrders:0,
+          photoId:"",
+          reviews:[""],
+        }).then(()=>{
+          getRestau(user.uid, nav);
+
+          handleButtonClick();
+        });
+      }
+      
       
     } 
   return (
@@ -66,17 +83,17 @@ const Profile = () => {
         )}</div></div>
      <form className='m-7 w-full p-3 pt-16 '  onSubmit={(e)=>AddRestrant(e)}>
 
- <div className='flex flex-wrap  items-center justify-start lg:gap-40 w-full'>
- <div>
+ <div className='flex flex-wrap gap-0 items-center justify-center xl:justify-start  xl:gap-20 w-full'>
+ <div className='mr-5'>
  <div className="mb-6 mt-8">
-      <label htmlFor="restaurentname" className="block mb-2  font-medium text-gray-900 ">Restaurent Name</label>
+      <label htmlFor="restaurentname" className="block mb-2 font-medium text-gray-900 ">Restaurent Name</label>
       <input type="text" id="restaurentname"   onChange={e => setName(e.target.value)} value={name} className="bg-gray-50 border  text-gray-900 text-sm rounded-lg  block w-[500px] min-w-[250px] p-2.5  border-gray-300 outline-none focus:border-gray-400 placeholder-gray-400 " placeholder="Enter product name" required />
     </div>
   
     <div className="mb-6 mt-8">
-      <label htmlFor="restaurentemail" className="block mb-2  font-medium text-gray-900 ">Email</label>
-      <input type="email" id="restaurentemail" onChange={e => setEmail(e.target.value)}  value={email} className="bg-gray-50 border  text-gray-900 text-sm rounded-lg  block w-[500px] min-w-[250px] p-2.5  border-gray-300 outline-none focus:border-gray-400 placeholder-gray-400 "  placeholder="Enter product price" required />
-    </div> 
+      <label htmlFor="restaurentprice" className="block mb-2  font-medium text-gray-900 ">Delivery Price</label>
+      <input type="number" id="restaurentprice"   onChange={e => setdelevryPrice(e.target.value)}  value={delevryPrice} className="bg-gray-50 border  text-gray-900 text-sm rounded-lg  block w-[500px] min-w-[250px] p-2.5  border-gray-300 outline-none focus:border-gray-400 placeholder-gray-400 " placeholder="Enter product name" required />
+    </div>
  </div>
   <div>
   <div className="mb-6 mt-8">
@@ -89,10 +106,7 @@ const Profile = () => {
     </div> 
   </div>
  </div>
- <div className="mb-6 mt-8">
-      <label htmlFor="restaurentprice" className="block mb-2  font-medium text-gray-900 ">Delivery Price</label>
-      <input type="number" id="restaurentprice"   onChange={e => setdelevryPrice(e.target.value)}  value={delevryPrice} className="bg-gray-50 border  text-gray-900 text-sm rounded-lg  block w-[500px] min-w-[250px] p-2.5  border-gray-300 outline-none focus:border-gray-400 placeholder-gray-400 " placeholder="Enter product name" required />
-    </div>
+ 
     
     <div className="mb-6 mt-8">
       <label htmlFor="restaurentDescription" className="block mb-2  font-medium text-gray-900 ">Description</label>
@@ -101,8 +115,8 @@ const Profile = () => {
     </div>
   
 
-  {isButtonClicked && (<div className="p-4 mb-10 text-sm text-green-800 rounded-lg bg-green-200  w-[40%] ml-8 mr-auto" role="alert">
-    <span className="font-medium">Success alert!</span> Change a few things up and try submitting again.
+  {isButtonClicked && (<div className="p-4  text-xl text-green-800 rounded-lg bg-green-200 w-[50%] " role="alert">
+    <span className=" text-2xl font-medium">Success alert!</span> Your Profile Is Updated !
   </div>)}
   
   <button type="submit" className="  text-white border  bg-[var(--primary-color)]  font-medium rounded-lg text-lg px-8 py-2 text-center w-fit  block mt-8">Save</button>

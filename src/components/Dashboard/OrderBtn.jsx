@@ -1,6 +1,6 @@
 import React from 'react'
 
-function OrderBtn({text , colorVar , bgColorVar ,px, py}) {
+function OrderBtn({text , colorVar , bgColorVar, handleClick = null ,px, py}) {
     const styles = {
         backgroundColor: `var(${bgColorVar})`,
         color: `var(${colorVar})`,
@@ -16,7 +16,7 @@ function OrderBtn({text , colorVar , bgColorVar ,px, py}) {
     
       };
   return (
-    <div style={styles} className='font-semibold cursor-pointer'>
+    <div onClick={handleClick} style={styles} className='font-semibold cursor-pointer'>
         {text}
     </div>
   )

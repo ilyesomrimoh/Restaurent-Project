@@ -3,6 +3,8 @@ import ErrorPage from "./Views/ErrorPage";
 import SignUp from "./components/SignUp_Login/SignUp";
 import LandingPage from "./Views/LandingPage";
 import Dashboard from "./Views/Dashboard";
+import { collection, getDocs, query, where,doc, getDoc  } from "firebase/firestore";
+import { db } from "./config/firebase_config";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
@@ -19,6 +21,47 @@ import EditProduct from "./components/Dashboard/EditProduct";
 function App() {
   const [user, setUser] = useState(null);
   const [isAuth,setIsAuth] = useState(false);
+  const [orders, setOrders] = useState([])
+  const [restau, setRestau] = useState(null);
+  const getRestau = (uuid ,navigate) => {
+    const restRef = doc(db,"Restaurents",uuid);
+    getDoc(restRef).then((doc) => {
+      if (doc.exists()) {
+        
+        const data =  doc.data();
+        setRestau(data);
+        console.log("Updated: " , restau);
+        const ordersRef = collection(db,"Orders");
+        const q = query(ordersRef, where("restaurentId", "==", (user && user.uid)));
+        getDocs(q).then((docs) => {
+        const data = docs.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data()
+            }))
+            setOrders(data);
+        }).catch((error) => {
+          console.log(error);
+        })
+
+      }
+    }).catch((error) => { 
+      console.log(error);
+      setRestau(null);
+    })
+  }
+  const getOrders = () => {
+    const ordersRef = collection(db,"Orders");
+    const q = query(ordersRef, where("restaurentId", "==", (user && user.uid)));
+    getDocs(q).then((docs) => {
+      const data = docs.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }))
+        setOrders(data);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
   const logOut = () => {
     signOut(auth).then(() => {
       setUser(null);
@@ -100,7 +143,7 @@ function App() {
  
   return (
     <>
-      <UserContext.Provider value={{user,setUser,isAuth,setIsAuth, logOut}}>
+      <UserContext.Provider value={{user,setUser,isAuth,setIsAuth,orders,restau,setRestau, setOrders,getRestau,getOrders, logOut}}>
         <RouterProvider router={router} /> 
       </UserContext.Provider>
     </>
