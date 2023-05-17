@@ -27,7 +27,6 @@ const Profile = () => {
     const handleImageChange = (event) => {
       //const file = event.target.files[0];
 
-      // Process the selected file here
     };
     const [isHovered, setIsHovered] = useState(false);
     const fileInputRef = useRef(null);
@@ -42,7 +41,7 @@ const Profile = () => {
           phone:phone,
           deliveryPrice:delevryPrice,
         }).then(()=>{
-          getRestau(user.uid, nav);
+          getRestau(user.uid);
           handleButtonClick();
         });
 
@@ -61,7 +60,7 @@ const Profile = () => {
           photoId:"",
           reviews:[""],
         }).then(()=>{
-          getRestau(user.uid, nav);
+          getRestau(user.uid);
 
           handleButtonClick();
         });
