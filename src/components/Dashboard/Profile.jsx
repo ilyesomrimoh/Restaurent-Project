@@ -7,7 +7,7 @@ import { setDoc , doc, updateDoc } from 'firebase/firestore';
 
 
 const Profile = () => {
-    const {user, restau, getRestau} = useContext(UserContext);
+     const {user, restau, getRestau} = useContext(UserContext);
      const [isButtonClicked, setIsButtonClicked] = useState(false);
      const [name , setName] = useState(restau?.name);
      const [phone , setPhone] = useState(restau?.phone);
