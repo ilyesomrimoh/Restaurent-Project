@@ -7,7 +7,7 @@ import { setDoc , doc, updateDoc } from 'firebase/firestore';
 
 
 const Profile = () => {
-    const {user, restau, getRestau} = useContext(UserContext);
+     const {user, restau, getRestau} = useContext(UserContext);
      const [isButtonClicked, setIsButtonClicked] = useState(false);
      const [name , setName] = useState(restau?.name);
      const [phone , setPhone] = useState(restau?.phone);
@@ -27,7 +27,6 @@ const Profile = () => {
     const handleImageChange = (event) => {
       //const file = event.target.files[0];
 
-      // Process the selected file here
     };
     const [isHovered, setIsHovered] = useState(false);
     const fileInputRef = useRef(null);
@@ -42,7 +41,7 @@ const Profile = () => {
           phone:phone,
           deliveryPrice:delevryPrice,
         }).then(()=>{
-          getRestau(user.uid, nav);
+          getRestau(user.uid);
           handleButtonClick();
         });
 
@@ -61,7 +60,7 @@ const Profile = () => {
           photoId:"",
           reviews:[""],
         }).then(()=>{
-          getRestau(user.uid, nav);
+          getRestau(user.uid);
 
           handleButtonClick();
         });

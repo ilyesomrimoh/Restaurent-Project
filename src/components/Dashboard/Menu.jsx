@@ -28,14 +28,11 @@ const Menu = () => {
 </Link>    
 </div>
     <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-fit gap-5 gap-y-10 ml-auto mr-auto'>
-      < FoodCard />
-      < FoodCard />
-      < FoodCard />
-      < FoodCard />
-      < FoodCard />
-      < FoodCard />
-      < FoodCard />
-      < FoodCard />
+      < FoodCard data={{ productName:'Tacos',price:'300.00',category:'Pizza',description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
+      < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
+      < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
+      < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
+
     </div>
     </div>
   )

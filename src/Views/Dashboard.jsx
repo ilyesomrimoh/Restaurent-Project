@@ -4,7 +4,7 @@ import { auth } from '../config/firebase_config';
 import { onAuthStateChanged } from 'firebase/auth';
 import Sidebar from '../components/Dashboard/Sidebar';
 import { db } from '../config/firebase_config';
-import { collection, getDocs,getDoc, query , where, doc } from 'firebase/firestore';
+import { collection, getDoc, query , where, doc, onSnapshot } from 'firebase/firestore';
 import { UserContext } from '../contexts/UserContext';
 
 
@@ -20,19 +20,28 @@ const Dashboard = () => {
         }
       });
       if (user) {
-          const restRef = doc(db,"Restaurents",user.uid);
-          getDoc(restRef).then((doc) => {
+        const restRef = doc(db,"Restaurents",user.uid);
+        getDoc(restRef).then((doc) => {
           if (doc.exists()) {
             setRestau(doc.data());
+            console.log("Hello");
             const ordersRef = collection(db,"Orders");
             const q = query(ordersRef, where("restaurentId", "==", (user && user.uid)));
-            getDocs(q).then((docs) => {
-              const data = docs.docs.map((doc) => ({
+            onSnapshot(q, (snapshot) => {
+              const data = snapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()
               }))
               setOrders(data);
+      
             })
+            // getDocs(q).then((docs) => {
+            //   const data = docs.docs.map((doc) => ({
+            //     id: doc.id,
+            //     ...doc.data()
+            //   }))
+            //   setOrders(data);
+            // })
           } else {
             navigate('/dashboard/profile');
           }
@@ -45,20 +54,6 @@ const Dashboard = () => {
       //   }))
       //   console.log(data);
       // })
-
-
-      
-
-      // const usub = onSnapshot(q, (snapshot) => {
-      //   const data = snapshot.docs.map((doc) => ({
-      //     id: doc.id,
-      //     ...doc.data()
-      //   }))
-      //   setOrders(data);
-
-      // })
-
-
       return unsubscribe;
       },[user]);
   return (

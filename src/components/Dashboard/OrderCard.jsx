@@ -1,12 +1,10 @@
 import OrderBtn from './OrderBtn'
 import { db } from '../../config/firebase_config'
 import { doc , updateDoc } from 'firebase/firestore'
-import { useContext } from 'react'
-import { UserContext } from '../../contexts/UserContext'
+
 
 
 function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTime , Address , UserPhone  , Name}) {
-    const {getOrders} = useContext(UserContext);
     const getColor = (status, ghost=true) => {
         switch (status.trim().toLowerCase()) {
             case "pending":
@@ -24,28 +22,28 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(orderRef,{
             status : "pending"
         });
-        getOrders();
+        //getOrders();
     }
     const handleAccept = () => {
         const orderRef = doc(db,"Orders",OrderId);
         updateDoc(orderRef,{
             status : "active"
         });
-        getOrders();
+        //getOrders();
     }
     const handleComplete = () => {
         const orderRef = doc(db,"Orders",OrderId);
         updateDoc(orderRef,{
             status : "completed"
         });
-        getOrders();
+        //getOrders();
     }
     const handleCancel = () => {
         const orderRef = doc(db,"Orders",OrderId);
         updateDoc(orderRef,{
             status : "canceled"
         });
-        getOrders();
+        //getOrders();
     }
   return (
     <>
