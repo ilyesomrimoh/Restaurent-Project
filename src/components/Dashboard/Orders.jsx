@@ -1,13 +1,15 @@
-import   { useContext } from 'react'
+import   { useContext, useEffect } from 'react'
 import OverviewCard from './OverviewCard'
 import NavBar from './NavBar'
 import OrderCard from './OrderCard'
 import { UserContext } from '../../contexts/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 const Orders = () => {
-  const {orders} = useContext(UserContext)
+  const {orders, restau} = useContext(UserContext)
 
   const itms = [{"img":"/images/icons/avatar.png","name":"Pizza"}]
+  const nav = useNavigate();
   
   const getDate = (order) => {  
     const date = new Date(order.createdDate?.seconds * 1000)
@@ -17,6 +19,12 @@ const Orders = () => {
     const date = new Date(order.createdDate?.seconds )
     return `${date.getHours()}:${date.getMinutes()}`
   }
+  useEffect(() => {
+    if (restau === null) {
+      nav('/dashboard/profile')
+    }
+  }, [restau])
+
   return (
     <div className='w-full'>
       < NavBar />
@@ -33,7 +41,7 @@ const Orders = () => {
         <div className="tab">Canceled Orders</div>
      </div>
      <div className="ml-3 flex-wrap orders flex gap-4 items-center justify-center">
-          {orders.map((order) => (
+          {orders.length === 0 ? (<div className="mt-8 text-xl m-auto">No Orders Yet </div>) : orders.map((order) => (
             <OrderCard 
             key={order.id} 
             OrderId={order.id} 

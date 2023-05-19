@@ -4,7 +4,7 @@ import { useContext,useState } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 import SideBarBtn from './SideBarBtn'
 function Sidebar() {
-    const {user} = useContext(UserContext);
+    const {user, restau} = useContext(UserContext);
     
     const {logOut } = useContext(UserContext);
     const [open, setOpen] = useState(true);
@@ -17,8 +17,8 @@ function Sidebar() {
             <img src={`${open ? '/images/icons/arrow-white.png' : '/images/icons/arrow-white-reverce.png'}`} alt="close open icon" />
         </div>
         <div className='profile mt-12'>
-            <div className={`prof-img m-auto ${open ? 'w-[100px]' : 'w-[50px]'}`}>
-                <img  src="/images/icons/avatar.png" className="w-full" alt="" />
+            <div className={`prof-img m-auto rounded-full overflow-hidden  ${open ? 'w-[100px] h-[100px]' : 'h-[50px] w-[50px]'}`}>
+                <img  src={restau?.photoId || "/images/icons/avatar.png"} className="w-full" alt="" />
             </div>
             <div className={`prof-info text-center ${open ? '' : 'hidden'}`}>
                 <h6 className='text-2xl'>{ user && user.displayName}</h6>

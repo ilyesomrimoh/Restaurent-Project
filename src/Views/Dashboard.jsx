@@ -24,7 +24,6 @@ const Dashboard = () => {
         getDoc(restRef).then((doc) => {
           if (doc.exists()) {
             setRestau(doc.data());
-            console.log("Hello");
             const ordersRef = collection(db,"Orders");
             const q = query(ordersRef, where("restaurentId", "==", (user && user.uid)));
             onSnapshot(q, (snapshot) => {
@@ -47,13 +46,7 @@ const Dashboard = () => {
           }
           })
       }
-      // const unsub = onSnapshot(qu, (snapshot) => {
-      //   const data = snapshot.docs.map((doc) => ({
-      //     id: doc.id,
-      //     ...doc.data()
-      //   }))
-      //   console.log(data);
-      // })
+
       return unsubscribe;
       },[user]);
   return (

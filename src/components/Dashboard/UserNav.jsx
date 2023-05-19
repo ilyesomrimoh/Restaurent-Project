@@ -11,7 +11,9 @@ const UserNav = ({img }) => {
   return (
     <div className='flex items-center gap-3 relative'>
       {/* icon */}
-        <img  className='w-8 shadow-xl  rounded-full' src={img} alt="" />
+        <div className='w-8 h-8 rounded-full overflow-hidden'>
+        <img  className='w-full shadow-xl  rounded-full' src={img} alt="" />
+        </div>
        <div className='flex items-center gap-1 cursor-pointer' onClick={toggleMenu}  >
        <h4>{user && user.displayName}</h4>
         <img className=' arrow w-4 -rotate-90   left-1' src="/images/icons/icons8-less-than-100 (2).png" alt=""   />

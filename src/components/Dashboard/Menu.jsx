@@ -1,13 +1,23 @@
 import React from 'react'
 import FoodCard from './FoodCard'
 import NavBar from './NavBar'
-import { useState } from 'react'
+import { useState,useContext, useEffect } from 'react'
 import DropDown from './DropDown'
 import { Link } from 'react-router-dom'
-
+import { UserContext } from '../../contexts/UserContext'
+import { useNavigate } from 'react-router-dom'
 const Menu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
+  const nav = useNavigate();
+  const { restau } = useContext(UserContext);
+
+  useEffect(() => {
+    if (restau === null) {
+
+      nav('/dashboard/profile')
+    }
+  }, [restau])
   return (
     <div className='w-full mb-20 h-fit'>
       <NavBar />

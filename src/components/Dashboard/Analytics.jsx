@@ -2,7 +2,20 @@ import React from 'react'
 import OverviewCard from './OverviewCard'
 import NavBar from './NavBar'
 import RecentComment from './RecentComment'
+
+import { useContext, useEffect } from 'react'
+import { UserContext } from '../../contexts/UserContext'
+import { useNavigate } from 'react-router-dom'
+
 const Analytics = () => {
+  const nav = useNavigate();
+  const { restau } = useContext(UserContext);
+  useEffect(() => {
+    if (restau === null) {
+
+      nav('/dashboard/profile')
+    }
+  }, [restau])
   return (
     <div className='w-full '>
       < NavBar />
