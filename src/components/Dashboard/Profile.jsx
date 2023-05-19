@@ -6,7 +6,7 @@ import { db } from '../../config/firebase_config';
 import { setDoc , doc, updateDoc } from 'firebase/firestore';
 import { ref } from 'firebase/storage';
 import { storage } from '../../config/firebase_config';
-import { getDownloadURL, uploadBytes,uploadBytesResumable } from 'firebase/storage';
+import { getDownloadURL,uploadBytesResumable } from 'firebase/storage';
 
 const Profile = () => {
      const {user, restau, getRestau} = useContext(UserContext);
@@ -18,7 +18,7 @@ const Profile = () => {
      const [mapAddress , setmapAddress] = useState(restau?.mapAddress);
      const [msg , setMsg] = useState('');
      const [showMsg , setShowMsg] = useState(false);
-     const [isUplaoding , setIsUploading] = useState(false);
+     //const [isUplaoding , setIsUploading] = useState(false);
      const nav = useNavigate();
      
 
@@ -70,42 +70,62 @@ const Profile = () => {
     function AddRestrant(e){
       e.preventDefault();
       if (restau) {
-        const restauRef = ref(storage, `Restaurents/${user.uid}/profile`);
+        if (fileInputRef.current.files[0]) {
+            const restauRef = ref(storage, `Restaurents/${user.uid}/profile`);
+            const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
+            //setIsUploading(true);
+            uploadTask.on('state_changed', 
+              (snapshot) => {
+                console.log((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                // const prgrs = document.getElementById('progressBar');
+                // prgrs.style.width = progress + "%";
+                
+              }, 
+              (error) => {
+                setMsg(error.message);
+                setShowMsg(true);
 
-        const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
-        //setIsUploading(true);
-        uploadTask.on('state_changed', 
-          (snapshot) => {
-            console.log((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-            // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            // const prgrs = document.getElementById('progressBar');
-            // prgrs.style.width = progress + "%";
-            
-          }, 
-          (error) => {
-            setIsUploading(false)
-            setMsg(error.message);
-            setShowMsg(true);
-
-        }, 
-        () => {
-          getDownloadURL(restauRef).then((url) => {
+            }, 
+            () => {
+              getDownloadURL(restauRef).then((newurl) => {
+                updateDoc(doc(db, "Restaurents", user.uid), {
+                  name: name,
+                  mapAddress:mapAddress,
+                  description:description,
+                  phone:phone,
+                  deliveryPrice:delevryPrice,
+                  photoId:newurl
+                }).then(()=>{
+                  getRestau(user.uid);
+                  //setIsUploading(false);
+                  handleButtonClick();
+                });
+            });
+            })
+          }else{
             updateDoc(doc(db, "Restaurents", user.uid), {
               name: name,
               mapAddress:mapAddress,
               description:description,
               phone:phone,
               deliveryPrice:delevryPrice,
-              photoId:url
+              photoId:restau.photoId
             }).then(()=>{
               getRestau(user.uid);
-              setIsUploading(false);
+              //setIsUploading(false);
               handleButtonClick();
             });
-        });
-        }
-      );
+          }
+          
+      
       }else {
+
+        if (!fileInputRef.current.files[0]) {
+          setMsg("Please upload a photo");
+          setShowMsg(true);
+          return;
+        }
         const restauRef = ref(storage, `Restaurents/${user.uid}/profile`);
 
         const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
@@ -119,7 +139,7 @@ const Profile = () => {
             
           }, 
           (error) => {
-            setIsUploading(false)
+            //setIsUploading(false)
             setMsg(error.message);
             setShowMsg(true);
 
@@ -216,7 +236,7 @@ const Profile = () => {
           {isButtonClicked && (<div className="p-4  text-xl text-green-800 rounded-lg bg-green-200 w-[50%] " role="alert">
               <span className=" text-2xl font-medium">Success alert!</span> Your Profile Is Updated !
             </div>)}
-          {isUplaoding && (<>
+          {/* {isUplaoding && (<>
             <div className="absolute w-[100vw] h-[100vh] top-0 left-0 bg-black bg-opacity-40 z-40">
               <div className='absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-10 w-96 h-40'>
                 <div className="mb-1 text-base font-medium text-green-700 dark:text-green-500">Progress</div>
@@ -225,8 +245,7 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            
-</>)}  
+</>)}   */}
           <button type="submit" className="  text-white border  bg-[var(--primary-color)]  font-medium rounded-lg text-lg px-8 py-2 text-center w-fit  block mt-8">Save</button>
       </form>
     </div>
