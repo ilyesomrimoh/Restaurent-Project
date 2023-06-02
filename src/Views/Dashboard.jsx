@@ -10,7 +10,7 @@ import { UserContext } from '../contexts/UserContext';
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const {setOrders, setRestau , user} = useContext(UserContext);
+    const {setOrders, setRestau , user , getMenuItems} = useContext(UserContext);
     
 
     useEffect(() => {
@@ -32,8 +32,10 @@ const Dashboard = () => {
                 ...doc.data()
               }))
               setOrders(data);
-      
             })
+            //getting items
+
+            getMenuItems();
             // getDocs(q).then((docs) => {
             //   const data = docs.docs.map((doc) => ({
             //     id: doc.id,

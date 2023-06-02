@@ -4,13 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../contexts/UserContext';
 import { db } from '../../config/firebase_config';
 import { setDoc , doc, updateDoc } from 'firebase/firestore';
-import { ref } from 'firebase/storage';
 import { storage } from '../../config/firebase_config';
-import { getDownloadURL,uploadBytesResumable } from 'firebase/storage';
+import { getDownloadURL,uploadBytesResumable,ref } from 'firebase/storage';
 
 const Profile = () => {
-     const {user, restau, getRestau} = useContext(UserContext);
-     const [isButtonClicked, setIsButtonClicked] = useState(false);
+  const {user, restau, getRestau} = useContext(UserContext);
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
      const [name , setName] = useState(restau?.name);
      const [phone , setPhone] = useState(restau?.phone);
      const [description , setDescription] = useState(restau?.description);
@@ -18,8 +17,10 @@ const Profile = () => {
      const [mapAddress , setmapAddress] = useState(restau?.mapAddress);
      const [msg , setMsg] = useState('');
      const [showMsg , setShowMsg] = useState(false);
-     //const [isUplaoding , setIsUploading] = useState(false);
      const nav = useNavigate();
+     const [isHovered, setIsHovered] = useState(false);
+     const fileInputRef = useRef(null);
+     const [err , setErr] = useState(false);
      
 
      useEffect(() => {
@@ -31,21 +32,17 @@ const Profile = () => {
             setdelevryPrice(restau.deliveryPrice);
             setmapAddress(restau.mapAddress);
             setShowMsg(false);
+            setErr(false);
           }else {
-            setMsg("You don't have a restaurent yet, Please Complete your profile")
+            setMsg("You don't have a restaurent yet, Please Complete your profile");
+            setErr(true);
             setShowMsg(true);
-            console.log(msg, "hello");
           }
         }
      }, [restau])
      
      
-     const handleButtonClick = () => {
-      setIsButtonClicked(true);
-      setTimeout(() => {
-        nav('/dashboard');
-      }, 2000);
-    };
+   
     const handleImageClick = () => {
       fileInputRef.current.click();
     };
@@ -54,17 +51,14 @@ const Profile = () => {
       const preview = document.getElementById('profile-img');
       const reader = new FileReader();
       reader.onload =  function () {
-        console.log("hello");
         preview.src = reader.result;
-        console.log(preview.src);
       }
         if (file) {
           reader.readAsDataURL(file);
         }
 
     };
-    const [isHovered, setIsHovered] = useState(false);
-    const fileInputRef = useRef(null);
+
 
     // add to data base function
     function AddRestrant(e){
@@ -73,7 +67,9 @@ const Profile = () => {
         if (fileInputRef.current.files[0]) {
             const restauRef = ref(storage, `Restaurents/${user.uid}/profile`);
             const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
-            //setIsUploading(true);
+            setMsg("Updating your profile please wait ...");
+            setErr(false);
+            setShowMsg(true);
             uploadTask.on('state_changed', 
               (snapshot) => {
                 console.log((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
@@ -84,6 +80,7 @@ const Profile = () => {
               }, 
               (error) => {
                 setMsg(error.message);
+                setErr(true);
                 setShowMsg(true);
 
             }, 
@@ -101,9 +98,15 @@ const Profile = () => {
                   canceledOrders:restau.canceledOrders,
                   TotalIncome:restau.TotalIncome,
                 }).then(()=>{
+                  setErr(false)
+                  setMsg("Done");
                   getRestau(user.uid);
+                  setShowMsg(false);
                   //setIsUploading(false);
-                  handleButtonClick();
+                  setIsButtonClicked(true);
+                  setTimeout(() => {
+                    nav('/dashboard');
+                  }, 2000);
                 });
             });
             })
@@ -122,7 +125,10 @@ const Profile = () => {
             }).then(()=>{
               getRestau(user.uid);
               //setIsUploading(false);
-              handleButtonClick();
+              setIsButtonClicked(true);
+              setTimeout(() => {
+                nav('/dashboard');
+              }, 2000);
             });
           }
           
@@ -131,6 +137,7 @@ const Profile = () => {
 
         if (!fileInputRef.current.files[0]) {
           setMsg("Please upload a photo");
+          setErr(true);
           setShowMsg(true);
           return;
         }
@@ -149,6 +156,7 @@ const Profile = () => {
           (error) => {
             //setIsUploading(false)
             setMsg(error.message);
+            setErr(true);
             setShowMsg(true);
 
         }, 
@@ -172,9 +180,14 @@ const Profile = () => {
               photoId:url,
               reviews:[""],
             }).then(()=>{
+              setErr(false);
+              setMsg("Done !");
               getRestau(user.uid);
-    
-              handleButtonClick();
+              setShowMsg(false);
+              setIsButtonClicked(true);
+              setTimeout(() => {
+                nav('/dashboard');
+              }, 2000);
             });
         });
         }
@@ -187,17 +200,26 @@ const Profile = () => {
   return (
     <>
     {showMsg && (<div className="absolute w-[100vw] h-[100vh] top-0 left-0 bg-black bg-opacity-40 z-40">
-    <div className='absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-10 w-96 h-40'>
-      <div className="bg-red-100 border border-red-400 text-xl text-red-700 px-4 py-3 rounded relative " role="alert">
-        <span className='pb-10'><strong className="font-bold text-2xl mb-8">Forbiden !<br></br></strong></span>
+    <div className='absolute top-2/4 left-2/4 -translate-x-2/4 p-10 -translate-y-2/4 z-10 w-96 h-40'>
+      <div className={!err ? "bg-blue-100 border border-blue-400 text-xl text-blue-700 p-8 rounded relative ":"bg-red-100 border border-red-400 text-xl text-red-700 p-8 rounded relative " } role="alert">
+        <span className='pb-10'><strong className="font-bold text-2xl mb-8">Wait Please !<br></br></strong></span>
         <span className="block sm:inline">{msg}</span>
-        <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={()=> setShowMsg(false)}>
+        {err && (<span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={()=> setShowMsg(false)}>
           <svg className="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
-        </span>
+        </span>)}
       </div>
       </div>
     </div>)}
-    
+    {/* {isUplaoding && (<>
+            <div className="absolute w-[100vw] h-[100vh] top-0 left-0 bg-black bg-opacity-40 z-40">
+              <div className='absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-10 w-96 h-40'>
+                <div className="mb-1 text-base font-medium text-green-700 dark:text-green-500">Progress</div>
+                <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
+                  <div id='progressBar' className="bg-green-600 h-2.5 rounded-full dark:bg-green-500"></div>
+                </div>
+              </div>
+            </div>
+</>)}   */}
     <div className='w-full relative'>
       < NavBar />
       
@@ -211,6 +233,7 @@ const Profile = () => {
 
               </div>
             )}
+            
               <input type="file" ref={fileInputRef} accept="image/*" hidden  onChange={handleImageChange} />
             
         </div>
@@ -248,16 +271,7 @@ const Profile = () => {
           {isButtonClicked && (<div className="p-4  text-xl text-green-800 rounded-lg bg-green-200 w-[50%] " role="alert">
               <span className=" text-2xl font-medium">Success alert!</span> Your Profile Is Updated !
             </div>)}
-          {/* {isUplaoding && (<>
-            <div className="absolute w-[100vw] h-[100vh] top-0 left-0 bg-black bg-opacity-40 z-40">
-              <div className='absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 z-10 w-96 h-40'>
-                <div className="mb-1 text-base font-medium text-green-700 dark:text-green-500">Progress</div>
-                <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
-                  <div id='progressBar' className="bg-green-600 h-2.5 rounded-full dark:bg-green-500"></div>
-                </div>
-              </div>
-            </div>
-</>)}   */}
+          
           <button type="submit" className="  text-white border  bg-[var(--primary-color)]  font-medium rounded-lg text-lg px-8 py-2 text-center w-fit  block mt-8">Save</button>
       </form>
     </div>

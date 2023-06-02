@@ -4,14 +4,26 @@ import NavBar from './NavBar'
 import { useState,useContext, useEffect } from 'react'
 import DropDown from './DropDown'
 import { Link } from 'react-router-dom'
+import { doc, deleteDoc } from 'firebase/firestore';
+import { db } from '../../config/firebase_config';
 import { UserContext } from '../../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 const Menu = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [msg , setMsg] = useState("");
+  const [showMsg , setShowMsg] = useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
   const nav = useNavigate();
-  const { restau } = useContext(UserContext);
-
+  const { menuItems, restau,getMenuItems } = useContext(UserContext);
+  const deleteItem = (id) => {
+    const docRef = doc(db,"Items", id);
+    setMsg(`Deleting Product ${id}...`);
+    setShowMsg(true);
+    deleteDoc(docRef).then(()=> {
+        getMenuItems();
+        setShowMsg(false); 
+    })
+  }
   useEffect(() => {
     if (restau === null) {
 
@@ -21,6 +33,15 @@ const Menu = () => {
   return (
     <div className='w-full mb-20 h-fit'>
       <NavBar />
+      {showMsg && (<div className="absolute w-[100vw] h-[100vh] top-0 left-0 bg-black bg-opacity-40 z-40">
+    <div className='absolute top-2/4 left-2/4 -translate-x-2/4 p-10 -translate-y-2/4 z-10 w-96 h-40'>
+      <div className="bg-red-100 border border-red-400 text-xl text-red-700 p-8 rounded relative "  role="alert">
+        <span className='pb-10'><strong className="font-bold text-2xl mb-8">Wait Please !<br></br></strong></span>
+        <span className="block sm:inline">{msg}</span>
+        
+      </div>
+      </div>
+    </div>)}
       <h2 className='font-bold m-4 mb-7'>Menu</h2>
     <div className='flex justify-around items-center m-10 gap-3'>
       <div></div>
@@ -38,10 +59,14 @@ const Menu = () => {
 </Link>    
 </div>
     <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-fit gap-5 gap-y-10 ml-auto mr-auto'>
-      < FoodCard data={{ productName:'Tacos',price:'300.00',category:'Pizza',description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
+      {menuItems.map((item,ind) => (
+        <FoodCard key={ind} data={item} deleteHandler={deleteItem}/>
+      ))}
+      
+      {/* < FoodCard data={{ productName:'Tacos',price:'300.00',category:'Pizza',description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
       < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
       < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
-      < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
+      < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/> */}
 
     </div>
     </div>

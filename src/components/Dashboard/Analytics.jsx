@@ -12,7 +12,6 @@ const Analytics = () => {
   const { restau } = useContext(UserContext);
   useEffect(() => {
     if (restau === null) {
-
       nav('/dashboard/profile')
     }
   }, [restau])
