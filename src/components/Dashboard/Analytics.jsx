@@ -2,11 +2,11 @@ import React from 'react'
 import OverviewCard from './OverviewCard'
 import NavBar from './NavBar'
 import RecentComment from './RecentComment'
-
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
 import BarChart from './BarChart'
+import LineChart from './LineChart'
 
 const Analytics = () => {
   const nav = useNavigate();
@@ -31,9 +31,14 @@ const Analytics = () => {
      <OverviewCard title="Completed Orders" content={restau && restau.completedOrders}  />
       <OverviewCard title="canceled Orders" content={ restau && restau.canceledOrders}  />
      </div>
-     <div className="chart flex flex-col lg:flex-row justify-around items-center gap-8 ">
-      <div className='w-[90%] h-96 lg:w-[48%] lg:h-[450px]'> <BarChart /></div>
-      <div className='w-[90%] h-96 lg:w-[48%] lg:h-[450px]'> <BarChart /></div>
+     <div className="chart flex flex-col lg:flex-row justify-around items-center gap-8 mt-28 ">
+      <div className='w-[90%] h-96 lg:w-[45%] lg:h-[450px]'>
+      <h3 className='text-xl font-bold ml-8  mb-5'>orders</h3>
+         <BarChart />
+         </div>
+      <div className='w-[90%] h-96 lg:w-[45%] lg:h-[450px]'>
+      <h3 className='text-xl font-bold ml-8  mb-5'>Total Income</h3>
+         <LineChart /></div>
      </div>
       <h3 className='text-xl font-bold ml-8  mb-5'>Recent Rating</h3>
       <div className="comments ml-9">

@@ -1,50 +1,105 @@
 export const orders = [
+
     {
-      order_id: "12345",
-      restaurant_id: "5678",
-      date: "2023-05-12",
-      items: [
-        {
-          name: "Burger",
-          quantity: 2,
-          price: 9.99
-        },
-        {
-          name: "Fries",
-          quantity: 1,
-          price: 4.99
-        },
-        {
-          name: "Soda",
-          quantity: 2,
-          price: 1.99
-        }
-      ],
-      price: 28.96,
-      status: "Processing",
-      location: "123 Main St, Anytown, USA",
-      user_id: "789"
+      address: '123 Main St',
+      createdDate:  { seconds: 1685271771, nanoseconds: 100 },
+      id: '1',
+      itemId: 'item1',
+      numberOfItems: 2,
+      restaurantId: 'restaurant1',
+      status: 'completed',
+      totalPrice: 20.99,
+      userId: 'user1',
+      userPhone: '123-456-7890',
+    },
+
+    {
+      address: '456 Elm St',
+      createdDate:   { seconds: 1685358071, nanoseconds: 0 },
+
+      id: '2',
+      itemId: 'item2',
+      numberOfItems: 1,
+      restaurantId: 'restaurant2',
+      status: 'pending',
+      totalPrice: 15.49,
+      userId: 'user2',
+      userPhone: '987-654-3210',
+    },
+ 
+    {
+      address: '789 Oak St',
+      createdDate:   { seconds: 1685444471, nanoseconds: 0 },
+
+      id: '3',
+      itemId: 'item3',
+      numberOfItems: 3,
+      restaurantId: 'restaurant3',
+      status: 'completed',
+      totalPrice: 32.99,
+      userId: 'user3',
+      userPhone: '456-789-1230',
     },
     {
-      order_id: "67890",
-      restaurant_id: "2468",
-      date: "2023-05-09T18:45:00Z",
-      items: [
-        {
-          name: "Pizza",
-          quantity: 1,
-          price: 12.99
-        },
-        {
-          name: "Garlic Bread",
-          quantity: 1,
-          price: 6.99
-        }
-      ],
-      price: 19.98,
-      status: "Delivered",
-      location: "456 Main St, Anytown, USA",
-      user_id: "123"
-    }
+      address: '567 Pine St',
+      createdDate:   { seconds: 1685530871, nanoseconds: 0 },
+      id: '4',
+      itemId: 'item4',
+      numberOfItems: 2,
+      restaurantId: 'restaurant1',
+      status: 'completed',
+      totalPrice: 25.99,
+      userId: 'user4',
+      userPhone: '789-123-4560',
+    },
+    {
+      address: '567 Pine St',
+      createdDate:   { seconds: 1685530871, nanoseconds: 0 },
+      id: '5',
+      itemId: 'item43',
+      numberOfItems: 2,
+      restaurantId: 'restaurant1',
+      status: 'completed',
+      totalPrice: 25.99,
+      userId: 'user4',
+      userPhone: '789-123-4560',
+    },
+    {
+      address: '567 Pine St',
+      createdDate:   { seconds: 1685530871, nanoseconds: 0 },
+      id: '6',
+      itemId: 'item447',
+      numberOfItems: 2,
+      restaurantId: 'restaurant1',
+      status: 'completed',
+      totalPrice: 25.99,
+      userId: 'user4',
+      userPhone: '789-123-4560',
+    },
+    {
+      address: '567 Pine St',
+      createdDate:   { seconds: 1685530871, nanoseconds: 0 },
+      id: '7',
+      itemId: 'item44',
+      numberOfItems: 2,
+      restaurantId: 'restaurant1',
+      status: 'completed',
+      totalPrice: 25.99,
+      userId: 'user4',
+      userPhone: '789-123-4560',
+    },
+    {
+      address: '123 Main St',
+      createdDate:  { seconds: 1685271771, nanoseconds: 100 },
+      id: '8',
+      itemId: 'item123',
+      numberOfItems: 2,
+      restaurantId: 'restaurant1',
+      status: 'completed',
+      totalPrice: 20.99,
+      userId: 'user1',
+      userPhone: '123-456-7890',
+    },
   ];
+  
   
