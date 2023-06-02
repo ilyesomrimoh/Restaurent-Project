@@ -6,6 +6,7 @@ import RecentComment from './RecentComment'
 import { useContext, useEffect } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 import { useNavigate } from 'react-router-dom'
+import BarChart from './BarChart'
 
 const Analytics = () => {
   const nav = useNavigate();
@@ -30,7 +31,9 @@ const Analytics = () => {
      <OverviewCard title="Completed Orders" content={restau && restau.completedOrders}  />
       <OverviewCard title="canceled Orders" content={ restau && restau.canceledOrders}  />
      </div>
-     <div className="chart">
+     <div className="chart flex flex-col lg:flex-row justify-around items-center gap-8 ">
+      <div className='w-[90%] h-96 lg:w-[48%] lg:h-[450px]'> <BarChart /></div>
+      <div className='w-[90%] h-96 lg:w-[48%] lg:h-[450px]'> <BarChart /></div>
      </div>
       <h3 className='text-xl font-bold ml-8  mb-5'>Recent Rating</h3>
       <div className="comments ml-9">

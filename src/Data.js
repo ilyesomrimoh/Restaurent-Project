@@ -2,7 +2,7 @@ export const orders = [
     {
       order_id: "12345",
       restaurant_id: "5678",
-      date: "2023-05-12T14:30:00Z",
+      date: "2023-05-12",
       items: [
         {
           name: "Burger",
