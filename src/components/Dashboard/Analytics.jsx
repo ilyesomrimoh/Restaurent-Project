@@ -16,6 +16,8 @@ const Analytics = () => {
       nav('/dashboard/profile')
     }
   }, [restau])
+
+  
   return (
     <div className='w-full '>
       < NavBar />

@@ -95,7 +95,11 @@ const Profile = () => {
                   description:description,
                   phone:phone,
                   deliveryPrice:delevryPrice,
-                  photoId:newurl
+                  photoId:newurl,
+                  completedOrders:restau.completedOrders,
+                  activeOrders:restau.activeOrders,
+                  canceledOrders:restau.canceledOrders,
+                  TotalIncome:restau.TotalIncome,
                 }).then(()=>{
                   getRestau(user.uid);
                   //setIsUploading(false);
@@ -110,7 +114,11 @@ const Profile = () => {
               description:description,
               phone:phone,
               deliveryPrice:delevryPrice,
-              photoId:restau.photoId
+              photoId:restau.photoId,
+              completedOrders:restau.completedOrders,
+              activeOrders:restau.activeOrders,
+              canceledOrders:restau.canceledOrders,
+              TotalIncome:restau.TotalIncome,
             }).then(()=>{
               getRestau(user.uid);
               //setIsUploading(false);
@@ -157,6 +165,10 @@ const Profile = () => {
               gallery:[""],
               isActive:true,
               pendingOrders:0,
+              completedOrders:0,
+              activeOrders:0,
+              canceledOrders:0,
+              TotalIncome:0,
               photoId:url,
               reviews:[""],
             }).then(()=>{
