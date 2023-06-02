@@ -31,9 +31,9 @@ const Orders = () => {
       <h2 onClick={()=> console.log(orders[0])} className='font-bold m-4 mb-7'>Orders</h2>
       <h3 className='text-xl font-bold ml-8  mb-5'>Overview</h3>
      <div className="flex gap-6 w-fit mr-auto ml-auto flex-wrap pl-6 mb-16">
-     <OverviewCard title="Pending Orders" content={restau && restau.pendingOrders}  />
-      <OverviewCard title="Active Orders" content={restau && restau.activeOrders}  />
-      <OverviewCard title="Canceled Orders" content={restau && restau.canceledOrders}  />
+     <OverviewCard title="Pending Orders" src='/images/icons/pending-red.png' content={restau && restau.pendingOrders}  />
+      <OverviewCard title="Active Orders" src='/images/icons/active-red.png' content={restau && restau.activeOrders}  />
+      <OverviewCard title="Completed Orders" src='/images/icons/completed-red.png' content={restau && restau.completedOrders}  />
      </div>
     <div className="tabs flex justify-start items-center gap-5 ml-8 mb-8">
         <div className="tab active-tab">Pending Orders</div>

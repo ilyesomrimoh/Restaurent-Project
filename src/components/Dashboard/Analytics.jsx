@@ -25,10 +25,10 @@ const Analytics = () => {
       <h3 className='text-xl font-bold ml-8  mb-5'>Overview</h3>
      <div className="flex gap-6 w-fit mr-auto ml-auto flex-wrap pl-6 mb-16">
 
-      <OverviewCard title="Total Income"    content={restau && restau.TotalIncome}  />
-      <OverviewCard title="Active Orders"   content={restau && restau.activeOrders} />
-     <OverviewCard title="Completed Orders" content={restau && restau.completedOrders}  />
-      <OverviewCard title="canceled Orders" content={ restau && restau.canceledOrders}  />
+      <OverviewCard title="Total Income" src='/images/icons/income.png'   content={restau && restau.TotalIncome}  />
+     <OverviewCard title="Pending Orders"src='/images/icons/pending-red.png' content={restau && restau.pendingOrders}  />
+      <OverviewCard title="Active Orders"  src='/images/icons/active-red.png' content={restau && restau.activeOrders} />
+      <OverviewCard title="Completed Orders" src='/images/icons/completed-red.png' content={ restau && restau.completedOrders}  />
      </div>
      <div className="chart">
      </div>
