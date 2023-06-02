@@ -165,7 +165,6 @@ const Profile = () => {
             setDoc(doc(db, "Restaurents", user.uid), {
               name: name,
               mapAddress:mapAddress,
-              activeOrders:0,
               description:description,
               phone:phone,
               deliveryPrice:delevryPrice,
