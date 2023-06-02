@@ -3,7 +3,7 @@ import ErrorPage from "./Views/ErrorPage";
 import SignUp from "./components/SignUp_Login/SignUp";
 import LandingPage from "./Views/LandingPage";
 import Dashboard from "./Views/Dashboard";
-import { doc, getDoc  } from "firebase/firestore";
+import { doc, getDoc, query,collection,where,getDocs  } from "firebase/firestore";
 import { db } from "./config/firebase_config";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -21,44 +21,39 @@ import EditProduct from "./components/Dashboard/EditProduct";
 function App() {
   const [user, setUser] = useState(null);
   const [isAuth,setIsAuth] = useState(false);
-  const [orders, setOrders] = useState([])
   const [restau, setRestau] = useState(null);
+  const [orders, setOrders] = useState([])
+  const [menuItems, setMenuItems] = useState([])
+
   const getRestau = (uuid ) => {
     const restRef = doc(db,"Restaurents",uuid);
     getDoc(restRef).then((doc) => {
       if (doc.exists()) {
         const data =  doc.data();
         setRestau(data);
-        // const ordersRef = collection(db,"Orders");
-        // const q = query(ordersRef, where("restaurentId", "==", (user && user.uid)));
-        // getDocs(q).then((docs) => {
-        // const data = docs.docs.map((doc) => ({
-        //       id: doc.id,
-        //       ...doc.data()
-        //     }))
-        // setOrders(data);
-        // }).catch((error) => {
-        //   console.log(error);
-        // })
+       
       }
     }).catch((error) => { 
       console.log(error);
       setRestau(null);
     })
   }
-  // const getOrders = () => {
-  //   const ordersRef = collection(db,"Orders");
-  //   const q = query(ordersRef, where("restaurentId", "==", (user && user.uid)));
-  //   getDocs(q).then((docs) => {
-  //     const data = docs.docs.map((doc) => ({
-  //         id: doc.id,
-  //         ...doc.data()
-  //       }))
-  //       setOrders(data);
-  //   }).catch((error) => {
-  //     console.log(error);
-  //   })
-  // }
+  const getMenuItems = () => {
+    const itemsRef = collection(db,"Items");
+    if (user) {
+      const q = query(itemsRef, where("restaurentId", "==",  user.uid));
+      getDocs(q).then((docs) => {
+        const data = docs.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+          }))
+          setMenuItems(data);
+      }).catch((error) => {
+        console.log(error);
+      })
+
+    }
+  }
   const logOut = () => {
     signOut(auth).then(() => {
       setUser(null);
@@ -140,7 +135,7 @@ function App() {
  
   return (
     <>
-      <UserContext.Provider value={{user,setUser,isAuth,setIsAuth,orders,restau,setRestau, setOrders,getRestau, logOut}}>
+      <UserContext.Provider value={{user,setUser,isAuth,setIsAuth,menuItems , getMenuItems,orders,restau,setRestau, setOrders,getRestau, logOut}}>
         <RouterProvider router={router} /> 
       </UserContext.Provider>
     </>
