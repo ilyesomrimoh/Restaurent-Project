@@ -15,6 +15,7 @@ const Menu = () => {
   const toggleMenu = () => setShowMenu(!showMenu);
   const nav = useNavigate();
   const { menuItems, restau,getMenuItems } = useContext(UserContext);
+  
   const deleteItem = (id) => {
     const docRef = doc(db,"Items", id);
     setMsg(`Deleting Product ${id}...`);
