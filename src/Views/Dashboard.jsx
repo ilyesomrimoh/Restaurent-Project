@@ -10,7 +10,8 @@ import { UserContext } from '../contexts/UserContext';
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const {setOrders, setRestau , user , getMenuItems} = useContext(UserContext);
+    const {setOrders, setRestau ,  user ,getReviews, getMenuItems,setComplOrd ,setCanceledOrd ,setActiveOrd , setPendingOrd} = useContext(UserContext);
+
     
 
     useEffect(() => {
@@ -27,15 +28,38 @@ const Dashboard = () => {
             const ordersRef = collection(db,"Orders");
             const q = query(ordersRef, where("restaurentId", "==", (user && user.uid)));
             onSnapshot(q, (snapshot) => {
-              const data = snapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data()
-              }))
-              setOrders(data);
+              let ord = []
+              setActiveOrd(0);
+              setComplOrd(0);
+              setCanceledOrd(0);
+              setPendingOrd(0);
+
+
+              snapshot.docs.forEach((doc)=>{
+                ord.push({
+                  id: doc.id,
+                  ...doc.data()
+                })
+                let stat = doc.data()["status"]
+                if (stat === "completed") {
+                  
+                }else if (stat === "pending") {
+                  setPendingOrd ((old) => old+= 1)
+                }else if(stat ==="active") {
+                  setActiveOrd((old) => old += 1)
+                }else {
+                  setCanceledOrd((old)=> old+=1 )
+                }
+                
+              })
+              
+              setOrders(ord);
+
             })
             //getting items
 
             getMenuItems();
+            getReviews();
             // getDocs(q).then((docs) => {
             //   const data = docs.docs.map((doc) => ({
             //     id: doc.id,

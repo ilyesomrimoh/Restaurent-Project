@@ -3,7 +3,7 @@ import React from 'react'
 const RecentComment = ({username , starsnumber , desc ,halfstar }) => {
 
     const starArray = [];
-
+    starsnumber = parseInt(starsnumber);
     for (let i = 0; i < starsnumber; i++) {
         starArray.push(<img  className='w-4' key={i} src="/images/icons/icons8-star-100.png" alt="Star" />);
     }

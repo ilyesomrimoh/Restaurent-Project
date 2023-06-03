@@ -1,14 +1,9 @@
 import OrderBtn from './OrderBtn'
 import { db } from '../../config/firebase_config'
 import { doc , updateDoc } from 'firebase/firestore'
-import { useContext } from 'react'
-import { UserContext } from '../../contexts/UserContext'
-
-
 
 function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTime , Address , UserPhone  , Name}) {
 
-    const {user, restau} = useContext(UserContext);
     const getColor = (status, ghost=true) => {
         switch (status.trim().toLowerCase()) {
             case "pending":
@@ -26,13 +21,14 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(orderRef,{
             status : "pending"
         });
-        const restauRef = doc(db,"Restaurents",user.uid);
-        updateDoc(restauRef , {
-            activeOrders: restau?.activeOrders-1,
-            pendingOrders: restau?.pendingOrders+1
-        })
-        restau['activeOrders'] = restau.activeOrders-1;
-        restau['pendingOrders'] = restau.pendingOrders+1;
+        // setActiveOrd((old)=> old -1)
+        // const restauRef = doc(db,"Restaurents",user.uid);
+        // updateDoc(restauRef , {
+        //     activeOrders: restau?.activeOrders-1,
+        //     pendingOrders: restau?.pendingOrders+1
+        // })
+        // restau['activeOrders'] = restau.activeOrders-1;
+        // restau['pendingOrders'] = restau.pendingOrders+1;
 
 
         //getOrders();
@@ -42,13 +38,13 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(orderRef,{
             status : "active"
         });
-        const restauRef = doc(db,"Restaurents",user.uid);
-        updateDoc(restauRef , {
-            activeOrders: restau?.activeOrders+1,
-            pendingOrders: restau?.pendingOrders-1
-        })
-        restau['activeOrders'] = restau.activeOrders+1;
-        restau['pendingOrders'] = restau.pendingOrders-1;
+        // const restauRef = doc(db,"Restaurents",user.uid);
+        // updateDoc(restauRef , {
+        //     activeOrders: restau?.activeOrders+1,
+        //     pendingOrders: restau?.pendingOrders-1
+        // })
+        // restau['activeOrders'] = restau.activeOrders+1;
+        // restau['pendingOrders'] = restau.pendingOrders-1;
         //getOrders();
     }
     const handleComplete = () => {
@@ -56,27 +52,27 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(orderRef,{
             status : "completed"
         });
-        const restauRef = doc(db,"Restaurents",user.uid);
-        updateDoc(restauRef , {
-            activeOrders: restau?.activeOrders-1,
-            completedOrders: restau?.completedOrders+1
-        })
-        restau['activeOrders'] = restau.activeOrders-1;
-        restau['completedOrders'] = restau.completedOrders+1;
-        //getOrders();
+        // const restauRef = doc(db,"Restaurents",user.uid);
+        // updateDoc(restauRef , {
+        //     activeOrders: restau?.activeOrders-1,
+        //     completedOrders: restau?.completedOrders+1
+        // })
+        // restau['activeOrders'] = restau.activeOrders-1;
+        // restau['completedOrders'] = restau.completedOrders+1;
+        // //getOrders();
     }
     const handleCancel = () => {
         const orderRef = doc(db,"Orders",OrderId);
         updateDoc(orderRef,{
             status : "canceled"
         });
-        const restauRef = doc(db,"Restaurents",user.uid);
-        updateDoc(restauRef , {
-            canceledOrders: restau?.canceledOrders +1,
-            pendingOrders: restau?.pendingOrders-1
-        })
-        restau['canceledOrders'] = restau.canceledOrders+1;
-        restau['pendingOrders'] = restau.pendingOrders-1;
+        // const restauRef = doc(db,"Restaurents",user.uid);
+        // updateDoc(restauRef , {
+        //     canceledOrders: restau?.canceledOrders +1,
+        //     pendingOrders: restau?.pendingOrders-1
+        // })
+        // restau['canceledOrders'] = restau.canceledOrders+1;
+        // restau['pendingOrders'] = restau.pendingOrders-1;
         //getOrders();
     }
   return (
@@ -86,7 +82,8 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
             <p className='text-[var(--gray-color)] font-bold '>ID - <span style={{color : `var(${getColor(status,false)})`,}}>#{OrderId}</span></p>
             <div className='details flex justify-between items-center basis-2/4'>
                 <p className='text-[var(--gray-color)] font-bold'><span className='text-[var(--font-color)]'>{OrderDate}, {OderTime}</span></p>
-                <OrderBtn text={`${status.charAt(0).toUpperCase() + status.slice(1)}`} colorVar={"--white-color"} bgColorVar={getColor(status)}/>
+                
+                <OrderBtn text={`${status.charAt(0).toUpperCase() + status.slice(1)}`} py={"0.3rem"} colorVar={"--white-color"} bgColorVar={getColor(status)}/>
             </div>
         </div>
         <div className="items flex justify-between items-center mt-3">
