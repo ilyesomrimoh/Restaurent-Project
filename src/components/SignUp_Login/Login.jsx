@@ -81,7 +81,7 @@ const Login = () => {
           </div>
         </Link>
       </div>
-      <div className="flex flex-col justify-center space-y-9 lg:w-1/2 xl:p-28 2xl:p-18 lg:p-12 lg:pt-24 p-24">
+      <div className="p-8 pt-16 flex flex-col justify-center space-y-9  lg:w-1/2 xl:p-28 2xl:p-18 lg:p-12 lg:pt-24 ">
         <p className="text-5xl font-medium ">Login</p>
         <div className="flex space-x-7 justify-center ">
           <div onClick={SignInGoogle} className="flex pr-4 relative justify-center py-2  space-x-5 hover:border-orange-300  border rounded-md cursor-pointer hover:bg-red-50 w-1/2">

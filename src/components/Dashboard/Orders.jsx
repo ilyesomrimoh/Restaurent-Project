@@ -29,6 +29,7 @@ const Orders = () => {
 
     return `${hours}:${minutes}`
   }
+
   useEffect(() => {
     if (restau === null) {
       nav('/dashboard/profile')

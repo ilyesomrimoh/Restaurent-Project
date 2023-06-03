@@ -3,7 +3,7 @@ import React from "react";
 function Hero() {
   return (
     <section className="hero-container">
-      <div className="hero-text">
+      <div className="hero-text sm:text-[40px]">
         <h1>
           Be The Fastest In Delevering Your{" "}
           <span className="red-text">Food</span>

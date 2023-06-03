@@ -42,6 +42,7 @@ const Dashboard = () => {
                 })
                 let stat = doc.data()["status"]
                 if (stat === "completed") {
+                  setComplOrd ((old) => old+= 1)
                   
                 }else if (stat === "pending") {
                   setPendingOrd ((old) => old+= 1)

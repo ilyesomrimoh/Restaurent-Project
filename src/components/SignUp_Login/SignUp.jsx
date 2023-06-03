@@ -10,6 +10,8 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [password , setPass] = useState('');
   const [email , setEmail] = useState('');
+  const [err , setErr] = useState('');
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth,(user) => {
       if (user) {
@@ -35,6 +37,7 @@ const SignUp = () => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      setErr(errorMessage);
       console.log(errorCode, errorMessage)
     });
   }
@@ -48,6 +51,8 @@ const SignUp = () => {
       navigate("/dashboard/profile");
     })
     .catch((error) => {
+      setErr(error.message);
+
       console.log(error)
     })
   };
@@ -82,9 +87,10 @@ const SignUp = () => {
           </div>
         </Link>
       </div>
-      <div className="flex flex-col justify-center space-y-7 lg:w-1/2 xl:p-28  2xl:p-18 lg:p-12 lg:pt-24 p-24">
+      <div className="flex flex-col justify-center space-y-7 lg:w-1/2 xl:p-28   2xl:p-18 lg:p-12 lg:pt-24 p-8 pt-16">
         <p className="text-5xl font-medium ">Signup</p>
-        <div className="flex space-x-7 justify-center ">
+       {(err !=='') && ( <div className="text-red-400"><b>ERROR: </b>{err}</div>)}
+        <div className="flex space-x-7 justify-center  ">
           <div onClick={SignUpGoogle} className="flex pr-4 relative justify-center py-2  space-x-5 hover:border-orange-300  border rounded-md cursor-pointer hover:bg-red-50 w-1/2">
             <span className="absolute -top-3 -right-2 h-3 w-3">
               <span className="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-red-400 opacity-75"></span>
