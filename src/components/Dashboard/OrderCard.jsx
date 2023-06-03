@@ -1,10 +1,14 @@
 import OrderBtn from './OrderBtn'
 import { db } from '../../config/firebase_config'
 import { doc , updateDoc } from 'firebase/firestore'
+import { useContext } from 'react'
+import { UserContext } from '../../contexts/UserContext'
 
 
 
 function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTime , Address , UserPhone  , Name}) {
+
+    const {user, restau} = useContext(UserContext);
     const getColor = (status, ghost=true) => {
         switch (status.trim().toLowerCase()) {
             case "pending":
@@ -22,6 +26,15 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(orderRef,{
             status : "pending"
         });
+        const restauRef = doc(db,"Restaurents",user.uid);
+        updateDoc(restauRef , {
+            activeOrders: restau?.activeOrders-1,
+            pendingOrders: restau?.pendingOrders+1
+        })
+        restau['activeOrders'] = restau.activeOrders-1;
+        restau['pendingOrders'] = restau.pendingOrders+1;
+
+
         //getOrders();
     }
     const handleAccept = () => {
@@ -29,6 +42,13 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(orderRef,{
             status : "active"
         });
+        const restauRef = doc(db,"Restaurents",user.uid);
+        updateDoc(restauRef , {
+            activeOrders: restau?.activeOrders+1,
+            pendingOrders: restau?.pendingOrders-1
+        })
+        restau['activeOrders'] = restau.activeOrders+1;
+        restau['pendingOrders'] = restau.pendingOrders-1;
         //getOrders();
     }
     const handleComplete = () => {
@@ -36,6 +56,13 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(orderRef,{
             status : "completed"
         });
+        const restauRef = doc(db,"Restaurents",user.uid);
+        updateDoc(restauRef , {
+            activeOrders: restau?.activeOrders-1,
+            completedOrders: restau?.completedOrders+1
+        })
+        restau['activeOrders'] = restau.activeOrders-1;
+        restau['completedOrders'] = restau.completedOrders+1;
         //getOrders();
     }
     const handleCancel = () => {
@@ -43,6 +70,13 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(orderRef,{
             status : "canceled"
         });
+        const restauRef = doc(db,"Restaurents",user.uid);
+        updateDoc(restauRef , {
+            canceledOrders: restau?.canceledOrders +1,
+            pendingOrders: restau?.pendingOrders-1
+        })
+        restau['canceledOrders'] = restau.canceledOrders+1;
+        restau['pendingOrders'] = restau.pendingOrders-1;
         //getOrders();
     }
   return (
