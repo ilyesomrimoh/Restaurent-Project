@@ -5,7 +5,6 @@ import LandingPage from "./Views/LandingPage";
 import Dashboard from "./Views/Dashboard";
 import { doc, getDoc, query,collection,where,getDocs  } from "firebase/firestore";
 import { db } from "./config/firebase_config";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
 import { useState, useEffect} from "react";

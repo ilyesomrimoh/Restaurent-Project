@@ -10,7 +10,10 @@ const FoodCard = ({data, deleteHandler}) => {
     const [showDrop, setShowDrop] = useState(false);
     const toggleDrop = () => setShowDrop(!showDrop);
 
-    
+    function getFirst15Words(str) {
+        const words = str.trim().split(' ');
+              return words.slice(0, 15).join(' ') + ' . . . .';
+      }
     
   return (
    
@@ -39,9 +42,8 @@ const FoodCard = ({data, deleteHandler}) => {
 
         <div className='flex gap-4 items-center mb-1 justify-between'>
         <p className='text-[var(--caution-color)] font-semibold text-lg mb-1'>{price}.00 DZD</p>
-<Link to="/dashboard/editproduct"> <button type="button" className="text-[var(--primary-color)] hover:text-white border border-[var(--primary-color)] hover:bg-[var(--primary-color)]  font-medium rounded-lg text-sm px-4 py-[3px] text-center ">Edit</button>
-</Link>        </div>
-        <p className="mb-3 font-normal text-[13px] text-gray-400">{description}</p>
+<Link to="/dashboard/editproduct"><button type="button" className="text-[var(--primary-color)] hover:text-white border border-[var(--primary-color)] hover:bg-[var(--primary-color)]  font-medium rounded-lg text-sm px-4 py-[3px] text-center ">Edit</button></Link>        </div>
+        <p className="mb-3 font-normal text-[13px] text-gray-400">{getFirst15Words(description)}</p>
      
     </div>
 </div>

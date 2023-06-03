@@ -1,12 +1,12 @@
 import React from 'react'
 import { UserContext } from '../../contexts/UserContext';
-import { useContext , useEffect } from 'react';
+import { useContext , useEffect} from 'react';
+import { Line } from 'react-chartjs-2'
 import { Chart as chartJs } from 'chart.js/auto';
-import { Bar } from 'react-chartjs-2';
 import { useState } from 'react';
-const BarChart = () => {
+const LineChart = () => {
 
-    let max = 0;
+
     const {orders} = useContext(UserContext)
     const [chartData, setChartData] = useState({
         labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -33,9 +33,9 @@ const BarChart = () => {
 
 
 
- const updateChartData = (max) => {
+ const updateChartData = () => {
 
-  if (orders && !(orders.length === 0)) {
+  if  (orders && !(orders.length === 0)) {
   // get orders of the curent week that are completed
   let weeklyOrders = orders.filter(order => {
     const orderDate = new Date(order.createdDate?.seconds * 1000);
@@ -43,18 +43,15 @@ const BarChart = () => {
   });
 
   // // get the data for the bar chart
-// get the data for the bar chart
-const getWeeklyOrdersData = (max) => {
-    let weeklyOrdersNumber = [0, 0, 0, 0, 0, 0, 0]; // daily Orders
+const getWeeklyIncomeData = () => {
+   let weeklyIncome = [0, 0, 0, 0, 0, 0, 0]; // daily totals*
 
     weeklyOrders.forEach(order => {
       const dayOfWeek = new Date(order.createdDate?.seconds * 1000).getDay(); // Get the day of the week (0-6)
-      weeklyOrdersNumber[dayOfWeek] += 1; // Add the order to the corresponding day
+      weeklyIncome[dayOfWeek] += parseInt(order.totalPrice); // Add the income to the corresponding day
     });
-
-   max = Math.max(...weeklyOrdersNumber) + 10;
-   console.log('tesssssst '+ max);
-    return weeklyOrdersNumber;
+  
+    return weeklyIncome;
   };
   
 
@@ -70,7 +67,7 @@ const getWeeklyOrdersData = (max) => {
           borderWidth: 2,
           hoverBackgroundColor: '#FF9F86',
           hoverBorderColor: '#BA2417',
-          data: getWeeklyOrdersData(max),
+          data: getWeeklyIncomeData(),
         },
       ],
     });
@@ -80,30 +77,15 @@ const getWeeklyOrdersData = (max) => {
 
 
     useEffect(() => {
-        updateChartData(max);
+        updateChartData();
       }, [orders]);
 
-    const options = {
-        y: {
-            beginAtZero: true,
-            ticks: {
-              stepSize: 1, // Adjust the step size between ticks here
-              min: 0, // Adjust the minimum value of the y-axis here
-              max: 100, // Adjust the maximum value of the y-axis here
-            },
-            suggestedMax: 20,
-          },
-        datasets: {
-          bar: {
-            barThickness: 40,
-          },
-        },
-      };
+
+
 
   return (
-
-    <Bar  data={chartData}  options={options}/>
+  <Line data={chartData} />
   )
 }
 
-export default BarChart
+export default LineChart
