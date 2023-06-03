@@ -6,7 +6,7 @@ import { Bar } from 'react-chartjs-2';
 import { useState } from 'react';
 const BarChart = () => {
 
-    
+    let max = 0;
     const {orders} = useContext(UserContext)
     const [chartData, setChartData] = useState({
         labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -33,7 +33,7 @@ const BarChart = () => {
 
 
 
- const updateChartData = () => {
+ const updateChartData = (max) => {
 
   if (orders && !(orders.length === 0)) {
   // get orders of the curent week that are completed
@@ -44,14 +44,16 @@ const BarChart = () => {
 
   // // get the data for the bar chart
 // get the data for the bar chart
-const getWeeklyOrdersData = () => {
+const getWeeklyOrdersData = (max) => {
     let weeklyOrdersNumber = [0, 0, 0, 0, 0, 0, 0]; // daily Orders
 
     weeklyOrders.forEach(order => {
       const dayOfWeek = new Date(order.createdDate?.seconds * 1000).getDay(); // Get the day of the week (0-6)
       weeklyOrdersNumber[dayOfWeek] += 1; // Add the order to the corresponding day
     });
-  
+
+   max = Math.max(...weeklyOrdersNumber) + 10;
+   console.log('tesssssst '+ max);
     return weeklyOrdersNumber;
   };
   
@@ -68,7 +70,7 @@ const getWeeklyOrdersData = () => {
           borderWidth: 2,
           hoverBackgroundColor: '#FF9F86',
           hoverBorderColor: '#BA2417',
-          data: getWeeklyOrdersData(),
+          data: getWeeklyOrdersData(max),
         },
       ],
     });
@@ -78,9 +80,8 @@ const getWeeklyOrdersData = () => {
 
 
     useEffect(() => {
-        updateChartData();
+        updateChartData(max);
       }, [orders]);
-
 
     const options = {
         y: {
@@ -90,6 +91,7 @@ const getWeeklyOrdersData = () => {
               min: 0, // Adjust the minimum value of the y-axis here
               max: 100, // Adjust the maximum value of the y-axis here
             },
+            suggestedMax: 20,
           },
         datasets: {
           bar: {

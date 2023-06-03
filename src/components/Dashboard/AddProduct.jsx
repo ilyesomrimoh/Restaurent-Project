@@ -125,7 +125,7 @@ const AddProduct = () => {
     </div>)}
      <h2 className='font-bold m-4 mb-7 mt-7'>Add Product </h2>
     <div className='flex justify-start '>
-    <ProductForm fileRef={fileInputRef} BtnTitle = "Add Product" formData={formData} setFormData={setFormData} AddItem={AddItem} isButtonClicked={isButtonClicked} />
+    <ProductForm fileRef={fileInputRef} BtnTitle="Add Product" formData={formData} setFormData={setFormData} AddItem={AddItem} isButtonClicked={isButtonClicked} />
    <div className='self-center '><FoodCard data={formData}  /> </div>
     </div>
    

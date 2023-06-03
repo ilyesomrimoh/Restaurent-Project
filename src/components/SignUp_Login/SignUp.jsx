@@ -85,7 +85,7 @@ const SignUp = () => {
       <div className="flex flex-col justify-center space-y-7 lg:w-1/2 xl:p-28  2xl:p-18 lg:p-12 lg:pt-24 p-24">
         <p className="text-5xl font-medium ">Signup</p>
         <div className="flex space-x-7 justify-center ">
-          <div onClick={SignUpGoogle} className="flex pr-4 relative justify-center py-2  space-x-5 hover:border-orange-300  border rounded-md cursor-pointer hover:bg-red-50">
+          <div onClick={SignUpGoogle} className="flex pr-4 relative justify-center py-2  space-x-5 hover:border-orange-300  border rounded-md cursor-pointer hover:bg-red-50 w-1/2">
             <span className="absolute -top-3 -right-2 h-3 w-3">
               <span className="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-red-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
@@ -99,20 +99,7 @@ const SignUp = () => {
               Sign up with Google
             </p>
           </div>
-          <div className="flex pr-4 relative py-2 space-x-5 border-gray-300  hover:border-blue-400  border rounded-md cursor-pointer hover:bg-gray-100">
-            <span className="absolute -top-3 -right-2 h-3 w-3">
-              <span className="animate-ping absolute -right-1 -top-0 inline-flex h-5 w-5 rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-800"></span>
-            </span>
-            <img
-              src="./images/Assets/facebook.png"
-              alt=""
-              className="lg:w-7 lg:h-7 w-9 h-9 sm:my-auto"
-            />
-            <p className="hidden my-auto  md:block  md:my-auto ">
-              Sign up with facebook
-            </p>
-          </div>
+      
         </div>
         <div className="relative flex  items-center">
           <div className="flex-grow border-t border-black"></div>
