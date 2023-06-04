@@ -57,7 +57,7 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(restauRef , {
             TotalIncome: restau?.TotalIncome + OrderPrice,
         })
-        restau.TotalIncome = restau?.TotalIncome + OrderPrice;
+        restau.TotalIncome = restau?.TotalIncome+ OrderPrice;
         //getOrders();
     }
     const handleCancel = () => {
