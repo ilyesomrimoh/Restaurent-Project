@@ -11,13 +11,14 @@ import { getDownloadURL,uploadBytesResumable, ref } from 'firebase/storage';
 import { UserContext } from '../../contexts/UserContext';
 
 const AddProduct = () => {
-  const {user,getMenuItems, menuItems} = useContext(UserContext);
+  const {user,getMenuItems, menuItems, restau} = useContext(UserContext);
   const [formData, setFormData] = useState({
     name: 'Product Name',
     price: '100',
     category: 'Pizza',
     description: 'description ...',
     photoId: '/images/Assets/food.jpg',
+
     available: false,
   });
   const [msg , setMsg] = useState("Hello there Loading ...")
@@ -82,6 +83,7 @@ const AddProduct = () => {
     () => {
       getDownloadURL(restauRef).then((url) => {
         setDoc(newItemRef, {
+          rest_name: restau.name,
           category:formData.category,
           description:formData.description,
           name:formData.name,

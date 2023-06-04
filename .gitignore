@@ -4,7 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-
+test.js
+data.csv
 # testing
 /coverage
 hello.html

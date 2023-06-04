@@ -1,9 +1,10 @@
 import OrderBtn from './OrderBtn'
 import { db } from '../../config/firebase_config'
 import { doc , updateDoc } from 'firebase/firestore'
-
+import { useContext } from 'react'
+import { UserContext } from '../../contexts/UserContext'
 function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTime , Address , UserPhone  , Name}) {
-
+    const {restau , user , } = useContext(UserContext)
     const getColor = (status, ghost=true) => {
         switch (status.trim().toLowerCase()) {
             case "pending":
@@ -52,14 +53,12 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
         updateDoc(orderRef,{
             status : "completed"
         });
-        // const restauRef = doc(db,"Restaurents",user.uid);
-        // updateDoc(restauRef , {
-        //     activeOrders: restau?.activeOrders-1,
-        //     completedOrders: restau?.completedOrders+1
-        // })
-        // restau['activeOrders'] = restau.activeOrders-1;
-        // restau['completedOrders'] = restau.completedOrders+1;
-        // //getOrders();
+        const restauRef = doc(db,"Restaurents",user.uid);
+        updateDoc(restauRef , {
+            TotalIncome: restau?.TotalIncome + OrderPrice,
+        })
+        restau['TotalIncome'] = restau.activeOrders+ OrderPrice;
+        //getOrders();
     }
     const handleCancel = () => {
         const orderRef = doc(db,"Orders",OrderId);

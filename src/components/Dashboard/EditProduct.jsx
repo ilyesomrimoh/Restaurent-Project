@@ -13,7 +13,7 @@ import { UserContext } from '../../contexts/UserContext';
 
 const EditProduct = () => {
 
-  const {user,getMenuItems, menuItems} = useContext(UserContext);
+  const {user,getMenuItems, menuItems } = useContext(UserContext);
   const [formData, setFormData] = useState(JSON.parse(localStorage.getItem('editProduct')));
   const [msg , setMsg] = useState("Hello there Loading ...")
   const [showMsg , setShowMsg] = useState(false);

@@ -93,9 +93,6 @@ const Profile = () => {
                   phone:phone,
                   deliveryPrice:delevryPrice,
                   photoId:newurl,
-                  completedOrders:restau.completedOrders,
-                  activeOrders:restau.activeOrders,
-                  canceledOrders:restau.canceledOrders,
                   TotalIncome:restau.TotalIncome,
                 }).then(()=>{
                   setErr(false)
@@ -117,9 +114,6 @@ const Profile = () => {
               phone:phone,
               deliveryPrice:parseInt(delevryPrice),
               photoId:restau.photoId,
-              completedOrders:restau.completedOrders,
-              activeOrders:restau.activeOrders,
-              canceledOrders:restau.canceledOrders,
               TotalIncome:restau.TotalIncome,
             }).then(()=>{
               getRestau(user.uid);
@@ -167,15 +161,9 @@ const Profile = () => {
               phone:phone,
               deliveryPrice:parseInt(delevryPrice),
               email:user.email,
-              gallery:[""],
               isActive:true,
-              pendingOrders:0,
-              completedOrders:0,
-              activeOrders:0,
-              canceledOrders:0,
               TotalIncome:0,
               photoId:url,
-              reviews:[""],
             }).then(()=>{
               setErr(false);
               setMsg("Done !");
