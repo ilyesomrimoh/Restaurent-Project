@@ -7,25 +7,25 @@ function Testmonials() {
 
   const testimonials = [
     {
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, officiisLorem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, officiis adipisicing elit. Explicabo, officiisLorem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, officiis adipisicing elit. Explicabo, officiis",
+      desc: "Tabaki has made my life so much easier. Ordering from their platform is simple and straightforward. Highly recommended!",
       author: "ILYES HADDAD",
-      location: "New York",
+      location: "France",
       imgSrc: "./images/testimonials/photoportrait.png",
       imgAlt: "Testimonial 1",
     },
     {
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, officiisLorem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, officiis adipisicing elit. Explicabo, officiisLorem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, officiis adipisicing elit. Explicabo, officiis",
-      author: "ILYES HADDAD",
+      desc: "The Testimonials About Us section convinced me to give Tabaki a try, and I'm glad I did. The positive reviews were spot on, and my experience was fantastic!",
+      author: "ILYES OMRI",
       location: "New York",
-      imgSrc: "./images/testimonials/photoportrait.png",
-      imgAlt: "Testimonial 1",
+      imgSrc: "./images/testimonials/ilys photooo.jpg",
+      imgAlt: "Testimonial 2",
     },
     {
-      desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, officiisLorem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, officiis adipisicing elit. Explicabo, officiisLorem Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, officiis adipisicing elit. Explicabo, officiis",
-      author: "ILYES HADDAD",
-      location: "New York",
-      imgSrc: "./images/testimonials/photoportrait.png",
-      imgAlt: "Testimonial 1",
+      desc: "I was amazed by the speed of delivery from Tabaki. My order arrived in no time, and the products were in perfect condition. Impressive service!",
+      author: "SAIDANI HYTHEM",
+      location: "Qatar",
+      imgSrc: "./images/testimonials/htm photo.jpg",
+      imgAlt: "Testimonial 3",
     },
   ];
   function handleNext() {
@@ -127,8 +127,7 @@ function Testmonials() {
         <h3>Testimonials About Us</h3>
         <div className="line"></div>
         <p className="head-text">
-          Lorem Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Explicabo, officiis adipisicing elit. Explicabo, officiis{" "}
+        Read what our satisfied customers have to say about us in our Testimonials About Us section.{" "}
         </p>
         <div className="testimonials-slider">
           <div className="previous" onClick={(e) => handlePrevious()}></div>

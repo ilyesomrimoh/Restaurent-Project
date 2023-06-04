@@ -1,25 +1,26 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function Hero() {
   return (
     <section className="hero-container">
       <div className="hero-text sm:text-[40px]">
         <h1>
-          Be The Fastest In Delevering Your{" "}
-          <span className="red-text">Food</span>
+        Explore Local Restaurant Gems on{" "}
+          <span className="red-text">Tabaki</span>
         </h1>
         <p className="body-small">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi,
-          quod soluta! Esse in delectus consequatur ipsa aspernatur, eos nihil
-          debitiis itaque.
+        Discover a world of flavors at your fingertips with Tabaki. Browse, order, and enjoy delicious meals from a variety of local restaurants with just a few taps.
         </p>
-        <div className="btns">
-          <button className="btn">Order Now</button>
-          <button className="btn btn-ghost">Become Restaurent</button>
+        <div className="btns flex items-center justify-center">
+          <button className="btn mt-4 ">Order Now</button>
+          <Link to='/signup'>
+      <button className="btn btn-ghost ">
+        <i className="fa fa-home"></i> Be Restaurent
+      </button></Link>
         </div>
       </div>
       <div className="hero-img">
-        <img src="./images/hero-bg.png" alt="hero background" />
+        <img src="./images/hero-section.png" alt="hero background" />
       </div>
     </section>
   );
