@@ -28,7 +28,9 @@ const LineChart = () => {
  // to get the current week
     const currentDate = new Date();
     const firstDayOfWeek = new Date(currentDate.setDate(currentDate.getDate() - currentDate.getDay()));
+    firstDayOfWeek.setHours(0, 0, 0, 0);
     const lastDayOfWeek = new Date(firstDayOfWeek);
+    lastDayOfWeek.setHours(23, 59, 59, 999);
     lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
 
 
