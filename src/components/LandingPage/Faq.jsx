@@ -5,16 +5,19 @@ const Faq = () => {
   const [clicked, setclicked] = useState(null);
   const faqContent = [
     {
-      question: " Lorem ipsum, dolor sit amet consectetur adipisicing.",
-      answer: "web devn haha haha hahah haha hah",
+      question: "How can I place an order through the app?",
+      answer: " Placing an order is simple. Just download our app, sign up for an account, browse through the available restaurants, select your desired items, and proceed to the checkout. You can track the status of your order in real-time.",
     },
     {
-      question: "lorem text",
-      answer: "lorem text",
+      question: "Can restaurant owners easily manage their menu and orders?",
+      answer: "Yes, our website dashboard provides restaurant owners with a user-friendly interface to efficiently manage their menu and orders. They can easily add or edit menu items, track incoming orders, and update the status of each order.",
     },
     {
-      question: "lorem text",
-      answer: "lorem text",
+      question: "Is the AI-based restaurant recommendation personalized?",
+      answer: "Yes, our AI-based system analyzes your preferences and past orders to provide personalized restaurant recommendations. We take into account your taste preferences, dietary restrictions, and favorite cuisines to ensure you discover the best dining options.",
+    }, {
+      question: "Is the app available for both iOS and Android devices?",
+      answer: " Yes, our app is available for both iOS and Android devices. You can download it from the App Store for iOS devices or the Google Play Store for Android devices. Enjoy a seamless ordering experience regardless of your device preference.",
     },
   ];
 

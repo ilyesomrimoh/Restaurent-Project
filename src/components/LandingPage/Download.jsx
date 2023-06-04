@@ -3,18 +3,15 @@ import React from "react";
 const Download = () => {
   return (
     <section className="download">
-      <img src="./images/icons/phone.png" alt="phone-app" className="phone" />
+      <img src="./images/icons/landingpage-removebg-preview.png" alt="phone-app" className="phone scale-125" />
       <div className="content">
         <div>
           <p className="body-small head-line">Download our app</p>
           <h2>
-            Get The Groceries App <br /> Order More Easily
-          </h2>
+          Download the App for Easy <br /> Ordering & Exclusive Benefits       </h2>
         </div>
         <p className="text body-small">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, quae.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam,
-          ratione?
+        Enhance your shopping experience with our app - download now for effortless ordering and exclusive perks.
         </p>
         <div className="link">
           <a href="/#">

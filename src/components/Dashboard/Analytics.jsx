@@ -27,9 +27,10 @@ const Analytics = () => {
      <div className="flex gap-6 w-fit mr-auto ml-auto flex-wrap pl-6 mb-16 justify-center">
 
       <OverviewCard title="Total Income" src='/images/icons/income.png'   content={restau && restau.TotalIncome}  />
-     <OverviewCard title="Pending Orders"src='/images/icons/pending-red.png' content={pendingOrd}  />
+      <OverviewCard title="Pending Orders"src='/images/icons/pending-red.png' content={pendingOrd}  />
       <OverviewCard title="Active Orders"  src='/images/icons/active-red.png' content={activeOrd} />
       <OverviewCard title="Completed Orders" src='/images/icons/completed-red.png' content={ complOrd}  />
+      
      </div>
      <div className="chart flex flex-col lg:flex-row justify-around items-center gap-8 mt-28 mb-12">
       <div className='w-[90%]  lg:w-[45%] lg:h-[450px]'>

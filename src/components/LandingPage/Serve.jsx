@@ -9,24 +9,24 @@ const Serve = () => {
         <h3>
           Your Favorite Food
           <br />
-          Delevery Partner
+          Partner
         </h3>
         <div className="card-parent">
           <Card
             title="Easy To Order"
-            content="       Lorem ipsum dolor sit amet consectetur adipisicing elit."
+            content="Streamline your experience with our Easy To Order service."
             img="./images/icons/shopping-cart-with-money-100.png"
             altText="shopping-cart-with-money"
           />
           <Card
-            title="Fastest delivery"
-            content="       Lorem ipsum dolor sit amet consectetur adipisicing elit."
+            title="Easy To Start"
+            content="Launch Your Restaurant with Simplicity"
             img="./images/icons/motorcycle-delivery-single-box-100.png"
             altText="motorcycle-delivery-single-box"
           />
           <Card
             title="Best Quality"
-            content="       Lorem ipsum dolor sit amet consectetur adipisicing elit."
+            content="Discover our premium selection for the best quality products."
             img="./images/icons/good-quality-100.png"
             altText="good-quality-100"
           />

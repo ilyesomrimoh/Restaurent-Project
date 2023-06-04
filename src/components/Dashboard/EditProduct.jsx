@@ -8,7 +8,7 @@ const EditProduct = () => {
      <NavBar />
      <h2 className='font-bold m-4 mb-7 mt-7'>Edit Product</h2>
     
-     <ProductForm BtnTitle = "Update" />
+     <ProductForm BtnTitle = "Update"  />
    
     </div>
   )
