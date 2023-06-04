@@ -15,7 +15,7 @@ const AddProduct = () => {
   const [formData, setFormData] = useState({
     name: 'Product Name',
     price: '100',
-    category: 'category',
+    category: 'Pizza',
     description: 'description ...',
     photoId: '/images/Assets/food.jpg',
     available: false,
@@ -97,10 +97,8 @@ const AddProduct = () => {
           getMenuItems();
           setShowMsg(false);
           setIsButtonClicked(true);
-
-          setTimeout(() => {
-            nav('/dashboard/menu');
-          }, 2000);
+          nav('/dashboard/menu');
+          
         });
     });
     }

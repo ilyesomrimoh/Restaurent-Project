@@ -104,9 +104,8 @@ const Profile = () => {
                   setShowMsg(false);
                   //setIsUploading(false);
                   setIsButtonClicked(true);
-                  setTimeout(() => {
-                    nav('/dashboard');
-                  }, 2000);
+                  nav('/dashboard');
+               
                 });
             });
             })
@@ -116,7 +115,7 @@ const Profile = () => {
               mapAddress:mapAddress,
               description:description,
               phone:phone,
-              deliveryPrice:delevryPrice,
+              deliveryPrice:parseInt(delevryPrice),
               photoId:restau.photoId,
               completedOrders:restau.completedOrders,
               activeOrders:restau.activeOrders,
@@ -126,9 +125,8 @@ const Profile = () => {
               getRestau(user.uid);
               //setIsUploading(false);
               setIsButtonClicked(true);
-              setTimeout(() => {
-                nav('/dashboard');
-              }, 2000);
+              nav('/dashboard');
+         
             });
           }
           
@@ -167,7 +165,7 @@ const Profile = () => {
               mapAddress:mapAddress,
               description:description,
               phone:phone,
-              deliveryPrice:delevryPrice,
+              deliveryPrice:parseInt(delevryPrice),
               email:user.email,
               gallery:[""],
               isActive:true,
@@ -184,9 +182,8 @@ const Profile = () => {
               getRestau(user.uid);
               setShowMsg(false);
               setIsButtonClicked(true);
-              setTimeout(() => {
-                nav('/dashboard');
-              }, 2000);
+              nav('/dashboard');
+          
             });
         });
         }

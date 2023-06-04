@@ -1,5 +1,5 @@
-import { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import {  useNavigate } from 'react-router-dom';
 
 
 const FoodCard = ({data, deleteHandler}) => {
@@ -7,9 +7,17 @@ const FoodCard = ({data, deleteHandler}) => {
     if (photoId === ""){
         photoId = "/images/Assets/food.jpg"
     }
+    const navigate = useNavigate();
     const [showDrop, setShowDrop] = useState(false);
     const toggleDrop = () => setShowDrop(!showDrop);
+    const handleEdit = () => {
+        toggleDrop();
+        //remove the item if it exists
+        localStorage.removeItem('editProduct');
 
+        localStorage.setItem('editProduct', JSON.stringify(data));
+        navigate('/dashboard/editProduct');
+    }   
     function getFirst15Words(str) {
         const words = str.trim().split(' ');
               return words.slice(0, 15).join(' ') + ' . . . .';
@@ -25,9 +33,8 @@ const FoodCard = ({data, deleteHandler}) => {
         {showDrop && ( <div id="dropdown" className="z-10 absolute top-[58px] text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
             <ul className="py-2" aria-labelledby="dropdownButton">
             <li>
-<Link to="/dashboard/editproduct"><div className="block px-4 py-2 text-sm   hover:bg-[var(--primary-color)]  hover:text-white">Edit</div></Link></li>
-            <li>
-               <div  className=" cursor-pointer block px-4 py-2 text-sm   hover:bg-[var(--primary-color)]  hover:text-white">Export Data</div></li>
+<div onClick={handleEdit} className="block px-4 py-2 text-sm   hover:bg-[var(--primary-color)]  hover:text-white">Edit</div></li>
+            
             <li>
                <div className="cursor-pointer block px-4 py-2 text-sm  hover:bg-[var(--primary-color)]  hover:text-white text-red-600" onClick={()=> {toggleDrop() ;deleteHandler(id)}}>Delete</div></li>
             </ul>
@@ -42,7 +49,7 @@ const FoodCard = ({data, deleteHandler}) => {
 
         <div className='flex gap-4 items-center mb-1 justify-between'>
         <p className='text-[var(--caution-color)] font-semibold text-lg mb-1'>{price}.00 DZD</p>
-<Link to="/dashboard/editproduct"><button type="button" className="text-[var(--primary-color)] hover:text-white border border-[var(--primary-color)] hover:bg-[var(--primary-color)]  font-medium rounded-lg text-sm px-4 py-[3px] text-center ">Edit</button></Link>        </div>
+<button type="button" onClick={handleEdit} className="text-[var(--primary-color)] hover:text-white border border-[var(--primary-color)] hover:bg-[var(--primary-color)]  font-medium rounded-lg text-sm px-4 py-[3px] text-center ">Edit</button>       </div>
         <p className="mb-3 font-normal text-[13px] text-gray-400">{getFirst15Words(description)}</p>
      
     </div>
