@@ -76,11 +76,11 @@ const Orders = () => {
       <h2 className='font-bold m-4 mb-7'>Orders</h2>
       
     <div className="tabs flex justify-start items-center gap-5 ml-8 mb-8">
-    <div  className={`tab ${status === 'all' ? 'active-tab' : ''}`} onClick={()=> handleTabClick('all')  }>All ({activeOrd +pendingOrd +activeOrd +canceledOrd +complOrd})</div>
-        <div className={`tab ${status === 'pending' ? 'active-tab' : ''}`}        onClick={()=> handleTabClick('pending')  }>Pending Orders ({pendingOrd})</div>
-        <div className={`tab ${status === 'active' ? 'active-tab' : ''}`}         onClick={()=>handleTabClick('active') }>Active Orders ({activeOrd})</div>
-        <div  className={`tab ${status === 'completed' ? 'active-tab' : ''}`}         onClick={()=>handleTabClick('completed') }>Completed Orders ({complOrd})</div>
-        <div  className={`tab ${status === 'canceled' ? 'active-tab' : ''}`}         onClick={()=>handleTabClick('canceled')}>Canceled Orders ({canceledOrd})</div>
+        <div  className={`tab ${status === 'all' ? 'active-tab' : ''}`}           onClick={()=> handleTabClick('all')  }>All ({activeOrd +pendingOrd +activeOrd +canceledOrd +complOrd})</div>
+        <div  className={`tab ${status === 'pending' ? 'active-tab' : ''}`}       onClick={()=> handleTabClick('pending')  }>Pending Orders ({pendingOrd})</div>
+        <div  className={`tab ${status === 'active' ? 'active-tab' : ''}`}        onClick={()=>handleTabClick('active') }>Active Orders ({activeOrd})</div>
+        <div  className={`tab ${status === 'completed' ? 'active-tab' : ''}`}     onClick={()=>handleTabClick('completed') }>Completed Orders ({complOrd})</div>
+        <div  className={`tab ${status === 'canceled' ? 'active-tab' : ''}`}      onClick={()=>handleTabClick('canceled')}>Canceled Orders ({canceledOrd})</div>
 
      </div>
      <div className="ml-3 flex-wrap orders flex gap-4 items-center justify-center">
