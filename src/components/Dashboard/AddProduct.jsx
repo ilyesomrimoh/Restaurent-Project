@@ -88,6 +88,7 @@ const AddProduct = () => {
           description:formData.description,
           name:formData.name,
           photoId:url,
+          deliveryPrice: restau.deliveryPrice,
           price:formData.price,
           restaurentId:user.uid,
           available:true,
