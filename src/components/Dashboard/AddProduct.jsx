@@ -13,10 +13,10 @@ import { UserContext } from '../../contexts/UserContext';
 const AddProduct = () => {
   const {user,getMenuItems, menuItems, restau} = useContext(UserContext);
   const [formData, setFormData] = useState({
-    name: 'Product Name',
-    price: '100',
+    name: '',
+    price: 0,
     category: 'Pizza',
-    description: 'description ...',
+    description: '',
     photoId: '/images/Assets/food.jpg',
 
     available: false,

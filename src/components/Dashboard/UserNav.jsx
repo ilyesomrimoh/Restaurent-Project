@@ -6,7 +6,7 @@ const UserNav = ({img }) => {
 
   const [showMenu, setShowMenu] = useState(false);
   const toggleMenu = () => setShowMenu(!showMenu);
-  const {user , logOut} = useContext(UserContext);
+  const {restau, logOut} = useContext(UserContext);
 
   return (
     <div className='flex items-center gap-3 relative'>
@@ -15,12 +15,12 @@ const UserNav = ({img }) => {
         <img  className='w-full shadow-xl  rounded-full' src={img} alt="" />
         </div>
        <div className='flex items-center gap-1 cursor-pointer' onClick={toggleMenu}  >
-       <h4>{user && user.displayName}</h4>
+       <h4>{restau && restau.name}</h4>
         <img className=' arrow w-4 -rotate-90   left-1' src="/images/icons/icons8-less-than-100 (2).png" alt=""   />
        </div>
        {showMenu && (
         <div className="absolute z-10 w-64 p-4 mt-2 bg-white shadow-xl top-10 right-3">
-          <p className='font-semibold text-[var(--gray-color)] '>Welcome, {user && user.displayName}</p>
+          <p className='font-semibold text-[var(--gray-color)] '>Welcome, {restau && restau.name}</p>
           <div className='w-40 ml-auto mt-2 mb-2 mr-auto h-[1px] bg-[var(--gray-color)]'></div>
             <Link to="/dashboard/profile" >
           <div className='flex justify-start gap-2 items-center pt-2 pb-2'>
