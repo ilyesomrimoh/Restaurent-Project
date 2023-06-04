@@ -42,7 +42,7 @@ const Orders = () => {
       <h2 className='font-bold m-4 mb-7'>Orders</h2>
       
     <div className="tabs flex justify-start items-center gap-5 ml-8 mb-8">
-        <div className="tab active-tab">Pending Orders ({pendingOrd})</div>
+        <div className="tab active-tab">All Orders ({pendingOrd})</div>
         <div className="tab">Active Orders ({activeOrd})</div>
         <div className="tab">Completed Orders ({complOrd})</div>
         <div className="tab">Canceled Orders ({canceledOrd})</div>

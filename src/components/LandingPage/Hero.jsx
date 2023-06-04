@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Hero() {
   return (
     <section className="hero-container">
-      <div className="hero-text sm:text-[40px]">
+      <div className="hero-text md:text-[40px]">
         <h1>
         Explore Local Restaurant Gems on{" "}
           <span className="red-text">Tabaki</span>
