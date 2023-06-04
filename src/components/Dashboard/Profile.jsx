@@ -209,16 +209,15 @@ const Profile = () => {
       
      
       <div className='w-full h-80 profile-back  relative'>
-        <div className='absolute bottom-[-80px] left-[calc(50%-80px)] w-40 h-40 rounded-full cursor-pointer overflow-hidden'>
-          <img id="profile-img" onMouseEnter={() => setIsHovered(true)} accept="image/png, image/gif, image/jpeg" onMouseLeave={() => setIsHovered(false)}  onClick={handleImageClick} className="w-full " src={restau?.photoId || "/images/icons/avatar.png"} alt="background" />
+        <div className='absolute bottom-[-80px] left-[calc(50%-80px)] w-40 h-40 rounded-full cursor-pointer overflow-hidden '>
+          <img id="profile-img" onMouseEnter={() => setIsHovered(true)} accept="image/png, image/gif, image/jpeg" onMouseLeave={() => setIsHovered(false)}  onClick={handleImageClick} className="w-full object-cover  " src={restau?.photoId || "/images/icons/avatar.png"} alt="background" />
           {isHovered && (
               <div className=" absolute top-2/4 bg-black w-full z-10 h-1/2 profile-image flex items-center justify-center pointer-events-none ">
-              <img  src="/images/icons/icons8-edit-image-100.png" className='w-10' alt="" />
-
+              <img  src="/images/icons/icons8-edit-image-100.png" className='w-10 ' alt="" />
               </div>
             )}
             
-              <input type="file" ref={fileInputRef} accept="image/*" hidden  onChange={handleImageChange} />
+            <input type="file" ref={fileInputRef} accept="image/*" hidden  onChange={handleImageChange} />
             
         </div>
         
@@ -227,7 +226,7 @@ const Profile = () => {
         <div className='flex flex-wrap gap-0 items-center justify-center xl:justify-start  xl:gap-20 w-full'>
           <div className='mr-5'>
             <div className="mb-6 mt-8">
-                  <label htmlFor="restaurentname" className="block mb-2 font-medium text-gray-900 ">Restaurent Name</label>
+                  <label htmlFor="restaurentname" className="block mb-2 font-medium text-gray-900 ">Restaurent  Name</label>
                   <input type="text" id="restaurentname"   onChange={e => setName(e.target.value)} value={name} className="bg-gray-50 border  text-gray-900 text-sm rounded-lg  block w-[500px] min-w-[250px] p-2.5  border-gray-300 outline-none focus:border-gray-400 placeholder-gray-400 " placeholder="Enter product name" required />
             </div>
               
