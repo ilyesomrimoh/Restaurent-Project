@@ -67,7 +67,7 @@ const getWeeklyOrdersData = (max) => {
       labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       datasets: [
         {
-          label: 'Total Income',
+          label: 'Orders',
           fill:true,
           backgroundColor: '#ff9e86b5',
           borderColor: '#d0431c',

@@ -82,11 +82,19 @@ const getWeeklyIncomeData = () => {
         updateChartData();
       }, [orders]);
 
-
+      const options = {
+        y: {
+            beginAtZero: true,
+            ticks: {
+              min: 0,             
+            },
+          },
+      
+      };
 
 
   return (
-  <Line data={chartData} />
+  <Line data={chartData} options={options} />
   )
 }
 
