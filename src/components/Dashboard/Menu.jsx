@@ -59,9 +59,9 @@ const Menu = () => {
 </Link>    
 </div>
     <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-fit gap-5 gap-y-10 ml-auto mr-auto'>
-      {menuItems.map((item,ind) => (
+      {menuItems.length === 0 ? <div className='text-center'>No Items Yet</div> : (menuItems.map((item,ind) => (
         <FoodCard key={ind} data={item} deleteHandler={deleteItem}/>
-      ))}
+      )))}
       
       
     </div>
