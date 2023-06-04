@@ -31,6 +31,8 @@ const BarChart = () => {
     const lastDayOfWeek = new Date(firstDayOfWeek);
     lastDayOfWeek.setDate(lastDayOfWeek.getDate() + 6);
 
+  console.log(lastDayOfWeek);
+ console.log(firstDayOfWeek);
 
 
  const updateChartData = (max) => {
@@ -39,9 +41,11 @@ const BarChart = () => {
   // get orders of the curent week that are completed
   let weeklyOrders = orders.filter(order => {
     const orderDate = new Date(order.createdDate?.seconds * 1000);
+
     return orderDate >= firstDayOfWeek.getTime() && orderDate.getTime() <= lastDayOfWeek.getTime() && order.status ==='completed';
   });
-
+console.log('weekly orders');
+console.log( weeklyOrders);
   // // get the data for the bar chart
 // get the data for the bar chart
 const getWeeklyOrdersData = (max) => {
@@ -51,9 +55,7 @@ const getWeeklyOrdersData = (max) => {
       const dayOfWeek = new Date(order.createdDate?.seconds * 1000).getDay(); // Get the day of the week (0-6)
       weeklyOrdersNumber[dayOfWeek] += 1; // Add the order to the corresponding day
     });
-
    max = Math.max(...weeklyOrdersNumber) + 10;
-   console.log('tesssssst '+ max);
     return weeklyOrdersNumber;
   };
   
@@ -70,7 +72,7 @@ const getWeeklyOrdersData = (max) => {
           borderWidth: 2,
           hoverBackgroundColor: '#FF9F86',
           hoverBorderColor: '#BA2417',
-          data: getWeeklyOrdersData(max),
+          data: getWeeklyOrdersData(),
         },
       ],
     });
@@ -80,16 +82,16 @@ const getWeeklyOrdersData = (max) => {
 
 
     useEffect(() => {
-        updateChartData(max);
+        updateChartData();
       }, [orders]);
 
     const options = {
         y: {
             beginAtZero: true,
             ticks: {
-              stepSize: 1, // Adjust the step size between ticks here
-              min: 0, // Adjust the minimum value of the y-axis here
-              max: 100, // Adjust the maximum value of the y-axis here
+              stepSize: 1,
+              min: 0, 
+              max: 100, 
             },
             suggestedMax: 20,
           },
