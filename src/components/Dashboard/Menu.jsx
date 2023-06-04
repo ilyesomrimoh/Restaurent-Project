@@ -27,10 +27,9 @@ const Menu = () => {
   }
   useEffect(() => {
     if (restau === null) {
-
       nav('/dashboard/profile')
     }
-  }, [restau])
+  }, [restau, nav])
   return (
     <div className='w-full mb-20 h-fit'>
       <NavBar />
@@ -64,11 +63,7 @@ const Menu = () => {
         <FoodCard key={ind} data={item} deleteHandler={deleteItem}/>
       ))}
       
-      {/* < FoodCard data={{ productName:'Tacos',price:'300.00',category:'Pizza',description:"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
-      < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
-      < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/>
-      < FoodCard data={{ productName: 'Tacos',price: '300.00',category: 'Pizza',description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, accusamus!",imageUrl: "/images/Assets/food.jpg",available: false}}/> */}
-
+      
     </div>
     </div>
   )
