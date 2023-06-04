@@ -14,7 +14,7 @@ const AddProduct = () => {
   const {user,getMenuItems, menuItems, restau} = useContext(UserContext);
   const [formData, setFormData] = useState({
     name: '',
-    price: 0,
+    price: "0",
     category: 'Pizza',
     description: '',
     photoId: '/images/Assets/food.jpg',

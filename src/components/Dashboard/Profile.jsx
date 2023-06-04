@@ -138,7 +138,9 @@ const Profile = () => {
           return;
         }
         const restauRef = ref(storage, `Restaurents/${user.uid}/profile`);
-
+        setMsg("Creating your profile please wait ...");
+        setErr(false);
+        setShowMsg(true);
         const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
         //setIsUploading(true);
         uploadTask.on('state_changed', 
@@ -158,6 +160,7 @@ const Profile = () => {
         }, 
         () => {
           getDownloadURL(restauRef).then((url) => {
+
             setDoc(doc(db, "Restaurents", user.uid), {
               name: name,
               mapAddress:mapAddress,
