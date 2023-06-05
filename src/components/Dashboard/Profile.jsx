@@ -8,19 +8,25 @@ import { storage } from '../../config/firebase_config';
 import { getDownloadURL,uploadBytesResumable,ref } from 'firebase/storage';
 
 const Profile = () => {
+
+
+
+  
+
+
   const {user, restau, getRestau} = useContext(UserContext);
+  const [name , setName] = useState(restau?.name);
+  const [phone , setPhone] = useState(restau?.phone);
   const [isButtonClicked, setIsButtonClicked] = useState(false);
-     const [name , setName] = useState(restau?.name);
-     const [phone , setPhone] = useState(restau?.phone);
-     const [description , setDescription] = useState(restau?.description);
-     const [delevryPrice , setdelevryPrice] = useState(restau?.deliveryPrice);
-     const [mapAddress , setmapAddress] = useState(restau?.mapAddress);
-     const [msg , setMsg] = useState('');
-     const [showMsg , setShowMsg] = useState(false);
-     const nav = useNavigate();
-     const [isHovered, setIsHovered] = useState(false);
-     const fileInputRef = useRef(null);
-     const [err , setErr] = useState(false);
+  const [delevryPrice , setdelevryPrice] = useState(restau?.deliveryPrice);
+  const [mapAddress , setmapAddress] = useState(restau?.mapAddress);
+  const [description , setDescription] = useState(restau?.description);
+  const [msg , setMsg] = useState('');
+  const [showMsg , setShowMsg] = useState(false);
+  const nav = useNavigate();
+  const [isHovered, setIsHovered] = useState(false);
+  const fileInputRef = useRef(null);
+  const [err , setErr] = useState(false);
      
 
      useEffect(() => {
@@ -63,129 +69,141 @@ const Profile = () => {
     // add to data base function
     function AddRestrant(e){
       e.preventDefault();
-      if (restau) {
-        if (fileInputRef.current.files[0]) {
-            const restauRef = ref(storage, `Restaurents/${user.uid}/profile`);
-            const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
-            setMsg("Updating your profile please wait ...");
-            setErr(false);
-            setShowMsg(true);
-            uploadTask.on('state_changed', 
-              (snapshot) => {
-                console.log((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                // const prgrs = document.getElementById('progressBar');
-                // prgrs.style.width = progress + "%";
-                
-              }, 
-              (error) => {
-                setMsg(error.message);
-                setErr(true);
-                setShowMsg(true);
+      const geocoder = new window.google.maps.Geocoder();
 
-            }, 
-            () => {
-              getDownloadURL(restauRef).then((newurl) => {
+      geocoder.geocode({ address: mapAddress }, (results, status) => {
+        console.log(window.google.maps.GeocoderStatus.OK , status,results);
+        if(status === window.google.maps.GeocoderStatus.OK && results.length > 0){
+          if (restau) {
+            if (fileInputRef.current.files[0]) {
+                const restauRef = ref(storage, `Restaurents/${user.uid}/profile`);
+                
+                const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
+                setMsg("Updating your profile please wait ...");
+                setErr(false);
+                setShowMsg(true);
+                uploadTask.on('state_changed', 
+                  (snapshot) => {
+                    console.log((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                    // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    // const prgrs = document.getElementById('progressBar');
+                    // prgrs.style.width = progress + "%";
+                    
+                  }, 
+                  (error) => {
+                    setMsg(error.message);
+                    setErr(true);
+                    setShowMsg(true);
+    
+                }, 
+                () => {
+                  getDownloadURL(restauRef).then((newurl) => {
+                    updateDoc(doc(db, "Restaurents", user.uid), {
+                      name: name,
+                      mapAddress:mapAddress,
+                      description:description,
+                      phone:phone,
+                      rating: 4.1,
+                      deliveryPrice:delevryPrice,
+                      photoId:newurl,
+                      TotalIncome:restau.TotalIncome,
+                    }).then(()=>{
+                      setErr(false)
+                      setMsg("Done");
+                      getRestau(user.uid);
+                      setShowMsg(false);
+                      //setIsUploading(false);
+                      setIsButtonClicked(true);
+                      nav('/dashboard');
+                   
+                    });
+                });
+                })
+              }else{
+                
+                setMsg("Updating your profile please wait ...");
+                setErr(false);
+                setShowMsg(true);
                 updateDoc(doc(db, "Restaurents", user.uid), {
                   name: name,
                   mapAddress:mapAddress,
                   description:description,
                   phone:phone,
-                  rating: 4.1,
-                  deliveryPrice:delevryPrice,
-                  photoId:newurl,
+                  deliveryPrice:parseInt(delevryPrice),
+                  photoId:restau.photoId,
                   TotalIncome:restau.TotalIncome,
                 }).then(()=>{
-                  setErr(false)
-                  setMsg("Done");
                   getRestau(user.uid);
-                  setShowMsg(false);
                   //setIsUploading(false);
                   setIsButtonClicked(true);
                   nav('/dashboard');
-               
+             
                 });
-            });
-            })
-          }else{
-            setMsg("Updating your profile please wait ...");
+              }
+              
+          
+          }else {
+    
+            if (!fileInputRef.current.files[0]) {
+              setMsg("Please upload a photo");
+              setErr(true);
+              setShowMsg(true);
+              return;
+            }
+            
+            const restauRef = ref(storage, `Restaurents/${user.uid}/profile`);
+            setMsg("Creating your profile please wait ...");
             setErr(false);
             setShowMsg(true);
-            updateDoc(doc(db, "Restaurents", user.uid), {
-              name: name,
-              mapAddress:mapAddress,
-              description:description,
-              phone:phone,
-              deliveryPrice:parseInt(delevryPrice),
-              photoId:restau.photoId,
-              TotalIncome:restau.TotalIncome,
-            }).then(()=>{
-              getRestau(user.uid);
-              //setIsUploading(false);
-              setIsButtonClicked(true);
-              nav('/dashboard');
-         
+            const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
+            //setIsUploading(true);
+            uploadTask.on('state_changed', 
+              (snapshot) => {
+                
+              }, 
+              (error) => {
+                //setIsUploading(false)
+                setMsg(error.message);
+                setErr(true);
+                setShowMsg(true);
+    
+            }, 
+            () => {
+              getDownloadURL(restauRef).then((url) => {
+    
+                setDoc(doc(db, "Restaurents", user.uid), {
+                  name: name,
+                  mapAddress:mapAddress,
+                  description:description,
+                  rating: 4.1,
+                  phone:phone,
+                  deliveryPrice:parseInt(delevryPrice),
+                  email:user.email,
+                  isActive:true,
+                  TotalIncome:0,
+                  photoId:url,
+                }).then(()=>{
+                  setErr(false);
+                  setMsg("Done !");
+                  getRestau(user.uid);
+                  setShowMsg(false);
+                  setIsButtonClicked(true);
+                  nav('/dashboard');
+              
+                });
             });
-          }
-          
-      
-      }else {
-
-        if (!fileInputRef.current.files[0]) {
-          setMsg("Please upload a photo");
-          setErr(true);
-          setShowMsg(true);
-          return;
-        }
-        const restauRef = ref(storage, `Restaurents/${user.uid}/profile`);
-        setMsg("Creating your profile please wait ...");
-        setErr(false);
-        setShowMsg(true);
-        const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
-        //setIsUploading(true);
-        uploadTask.on('state_changed', 
-          (snapshot) => {
-            console.log((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-            // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            // const prgrs = document.getElementById('progressBar');
-            // prgrs.style.width = progress + "%";
+            }
+          );
             
-          }, 
-          (error) => {
-            //setIsUploading(false)
-            setMsg(error.message);
-            setErr(true);
-            setShowMsg(true);
+          }
 
-        }, 
-        () => {
-          getDownloadURL(restauRef).then((url) => {
-
-            setDoc(doc(db, "Restaurents", user.uid), {
-              name: name,
-              mapAddress:mapAddress,
-              description:description,
-              rating: 4.1,
-              phone:phone,
-              deliveryPrice:parseInt(delevryPrice),
-              email:user.email,
-              isActive:true,
-              TotalIncome:0,
-              photoId:url,
-            }).then(()=>{
-              setErr(false);
-              setMsg("Done !");
-              getRestau(user.uid);
-              setShowMsg(false);
-              setIsButtonClicked(true);
-              nav('/dashboard');
-          
-            });
-        });
+        }else {
+          setMsg("Please Use a Valid Address");
+                  setErr(true);
+                  setShowMsg(true);
+                  return;
         }
-      );
-        
-      }
+      });
       
       
     } 

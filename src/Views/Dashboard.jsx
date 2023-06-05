@@ -21,6 +21,7 @@ const Dashboard = () => {
         }
       });
       if (user) {
+        
         const restRef = doc(db,"Restaurents",user.uid);
         getDoc(restRef).then((doc) => {
           if (doc.exists()) {
