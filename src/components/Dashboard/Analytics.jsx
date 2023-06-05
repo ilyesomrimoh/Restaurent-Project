@@ -42,7 +42,7 @@ const Analytics = () => {
          <LineChart /></div>
      </div>
       <h3 className='text-xl font-bold ml-8 '>Recent Rating</h3>
-      <div className="comments ml-9 mb-10 flex justify-start items-center gap-5 flex-wrap pb-5">
+      <div className="comments mt-10 ml-9 mb-10 flex justify-start items-center gap-5 flex-wrap pb-5">
         {reviews.length === 0 ? (<div className="mt-8 text-xl m-auto">No Reviews Yet </div>) : reviews.map((rev) => (
             <RecentComment key={rev.id} 
             username ={rev.userName}
