@@ -91,8 +91,12 @@ const Orders = () => {
             OrderDate={getDate(order)} 
             OderTime={getHour(order)} 
             items={itms} 
+            address={order.address.split('-')[1]+','+order.address.split('-')[2]}
             OrderPrice={order.totalPrice} 
             status={order.status || "pending"} 
+            itemName={order.itemName}
+            qnt={order.numberOfItems}
+            itemImg= {order.itemImage}
             UserPhone={order.userPhone}/>))}        
 
      </div>
