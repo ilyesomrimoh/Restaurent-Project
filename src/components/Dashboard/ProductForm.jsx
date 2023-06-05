@@ -2,6 +2,7 @@ import React from 'react'
 
 const ProductForm = ({BtnTitle , formData , setFormData , AddItem ,fileRef ,isButtonClicked }) => {
   const { name, price, category, description, photoId, available } = formData;
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (e.target.type === 'file') {

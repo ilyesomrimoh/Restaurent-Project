@@ -58,21 +58,13 @@ function OrderCard({OrderId , items , OrderPrice , status  , OrderDate , OderTim
             TotalIncome: restau?.TotalIncome + OrderPrice,
         })
         restau.TotalIncome = restau?.TotalIncome+ OrderPrice;
-        //getOrders();
     }
     const handleCancel = () => {
         const orderRef = doc(db,"Orders",OrderId);
         updateDoc(orderRef,{
             status : "canceled"
         });
-        // const restauRef = doc(db,"Restaurents",user.uid);
-        // updateDoc(restauRef , {
-        //     canceledOrders: restau?.canceledOrders +1,
-        //     pendingOrders: restau?.pendingOrders-1
-        // })
-        // restau['canceledOrders'] = restau.canceledOrders+1;
-        // restau['pendingOrders'] = restau.pendingOrders-1;
-        //getOrders();
+    
     }
   return (
     <>
