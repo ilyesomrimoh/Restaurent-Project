@@ -23,13 +23,19 @@ function App() {
   const [restau, setRestau] = useState(null);
   const [orders, setOrders] = useState([])
   const [menuItems, setMenuItems] = useState([])
-  const [reviews, setReviews] = useState([])
+  const [reviews, setReviews] = useState([]);
+  const [categories, setcategories] = useState([]);
+
 
   const [complOrd, setComplOrd] = useState(0);
   const [canceledOrd, setCanceledOrd] = useState(0);
   const [activeOrd, setActiveOrd] = useState(0);
   const [pendingOrd, setPendingOrd] = useState(0);
   
+
+
+
+
 
   const getRestau = (uuid ) => {
     const restRef = doc(db,"Restaurents",uuid);
@@ -44,6 +50,28 @@ function App() {
       setRestau(null);
     })
   }
+
+
+  const getCatgItems = () => {
+    const itemsRef = collection(db,"categories");
+    if (user) {
+      const q = query(itemsRef, where("restaurentId", "==",  user.uid));
+      getDocs(q).then((docs) => {
+        const data = docs.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+          }))
+          setcategories(data);
+      }).catch((error) => {
+        console.log(error);
+      })
+
+    }
+  }
+
+
+
+
   const getMenuItems = () => {
     const itemsRef = collection(db,"Items");
     if (user) {
@@ -159,7 +187,7 @@ function App() {
   return (
     <>
   
-      <UserContext.Provider value={{user,setUser,isAuth,setIsAuth,menuItems , getMenuItems,reviews , getReviews, orders,restau,getRestau,setRestau, setOrders, logOut,complOrd ,canceledOrd ,activeOrd , pendingOrd, setComplOrd,setActiveOrd,setCanceledOrd,setPendingOrd}}>
+      <UserContext.Provider value={{user,setUser,isAuth,setIsAuth,menuItems , getMenuItems,reviews , getReviews, orders,restau,getRestau,setRestau, setOrders, logOut,complOrd ,canceledOrd ,activeOrd , pendingOrd, setComplOrd,setActiveOrd,setCanceledOrd,setPendingOrd , categories ,getCatgItems }}>
         <RouterProvider router={router} /> 
       </UserContext.Provider>
     </>

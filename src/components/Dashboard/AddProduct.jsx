@@ -63,11 +63,12 @@ const AddProduct = () => {
     }
     const restauRef = ref(storage, `Restaurents/${user.uid}/items/${formData.name}`);
 
+    
     const uploadTask = uploadBytesResumable(restauRef, fileInputRef.current.files[0]);
     setErr(false);
     setMsg("Adding new menu item ...");
     setShowMsg(true);
-    //setIsUploading(true);
+
     uploadTask.on('state_changed', 
       (snapshot) => {
         console.log((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
@@ -95,7 +96,6 @@ const AddProduct = () => {
           categoryRef:catg,
         }).then(()=>{
           setErr(false);
-
           setMsg("Done !");
           getMenuItems();
           setShowMsg(false);
