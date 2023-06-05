@@ -17,7 +17,7 @@ const PopUp = ({setcategoryPopUp}) => {
                                 <label for="category-name" className="block mb-2 text-sm font-medium text-gray-900 ">Category</label>
                                 <input type="category-name" name="category-name" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 " placeholder="category name" required />
                             </div>
-                            <button type="submit" onClick={()=>} className="w-full text-white bg-[var(--green-ghost)] hover:bg-[var(--green-color)] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Add category</button>
+                            <button type="submit" onClick={()=>{}} className="w-full text-white bg-[var(--green-ghost)] hover:bg-[var(--green-color)] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Add category</button>
                         
                         </form>
                     </div>
