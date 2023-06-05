@@ -47,7 +47,7 @@ const [showMsg , setShowMsg] = useState(false);
                             <div>
                                 <input type="category-name" name="category-name" id="email" onChange={(e)=>setCtg(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 " placeholder="category name" required />
                             </div>
-                            <button type="submit" onClick={(e)=>handleButtonClick(e) }  className="w-full text-white bg-[var(--green-ghost)] hover:bg-[var(--green-color)] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Add category</button>
+                            <button type="submit" disabled onClick={(e)=>handleButtonClick(e) }  className="w-full cursor-not-allowed text-white bg-[var(--green-ghost)] hover:bg-[var(--green-color)] focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Add category</button>
                              
                         </form>
                     </div>

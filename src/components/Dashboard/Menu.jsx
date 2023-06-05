@@ -86,7 +86,7 @@ const Menu = () => {
     </div>
 <Link to="/dashboard/addproduct"><button type="button" className="text-[var(--primary-color)] text-white border  bg-[var(--green-color)]  font-medium rounded-lg text-sm px-4 py-2 text-center ">Add New item</button>
 </Link>    
-<button type="button" onClick={()=>setcategoryPopUp(true)} className="text-[var(--primary-color)] text-white border  bg-[var(--green-color)]  font-medium rounded-lg text-sm px-4 py-2 text-center ">Add New category</button>
+<button  type="button" onClick={()=>setcategoryPopUp(true)} className="text-[var(--primary-color)] text-white border  bg-[var(--green-color)]  font-medium rounded-lg text-sm px-4 py-2 text-center ">Add New category</button>
    
 </div>
     <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-fit gap-5 gap-y-10 ml-auto mr-auto'>
