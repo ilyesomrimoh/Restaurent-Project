@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Restaurent-Project/static/css/main.7638b1e6.css",
+    "main.js": "/Restaurent-Project/static/js/main.70b17815.js",
+    "static/media/food.jpg": "/Restaurent-Project/static/media/food.a18a4db3cdefc2a9a892.jpg",
+    "index.html": "/Restaurent-Project/index.html",
+    "main.7638b1e6.css.map": "/Restaurent-Project/static/css/main.7638b1e6.css.map",
+    "main.70b17815.js.map": "/Restaurent-Project/static/js/main.70b17815.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7638b1e6.css",
+    "static/js/main.70b17815.js"
+  ]
+}
